@@ -229,6 +229,191 @@
 
 
   
+    <article id="post-pytho" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/07/pytho/">pytho</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/07/pytho/" class="archive-article-date">
+  	<time datetime="2019-07-07T12:18:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="python3-字符编码"><a href="#python3-字符编码" class="headerlink" title="python3 字符编码"></a>python3 字符编码</h3><ol>
+<li>Python3 把系统默认编码设置为UTF-8。</li>
+<li>文本字符全部用str表示（包括Unicode 字符集中所有字符）。</li>
+<li>二进制字节数据用bytes来表示（可以是ASCII范围内的字符和其它十六进制形式的字符）。</li>
+<li>在字符引号前加 ‘b’，明确表示这是一个 bytes类型的对象。</li>
+<li>python2 与 python3 字节与字符的对应关系：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>python2</strong></th>
+<th align="center"><strong>python3</strong></th>
+<th align="center"><strong>表现</strong></th>
+<th align="center"><strong>转换</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">str</td>
+<td align="center">bytes</td>
+<td align="center">字节</td>
+<td align="center">encode</td>
+<td align="center">存储、网络传输</td>
+</tr>
+<tr>
+<td align="center">unicode</td>
+<td align="center">str</td>
+<td align="center">字符</td>
+<td align="center">decode</td>
+<td align="center">显示</td>
+</tr>
+</tbody></table>
+<ol start="6">
+<li><p>str 与 bytes 之间的转换可以用 encode 和 decode 方法</p>
+<p><img src="/2019/07/07/pytho/C:%5CUsers%5CChill%5CDesktop%5Cetc%5CMarkdown%5Cpic%5CPython%5C4c330c8aa381b0be38553b3a5031bb82.jpg" alt="4c330c8aa381b0be38553b3a5031bb82"></p>
+<p>encode 负责字符到字节的编码转换，默认转换为 UTF-8 编码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"Python之禅"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode()</span><br><span class="line"><span class="string">b'Python\xe4\xb9\x8b\xe7\xa6\x85'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode(<span class="string">'gbk'</span>)</span><br><span class="line"><span class="string">b'Python\xd6\xae\xec\xf8'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="string">b'Python\xe4\xb9\x8b\xe7\xa6\x85'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"Python"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode(<span class="string">'ascii'</span>)</span><br><span class="line"><span class="string">b'Python'</span></span><br></pre></td></tr></table></figure>
+
+<p>decode 负责字节到字符的解码转换，默认使用 UTF-8 编码格式进行转换：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'Python\xe4\xb9\x8b\xe7\xa6\x85'</span>.decode()</span><br><span class="line"><span class="string">'Python之禅'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'Python\xd6\xae\xec\xf8'</span>.decode(<span class="string">'gbk'</span>)</span><br><span class="line"><span class="string">'Python之禅'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ASCII、Unicode、UTF-8 区别：</p>
+<ul>
+<li>ASCII 编码是1个字节，Unicode 编码通常是2个字节，UTF-8 编码把一个 Unicode 字符根据不同字符内容编码成1-6个字节。</li>
+<li>UTF-8 可以显示中文，同时兼容 ASCII 编码。</li>
+</ul>
+</li>
+</ol>
+<h3 id="八大排序算法"><a href="#八大排序算法" class="headerlink" title="八大排序算法"></a>八大排序算法</h3><p><img src="/2019/07/07/pytho/C:%5CUsers%5CChill%5CDesktop%5Cetc%5CMarkdown%5Cpic%5CPython%5C875028-20170510125950801-1225042288.png" alt="img"></p>
+<h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><ul>
+<li>时间复杂度：O(n²)</li>
+<li>空间复杂度：O(1)</li>
+<li>稳定性：稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def insert_sort(array):</span><br><span class="line">    for i in range(len(array)):</span><br><span class="line">        for j in range(i):</span><br><span class="line">            if array[i] &lt; array[j]:</span><br><span class="line">                array.insert(j, array.pop(i))</span><br><span class="line">                break</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><ul>
+<li>时间复杂度：O(n)</li>
+<li>空间复杂度：O(n√n)</li>
+<li>稳定性：不稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def shell_sort(array):</span><br><span class="line">    gap = len(array)</span><br><span class="line">    while gap &gt; 1:</span><br><span class="line">        gap = gap // 2</span><br><span class="line">        for i in range(gap, len(array)):</span><br><span class="line">            for j in range(i % gap, i, gap):</span><br><span class="line">                if array[i] &lt; array[j]:</span><br><span class="line">                    array[i], array[j] = array[j], array[i]</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h4><ul>
+<li>时间复杂度：O(n²)</li>
+<li>空间复杂度：O(1)</li>
+<li>稳定性：不稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def select_sort(array):</span><br><span class="line">    for i in range(len(array)):</span><br><span class="line">        x = i  # min index</span><br><span class="line">        for j in range(i, len(array)):</span><br><span class="line">            if array[j] &lt; array[x]:</span><br><span class="line">                x = j</span><br><span class="line">        array[i], array[x] = array[x], array[i]</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><ul>
+<li>时间复杂度：O(nlog₂n)</li>
+<li>空间复杂度：O(1)</li>
+<li>稳定性：不稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def heap_sort(array):</span><br><span class="line">    def heap_adjust(parent):</span><br><span class="line">        child = 2 * parent + 1  # left child</span><br><span class="line">        while child &lt; len(heap):</span><br><span class="line">            if child + 1 &lt; len(heap):</span><br><span class="line">                if heap[child + 1] &gt; heap[child]:</span><br><span class="line">                    child += 1  # right child</span><br><span class="line">            if heap[parent] &gt;= heap[child]:</span><br><span class="line">                break</span><br><span class="line">            heap[parent], heap[child] = \</span><br><span class="line">                heap[child], heap[parent]</span><br><span class="line">            parent, child = child, 2 * child + 1</span><br><span class="line"></span><br><span class="line">    heap, array = array.copy(), []</span><br><span class="line">    for i in range(len(heap) // 2, -1, -1):</span><br><span class="line">        heap_adjust(i)</span><br><span class="line">    while len(heap) != 0:</span><br><span class="line">        heap[0], heap[-1] = heap[-1], heap[0]</span><br><span class="line">        array.insert(0, heap.pop())</span><br><span class="line">        heap_adjust(0)</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><ul>
+<li>时间复杂度：O(n²)</li>
+<li>空间复杂度：O(1)</li>
+<li>稳定性：稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def bubble_sort(array):</span><br><span class="line">    for i in range(len(array)):</span><br><span class="line">        for j in range(i, len(array)):</span><br><span class="line">            if array[i] &gt; array[j]:</span><br><span class="line">                array[i], array[j] = array[j], array[i]</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><ul>
+<li>时间复杂度：O(nlog₂n)</li>
+<li>空间复杂度：O(nlog₂n)</li>
+<li>稳定性：不稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">def quick_sort(array):</span><br><span class="line">    def recursive(begin, end):</span><br><span class="line">        if begin &gt; end:</span><br><span class="line">            return</span><br><span class="line">        l, r = begin, end</span><br><span class="line">        pivot = array[l]</span><br><span class="line">        while l &lt; r:</span><br><span class="line">            while l &lt; r and array[r] &gt; pivot:</span><br><span class="line">                r -= 1</span><br><span class="line">            while l &lt; r and array[l] &lt;= pivot:</span><br><span class="line">                l += 1</span><br><span class="line">            array[l], array[r] = array[r], array[l]</span><br><span class="line">        array[l], array[begin] = pivot, array[l]</span><br><span class="line">        recursive(begin, l - 1)</span><br><span class="line">        recursive(r + 1, end)</span><br><span class="line"></span><br><span class="line">    recursive(0, len(array) - 1)</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><ul>
+<li>时间复杂度：O(nlog₂n)</li>
+<li>空间复杂度：O(1)</li>
+<li>稳定性：稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def merge_sort(array):</span><br><span class="line">    def merge_arr(arr_l, arr_r):</span><br><span class="line">        array = []</span><br><span class="line">        while len(arr_l) and len(arr_r):</span><br><span class="line">            if arr_l[0] &lt;= arr_r[0]:</span><br><span class="line">                array.append(arr_l.pop(0))</span><br><span class="line">            elif arr_l[0] &gt; arr_r[0]:</span><br><span class="line">                array.append(arr_r.pop(0))</span><br><span class="line">        if len(arr_l) != 0:</span><br><span class="line">            array += arr_l</span><br><span class="line">        elif len(arr_r) != 0:</span><br><span class="line">            array += arr_r</span><br><span class="line">        return array</span><br><span class="line"></span><br><span class="line">    def recursive(array):</span><br><span class="line">        if len(array) == 1:</span><br><span class="line">            return array</span><br><span class="line">        mid = len(array) // 2</span><br><span class="line">        arr_l = recursive(array[:mid])</span><br><span class="line">        arr_r = recursive(array[mid:])</span><br><span class="line">        return merge_arr(arr_l, arr_r)</span><br><span class="line"></span><br><span class="line">    return recursive(array)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h4><ul>
+<li>时间复杂度：O(d(r+n))</li>
+<li>空间复杂度：O(rd+n)</li>
+<li>稳定性：稳定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">def radix_sort(array):</span><br><span class="line">    bucket, digit = [[]], 0</span><br><span class="line">    while len(bucket[0]) != len(array):</span><br><span class="line">        bucket = [[], [], [], [], [], [], [], [], [], []]</span><br><span class="line">        for i in range(len(array)):</span><br><span class="line">            num = (array[i] // 10 ** digit) % 10</span><br><span class="line">            bucket[num].append(array[i])</span><br><span class="line">        array.clear()</span><br><span class="line">        for i in range(len(bucket)):</span><br><span class="line">            array += bucket[i]</span><br><span class="line">        digit += 1</span><br><span class="line">    return array</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：如果数据量特别大，采用分治算法的快速排序和归并排序，可能会出现递归层次超出限制的错误。可以导入 sys 模块（import sys），设置最大递归次数（sys.setrecursionlimit(10 ** 8)）。</p>
+</blockquote>
+<h4 id="算法速度比较"><a href="#算法速度比较" class="headerlink" title="算法速度比较"></a>算法速度比较</h4><p><img src="/2019/07/07/pytho/C:%5CUsers%5CChill%5CDesktop%5Cetc%5CMarkdown%5Cpic%5CPython%5C875028-20170510234041066-399934425.png" alt="img"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/07/pytho/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

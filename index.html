@@ -89,7 +89,7 @@ var _hmt = _hmt || [];
 				
 					<a class="github" target="_blank" href="https://github.com/eW1z4rd/" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="mail" target="_blank" href="/chill_wizard@foxmail.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="mailto:chill_wizard@foxmail.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -128,7 +128,7 @@ var _hmt = _hmt || [];
 					
 						<a class="github" target="_blank" href="https://github.com/eW1z4rd/" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="mail" target="_blank" href="/chill_wizard@foxmail.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="mailto:chill_wizard@foxmail.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -163,7 +163,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/Learn-Git/">Learn Git</a>
+      <a class="article-title" href="/title.html">Learn Git</a>
     </h1>
   
 
@@ -172,7 +172,7 @@ var _hmt = _hmt || [];
 		
 
         
-        <a href="/2019/08/17/Learn-Git/" class="archive-article-date">
+        <a href="/title.html" class="archive-article-date">
   	<time datetime="2019-08-17T02:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
 </a>
         
@@ -180,12 +180,12 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="0x00-Git常用命令速查表"><a href="#0x00-Git常用命令速查表" class="headerlink" title="0x00 Git常用命令速查表"></a>0x00 Git常用命令速查表</h3><p><img src="/2019/08/17/Learn-Git/Git%E5%91%BD%E4%BB%A4.jpg" alt="Git命令"></p>
+        <h3 id="0x00-Git常用命令速查表"><a href="#0x00-Git常用命令速查表" class="headerlink" title="0x00 Git常用命令速查表"></a>0x00 Git常用命令速查表</h3><p><img src="/title.htm/Git%E5%91%BD%E4%BB%A4.jpg" alt="Git命令"></p>
 <h3 id="0x01-Git简介"><a href="#0x01-Git简介" class="headerlink" title="0x01 Git简介"></a>0x01 Git简介</h3><h4 id="Git是什么"><a href="#Git是什么" class="headerlink" title="Git是什么"></a>Git是什么</h4><ul>
 <li><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
 <p>那什么是版本控制系统？</p></li></ul>
         
-          <a class="article-more-a" href="/2019/08/17/Learn-Git/#more">阅读全文 >></a>
+          <a class="article-more-a" href="/title.html#more">阅读全文 >></a>
         
       
 
@@ -246,7 +246,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/20/Hexo-yilia-主题优化方案/">Hexo yilia 主题优化方案</a>
+      <a class="article-title" href="/title.html">Hexo yilia 主题优化方案</a>
     </h1>
   
 
@@ -255,7 +255,7 @@ var _hmt = _hmt || [];
 		
 
         
-        <a href="/2019/07/20/Hexo-yilia-主题优化方案/" class="archive-article-date">
+        <a href="/title.html" class="archive-article-date">
   	<time datetime="2019-07-20T08:23:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
 </a>
         
@@ -295,12 +295,18 @@ var _hmt = _hmt || [];
 <p>在 <code>themes/yilia/layout/_partial/article.ejs</code> 的 <code>&lt;%- partial(&#39;post/title&#39;, {class_name: &#39;article-title&#39;}) %&gt;</code> 处插入代码：</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--显示阅读次数--&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">	&lt;br/&gt;</span><br><span class="line">	&lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"cloud-tie-join-count"</span> href=<span class="string">"javascript:void(0);"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon-sort"</span>&gt;&lt;/span&gt;</span><br><span class="line">	&lt;span id=<span class="string">"busuanzi_container_page_pv"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">		阅读数：&lt;span id=<span class="string">"busuanzi_value_page_pv"</span>&gt;&lt;/span&gt;次</span><br><span class="line">	&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">	&lt;br/&gt;</span><br><span class="line">	&lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"cloud-tie-join-count"</span> href=<span class="string">"javascript:void(0);"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon-sort"</span>&gt;&lt;/span&gt;</span><br><span class="line">	&lt;span id=<span class="string">"busuanzi_container_page_pv"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">		阅读数：&lt;span id=<span class="string">"busuanzi_value_page_pv"</span>&gt;&lt;/span&gt;次</span><br><span class="line">	&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>百度统计配置</strong></p>
 <ul>
 <li>申请账号：<a href="https://tongji.baidu.com/" target="_blank" rel="noopener">https://tongji.baidu.com/</a></li>
 <li>在 yilia 文件夹下的 <code>_config.yml</code> 中找到 <code>baidu_analytics</code>，填入 <strong>key</strong> 即可。</li>
+</ul>
+<p><strong>搜索引擎优化</strong></p>
+<ul>
+<li>可以到 <a href="http://www.sousuoyinqingtijiao.com/" target="_blank" rel="noopener">http://www.sousuoyinqingtijiao.com/</a> 提交你的站点给搜索引擎收录。</li>
+<li>seo搜索引擎优化认为，网站的最佳结构是<strong>用户从首页点击三次就可以到达任何一个页面</strong>，但是我们使用hexo编译的站点打开文章的url是：sitename/year/mounth/day/title四层的结构，这样的url结构很不利于seo，爬虫就会经常爬不到我们的文章，于是，我们可以将url直接改成sitename/title的形式，并且title最好是用英文，在根目录的配置文件下修改permalink如下：</li>
+<li></li>
 </ul>
 <p><strong>标签</strong></p>
 <p>这就是你要书写文章的地方了，语法为Markdown语法，有关于Markdown语法，不会的请自行百度。<br>这里我对上面三个参数做一下说明，其中title和date顾名思义，文章标题和日期，而tag对应的就是文章的标签，他需要注意一点，在需要标识多个标签时，使用如下语法：</p>
@@ -310,7 +316,7 @@ var _hmt = _hmt || [];
 <p><strong>截断</strong></p>
 <p>还有一个就是文章截断的问题，不然会默认在主页显示整篇的文章，在你的md文件中（右击记事本打开）需要做截断的地方加上</p>
         
-          <a class="article-more-a" href="/2019/07/20/Hexo-yilia-主题优化方案/#more">阅读全文 >></a>
+          <a class="article-more-a" href="/title.html#more">阅读全文 >></a>
         
       
 
@@ -371,7 +377,7 @@ var _hmt = _hmt || [];
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/20/py/">py</a>
+      <a class="article-title" href="/title.html">py</a>
     </h1>
   
 
@@ -380,7 +386,7 @@ var _hmt = _hmt || [];
 		
 
         
-        <a href="/2019/07/20/py/" class="archive-article-date">
+        <a href="/title.html" class="archive-article-date">
   	<time datetime="2019-07-20T08:08:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
 </a>
         

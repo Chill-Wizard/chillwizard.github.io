@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="eW1z4rd 树屋">
 <meta property="og:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T01:52:10.462Z">
+<meta property="og:updated_time" content="2019-07-21T02:00:28.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo yilia 主题优化方案">
 <meta name="twitter:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
@@ -177,7 +177,7 @@ var _hmt = _hmt || [];
 		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
 		<span class="icon-sort"></span>
 		<span id="busuanzi_container_page_pv" style="color:gray;font-size:14px;">
-			阅读数: <span id="busuanzi_value_page_pv"></span>次
+			阅读数：<span id="busuanzi_value_page_pv"></span>次
 		</span>
 		</a>
 		
@@ -223,7 +223,7 @@ var _hmt = _hmt || [];
 <p>在 <code>themes/yilia/layout/_partial/article.ejs</code> 的 <code>&lt;%- partial(&#39;post/title&#39;, {class_name: &#39;article-title&#39;}) %&gt;</code> 处插入代码：</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--显示阅读次数--&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">  &lt;br/&gt;</span><br><span class="line">  &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"cloud-tie-join-count"</span> href=<span class="string">"javascript:void(0);"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">  &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon-sort"</span>&gt;&lt;/span&gt;</span><br><span class="line">  &lt;span id=<span class="string">"busuanzi_container_page_pv"</span> style=<span class="string">"color:#ef7522;font-size:14px;"</span>&gt;</span><br><span class="line">            阅读数: &lt;span id="busuanzi_value_page_pv"&gt;&lt;/span&gt;次 &amp;nbsp;&amp;nbsp;</span><br><span class="line">  &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--显示阅读次数--&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">	&lt;br/&gt;</span><br><span class="line">	&lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"cloud-tie-join-count"</span> href=<span class="string">"javascript:void(0);"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon-sort"</span>&gt;&lt;/span&gt;</span><br><span class="line">	&lt;span id=<span class="string">"busuanzi_container_page_pv"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">		阅读数：&lt;span id=<span class="string">"busuanzi_value_page_pv"</span>&gt;&lt;/span&gt;次</span><br><span class="line">	&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>百度统计配置</strong></p>
 <ul>

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
   <title>Hexo yilia 主题优化方案 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
+  <meta name="description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块  确保 node 版本大于 6.2 在博客根目录执行以下命令：npm install hexo-generator-json-">
 <meta name="keywords" content="Hexo,yilia">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo yilia 主题优化方案">
 <meta property="og:url" content="https://eW1z4rd.github.io/2019/07/20/Hexo-yilia-主题优化方案/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
-<meta property="og:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
+<meta property="og:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块  确保 node 版本大于 6.2 在博客根目录执行以下命令：npm install hexo-generator-json-">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T03:48:49.945Z">
+<meta property="og:updated_time" content="2019-07-21T04:21:54.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo yilia 主题优化方案">
-<meta name="twitter:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
+<meta name="twitter:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块  确保 node 版本大于 6.2 在博客根目录执行以下命令：npm install hexo-generator-json-">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -200,7 +200,11 @@ var _hmt = _hmt || [];
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>配置缺失模块</strong></p>
-<p>在根目录下的 <code>_config.yml</code>插入如下内容：</p>
+<ul>
+<li>确保 node 版本大于 6.2</li>
+<li>在博客根目录执行以下命令：<code>npm install hexo-generator-json-content --save</code></li>
+<li>在根目录下的 <code>_config.yml</code>插入以下内容：</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: false</span><br><span class="line">    pages: false</span><br><span class="line">    posts:</span><br><span class="line">      title: true</span><br><span class="line">      date: true</span><br><span class="line">      path: true</span><br><span class="line">      text: false</span><br><span class="line">      raw: false</span><br><span class="line">      content: false</span><br><span class="line">      slug: false</span><br><span class="line">      updated: false</span><br><span class="line">      comments: false</span><br><span class="line">      link: false</span><br><span class="line">      permalink: false</span><br><span class="line">      excerpt: false</span><br><span class="line">      categories: false</span><br><span class="line">      tags: true</span><br></pre></td></tr></table></figure>
 
 <p><strong>设置404页面</strong></p>

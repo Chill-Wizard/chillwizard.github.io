@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="eW1z4rd 树屋">
 <meta property="og:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T01:10:24.235Z">
+<meta property="og:updated_time" content="2019-07-21T01:23:26.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo yilia 主题优化方案">
 <meta name="twitter:description" content="修改 Hexo 配置文件 配置根目录下的 _config.yml : 1theme: yilia  修改 yilia 配置文件 配置 yilia 文件夹下的 _config.yml（目录：hexo/themes/yilia/_config.yml）： 12  配置缺失模块 在根目录下的 _config.yml插入如下内容： 123456789101112131415161718jsonConten">
@@ -36,16 +36,6 @@
   
 
   
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?19eef313448104cf984ccfda944c0bc7";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 </head>
 </html>
@@ -232,7 +222,15 @@ var _hmt = _hmt || [];
 </ul>
 <p>在yilia主题下文件里themes\yilia文件夹下的_config.yml)找到这个baidu_analytics</p>
 <p>添加 hm.src = “<a href="https://hm.baidu.com/hm.js" target="_blank" rel="noopener">https://hm.baidu.com/hm.js</a>? 后的内容进去就可以了。</p>
-<p><strong>标签</strong></p>
+<pre><code>注册一个百度统计账号
+    网站域名：用博客首页链接
+    网站首页：用博客首页链接
+hexo\themes\yilia\layout\_partial\baidu-analytics.ejs中修改hm.src中的内容代码
+
+
+
+hexo\themes\yilia\layout_partial\head.ejs文件的&lt;/head&gt;标签前添加
+&lt;%- partial(&apos;baidu-analytics&apos;) %&gt;</code></pre><p><strong>标签</strong></p>
 <p>这就是你要书写文章的地方了，语法为Markdown语法，有关于Markdown语法，不会的请自行百度。<br>这里我对上面三个参数做一下说明，其中title和date顾名思义，文章标题和日期，而tag对应的就是文章的标签，他需要注意一点，在需要标识多个标签时，使用如下语法：</p>
 <blockquote>
 <p>tags: [tag1, tag2, tag3]</p>

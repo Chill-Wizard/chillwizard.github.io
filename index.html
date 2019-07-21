@@ -31,6 +31,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?19eef313448104cf984ccfda944c0bc7";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 </html>
@@ -266,8 +276,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: false</span><br><span class="line">    pages: false</span><br><span class="line">    posts:</span><br><span class="line">      title: true</span><br><span class="line">      date: true</span><br><span class="line">      path: true</span><br><span class="line">      text: false</span><br><span class="line">      raw: false</span><br><span class="line">      content: false</span><br><span class="line">      slug: false</span><br><span class="line">      updated: false</span><br><span class="line">      comments: false</span><br><span class="line">      link: false</span><br><span class="line">      permalink: false</span><br><span class="line">      excerpt: false</span><br><span class="line">      categories: false</span><br><span class="line">      tags: true</span><br></pre></td></tr></table></figure>
 
 <p><strong>修改代码块样式</strong></p>
+<p>直接修改编译好的文件，路径为：<code>theme\yilia\source\main.0cf68a.css</code>：</p>
 <ul>
-<li>直接修改编译好的文件，路径为：<code>theme\yilia\source\main.0cf68a.css</code></li>
 <li>修改代码块背景色，搜索 <code>.article-entry .highlight,</code>，修改background，<strong>推荐色值：#333333</strong></li>
 <li>修改代码字体颜色，搜索 <code>.article-entry .highlight .line</code>，修改color，<strong>推荐色值：#f8f8ff</strong></li>
 <li>修改行号颜色，搜索 <code>.article-entry .highlight .gutter pre .line</code>，修改color，<strong>推荐色值：#5686bf</strong></li>
@@ -278,8 +288,8 @@
 
 <ul>
 <li><p>统计网站访问总量</p>
-<p>修改 <code>themes\yilia\layout\_partial\footer.ejs</code>，包括访客数和站点访问总量</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="keyword">async</span> src=<span class="string">"//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"># PV 方式，单个用户连续点击 n 篇，记录 n 次访问值</span><br><span class="line">&lt;span id=<span class="string">"busuanzi_container_site_pv"</span>&gt;</span><br><span class="line">本站总访问量：&lt;span id=<span class="string">"busuanzi_value_site_pv"</span>&gt;&lt;/span&gt;次</span><br><span class="line">&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"># UV 方式，单个用户连续点击 n 篇，记录 1 次访问值</span></span><br><span class="line"><span class="regexp">&lt;span class="post-meta-divider"&gt;|&lt;/</span>span&gt;</span><br><span class="line">&lt;span id=<span class="string">"busuanzi_container_site_uv"</span>&gt;</span><br><span class="line">本站访客数：&lt;span id=<span class="string">"busuanzi_value_site_uv"</span>&gt;&lt;/span&gt;人</span><br><span class="line">&lt;<span class="regexp">/span&gt;</span></span><br></pre></td></tr></table></figure>
+<p>修改 <code>themes\yilia\layout\_partial\footer.ejs</code>，添加本站总访问量和本站总访客数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># PV 方式，单个用户连续点击 n 篇，记录 n 次访问值</span><br><span class="line">&lt;span id=<span class="string">"busuanzi_container_site_pv"</span>&gt; Pageviews: &lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt; times &lt;<span class="regexp">/span&gt;              </span></span><br><span class="line"><span class="regexp"># UV 方式，单个用户连续点击 n 篇，记录 1 次访问值</span></span><br><span class="line"><span class="regexp">&lt;span class="post-meta-divider"&gt;|&lt;/</span>span&gt;</span><br><span class="line">&lt;span id=<span class="string">"busuanzi_container_site_uv"</span>&gt; Total Visitors: &lt;span id="busuanzi_value_site_uv"&gt;&lt;/span&gt; persons &lt;<span class="regexp">/span&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>单篇文章点击量</p>
 <p>在 <code>themes/yilia/layout/_partial/article.ejs</code> 的 <code>&lt;%- partial(&#39;post/title&#39;, {class_name: &#39;article-title&#39;}) %&gt;</code> 处插入代码：</p>
@@ -287,6 +297,13 @@
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--显示阅读次数--&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">  &lt;br/&gt;</span><br><span class="line">  &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"cloud-tie-join-count"</span> href=<span class="string">"javascript:void(0);"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">  &lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon-sort"</span>&gt;&lt;/span&gt;</span><br><span class="line">  &lt;span id=<span class="string">"busuanzi_container_page_pv"</span> style=<span class="string">"color:#ef7522;font-size:14px;"</span>&gt;</span><br><span class="line">            阅读数: &lt;span id="busuanzi_value_page_pv"&gt;&lt;/span&gt;次 &amp;nbsp;&amp;nbsp;</span><br><span class="line">  &lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
+<p><strong>百度统计配置</strong></p>
+<ul>
+<li>申请账号：<a href="https://tongji.baidu.com/web/welcome/login" target="_blank" rel="noopener">https://tongji.baidu.com/web/welcome/login</a></li>
+<li>在<strong>代码获取</strong>的地方只要填入<strong>key</strong>即可</li>
+</ul>
+<p>在yilia主题下文件里themes\yilia文件夹下的_config.yml)找到这个baidu_analytics</p>
+<p>添加 hm.src = “<a href="https://hm.baidu.com/hm.js" target="_blank" rel="noopener">https://hm.baidu.com/hm.js</a>? 后的内容进去就可以了。</p>
 <p><strong>标签</strong></p>
 <p>这就是你要书写文章的地方了，语法为Markdown语法，有关于Markdown语法，不会的请自行百度。<br>这里我对上面三个参数做一下说明，其中title和date顾名思义，文章标题和日期，而tag对应的就是文章的标签，他需要注意一点，在需要标识多个标签时，使用如下语法：</p>
 <blockquote>
@@ -439,11 +456,11 @@
     		&copy; 2019 eW1z4rd
     	</div>
 
+		<div class="footer-right">
       		<span id="busuanzi_container_site_pv"> Pageviews: <span id="busuanzi_value_site_pv"></span> times </span>
             <span class="post-meta-divider">|</span>
             <span id="busuanzi_container_site_uv"> Total Visitors: <span id="busuanzi_value_site_uv"></span> persons </span>
 			
-      	<div class="footer-right">
       		<!--
 			<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
 			-->			

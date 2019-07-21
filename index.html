@@ -263,73 +263,10 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>修改 Hexo 配置文件</strong></p>
+        <p>Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。</p>
+<h4 id="Hexo-主题优化"><a href="#Hexo-主题优化" class="headerlink" title="Hexo 主题优化"></a>Hexo 主题优化</h4><p><strong>修改 Hexo 配置文件</strong></p>
 <p>配置根目录下的 <code>_config.yml</code> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
-
-<p><strong>修改 yilia 配置文件</strong></p>
-<p>配置 yilia 文件夹下的 <code>_config.yml</code>（<code>hexo/themes/yilia/_config.yml</code>）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>配置缺失模块</strong></p>
-<ul>
-<li>确保 node 版本大于 6.2</li>
-<li>在根目录执行：<code>npm install hexo-generator-json-content --save</code></li>
-<li>在根目录下的 <code>_config.yml</code>插入以下内容：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: false</span><br><span class="line">    pages: false</span><br><span class="line">    posts:</span><br><span class="line">      title: true</span><br><span class="line">      date: true</span><br><span class="line">      path: true</span><br><span class="line">      text: false</span><br><span class="line">      raw: false</span><br><span class="line">      content: false</span><br><span class="line">      slug: false</span><br><span class="line">      updated: false</span><br><span class="line">      comments: false</span><br><span class="line">      link: false</span><br><span class="line">      permalink: false</span><br><span class="line">      excerpt: false</span><br><span class="line">      categories: false</span><br><span class="line">      tags: true</span><br></pre></td></tr></table></figure>
-
-<p><strong>设置404页面</strong></p>
-<ul>
-<li>使用 <a href="https://www.qq.com/404/" target="_blank" rel="noopener">公益404</a></li>
-<li>在根目录执行： <code>hexo new page 404</code></li>
-<li>打开新建的页面文件（<code>hexo/source/404/index.md</code>），添加以下代码：</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>404<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> <span class="attr">homePageUrl</span>=<span class="string">"https://ew1z4rd.github.io"</span> <span class="attr">homePageName</span>=<span class="string">"回到我的主页"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>设置网站ico</strong></p>
-<ul>
-<li><p>先到 <a href="https://www.xzlogo.com" target="_blank" rel="noopener">小智LOGO</a> 制作在线 logo</p>
-</li>
-<li><p>再到 <a href="http://www.bitbug.net/" target="_blank" rel="noopener">比特虫</a> 用做好的 logo 生成 icon 图标（favicon.ico）</p>
-</li>
-<li><p>把 icon 图标放到 <code>themes/yilia/source/img</code> 文件夹下，再在 <code>yilia/_config.yml</code> 下引用 <code>favicon: /img/favicon.ico</code> 即可</p>
-</li>
-</ul>
-<p><strong>修改代码块样式</strong></p>
-<p>直接修改编译好的文件，路径为：<code>theme/yilia/source/main.0cf68a.css</code>：</p>
-<ul>
-<li>修改代码块背景色，搜索 <code>.article-entry .highlight,</code>，修改background，<strong>推荐色值：#333333</strong></li>
-<li>修改代码字体颜色，搜索 <code>.article-entry .highlight .line</code>，修改color，<strong>推荐色值：#f8f8ff</strong></li>
-<li>修改行号颜色，搜索 <code>.article-entry .highlight .gutter pre .line</code>，修改color，<strong>推荐色值：#5686bf</strong></li>
-</ul>
-<p><strong>访问量的统计和显示</strong></p>
-<p>在 <code>themes/yilia/layout/_partial/after-footer.ejs</code> 中引入脚本：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加不蒜子统计</span></span><br><span class="line">&lt;script <span class="keyword">async</span> src=<span class="string">"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>统计网站访问总量</p>
-<p>修改 <code>themes/yilia/layout/_partial/footer.ejs</code>，添加本站总访问量和本站总访客数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># PV 方式，单个用户连续点击 n 篇，记录 n 次访问值</span><br><span class="line">&lt;span id=<span class="string">"busuanzi_container_site_pv"</span>&gt; Pageviews: <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> times &lt;<span class="regexp">/span&gt;              </span></span><br><span class="line"><span class="regexp"># UV 方式，单个用户连续点击 n 篇，记录 1 次访问值</span></span><br><span class="line"><span class="regexp">&lt;span class="post-meta-divider"&gt;|&lt;/</span>span&gt;</span><br><span class="line">&lt;span id=<span class="string">"busuanzi_container_site_uv"</span>&gt; Total Visitors: <span class="xml"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span> persons &lt;<span class="regexp">/span&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>单篇文章点击量</p>
-<p>在 <code>themes/yilia/layout/_partial/article.ejs</code> 的 <code>&lt;%- partial(&#39;post/title&#39;, {class_name: &#39;article-title&#39;}) %&gt;</code> 处插入代码：</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">	&lt;br/&gt;</span><br><span class="line">	&lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">"cloud-tie-join-count"</span> href=<span class="string">"javascript:void(0);"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">	&lt;span <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon-sort"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line">	&lt;span id=<span class="string">"busuanzi_container_page_pv"</span> style=<span class="string">"color:gray;font-size:14px;"</span>&gt;</span><br><span class="line">		阅读数：&lt;span id=<span class="string">"busuanzi_value_page_pv"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span>次</span><br><span class="line">	&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>a&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>百度统计配置</strong></p>
-<ul>
-<li>申请账号：<a href="https://tongji.baidu.com/" target="_blank" rel="noopener">https://tongji.baidu.com/</a></li>
-<li>在 yilia 文件夹下的 <code>_config.yml</code> 中找到 <code>baidu_analytics</code>，填入 <strong>key</strong> 即可。</li>
-</ul>
-<p><strong>标签</strong></p>
-<p>这就是你要书写文章的地方了，语法为Markdown语法，有关于Markdown语法，不会的请自行百度。<br>这里我对上面三个参数做一下说明，其中title和date顾名思义，文章标题和日期，而tag对应的就是文章的标签，他需要注意一点，在需要标识多个标签时，使用如下语法：</p>
-<blockquote>
-<p>tags: [tag1, tag2, tag3]</p>
-</blockquote>
-<p><strong>截断</strong></p>
-<p>还有一个就是文章截断的问题，不然会默认在主页显示整篇的文章，在你的md文件中（右击记事本打开）需要做截断的地方加上</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">eW1z4rd</span> <span class="string">树屋</span>  <span class="comment"># 网页标题</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">左手程式，右手诗</span>  <span class="comment"># 侧边菜单栏描述</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">eW1z4rd</span>  <span class="comment"># 作者名</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="attr">url:</span> <span class="attr">https://eW1z4rd.github.io</span>  <span class="comment"># 网站链接</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/</span>  <span class="comment"># 网站根目录</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span>  <span class="comment"># 文章路径格式</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Writing</span></span><br><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span>  <span class="comment"># 生成资源文件夹</span></span><br><span class="line"><span class="attr">highlight:</span>  <span class="comment"># 代码高亮</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  auto_detect:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">yilia</span>  <span class="comment"># 使用的主题</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="attr">deploy:</span>  <span class="comment"># 部署到 Github Page</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@github.com:eW1z4rd/eW1z4rd.github.io.git</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2019/07/20/Hexo-yilia-主题优化方案/#more">阅读全文 >></a>
         

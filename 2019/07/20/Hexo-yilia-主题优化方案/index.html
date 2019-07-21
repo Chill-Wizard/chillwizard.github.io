@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="eW1z4rd 树屋">
 <meta property="og:description" content="Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。 Hexo 主题优化修改 Hexo 配置文件配置根目录下的 _config.yml : 12345678910111213141516171819202122232425# Sitetitle: eW1z4rd 树屋  # 网">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-21T07:44:27.761Z">
+<meta property="og:updated_time" content="2019-07-21T07:57:16.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo yilia 主题优化方案">
 <meta name="twitter:description" content="Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。 Hexo 主题优化修改 Hexo 配置文件配置根目录下的 _config.yml : 12345678910111213141516171819202122232425# Sitetitle: eW1z4rd 树屋  # 网">
@@ -249,14 +249,15 @@ var _hmt = _hmt || [];
 
 <p><strong>添加评论系统</strong></p>
 <ul>
+<li>在 Github 中注册 GitHub Application，具体可参考 <a href="https://www.jianshu.com/p/656e6101bf0f" target="_blank" rel="noopener">在个人博客里添加评论系统–Gitalk</a></li>
 <li>在 <code>/theme/yilia/layout/_partial/post/</code> 目录下创建 <code>gitalk.ejs</code> 文件，并添加以下代码：</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"gitalk-container"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">var</span> gitalk = <span class="keyword">new</span> Gitalk(&#123;</span><br><span class="line">  clientID: <span class="string">'&lt;%=theme.gitalk.clientID%&gt;'</span>,</span><br><span class="line">  clientSecret: <span class="string">'&lt;%=theme.gitalk.clientSecret%&gt;'</span>,</span><br><span class="line">  repo: <span class="string">'&lt;%=theme.gitalk.repo%&gt;'</span>,</span><br><span class="line">  owner: <span class="string">'&lt;%=theme.gitalk.owner%&gt;'</span>,</span><br><span class="line">  admin: [<span class="string">'&lt;%=theme.gitalk.admin%&gt;'</span>],</span><br><span class="line">  id: md5(<span class="built_in">window</span>.location.pathname),</span><br><span class="line">  distractionFreeMode: <span class="xml"><span class="tag">&lt;<span class="name">%=theme.gitalk.distractionFreeMode%</span>&gt;</span></span></span><br><span class="line"><span class="xml">&#125;)</span></span><br><span class="line"><span class="xml"></span></span><br><span class="line"><span class="xml">gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"gitalk-container"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;div id=<span class="string">"gitalk-container"</span> style=<span class="string">"padding: 0px 30px 0px 30px;"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;link rel=<span class="string">"stylesheet"</span> href=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"</span>&gt;</span><br><span class="line">&lt;script src=<span class="string">"https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script src=<span class="string">"https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">if</span>(<span class="xml"><span class="tag">&lt;<span class="name">%=theme.gitalk.enable%</span>&gt;</span>)&#123;</span></span><br><span class="line"><span class="xml">   var gitalk = new Gitalk(&#123;</span></span><br><span class="line"><span class="xml">   clientID: '<span class="tag">&lt;<span class="name">%=theme.gitalk.ClientID%</span>&gt;</span>',</span></span><br><span class="line"><span class="xml">   clientSecret: '<span class="tag">&lt;<span class="name">%=theme.gitalk.ClientSecret%</span>&gt;</span>',</span></span><br><span class="line"><span class="xml">   repo: '<span class="tag">&lt;<span class="name">%=theme.gitalk.repo%</span>&gt;</span>',</span></span><br><span class="line"><span class="xml">   owner: '<span class="tag">&lt;<span class="name">%=theme.gitalk.githubID%</span>&gt;</span>',</span></span><br><span class="line"><span class="xml">   admin: ['<span class="tag">&lt;<span class="name">%=theme.gitalk.adminUser%</span>&gt;</span>'],</span></span><br><span class="line"><span class="xml">   id: md5(window.location.pathname),</span></span><br><span class="line"><span class="xml">   distractionFreeMode: '<span class="tag">&lt;<span class="name">%=theme.gitalk.distractionFreeMode%</span>&gt;</span>'</span></span><br><span class="line"><span class="xml">&#125;)</span></span><br><span class="line"><span class="xml">gitalk.render('gitalk-container')</span></span><br><span class="line"><span class="xml">&#125;</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> gitalk = <span class="keyword">new</span> Gitalk(&#123;</span><br><span class="line">  clientID: <span class="string">'&lt;%=theme.gitalk.clientID%&gt;'</span>,</span><br><span class="line">  clientSecret: <span class="string">'&lt;%=theme.gitalk.clientSecret%&gt;'</span>,</span><br><span class="line">  repo: <span class="string">'&lt;%=theme.gitalk.repo%&gt;'</span>,</span><br><span class="line">  owner: <span class="string">'&lt;%=theme.gitalk.owner%&gt;'</span>,</span><br><span class="line">  admin: [<span class="string">'&lt;%=theme.gitalk.admin%&gt;'</span>],</span><br><span class="line">  id: md5(<span class="built_in">window</span>.location.pathname),</span><br><span class="line">  distractionFreeMode: <span class="xml"><span class="tag">&lt;<span class="name">%=theme.gitalk.distractionFreeMode%</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>在 <code>/theme/yilia/layout/_partial/article.ejs</code> 文件中最后一行 <code>&lt;% } %&gt;</code> 之前添加以下内容：</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span>(theme.gitalk.enable &amp;&amp; theme.gitalk.distractionFreeMode)&#123; %&gt;</span><br><span class="line">	&lt;%- partial(<span class="string">'post/gitalk'</span>, &#123;</span><br><span class="line">    key: post.slug,</span><br><span class="line">  	title: post.title,</span><br><span class="line">    url: config.url+url_for(post.path)</span><br><span class="line">	&#125;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span>(theme.gitalk.enable &amp;&amp; theme.gitalk.distractionFreeMode)&#123; %&gt;</span><br><span class="line">	&lt;%- partial(<span class="string">'gitalk'</span>, &#123;</span><br><span class="line">    key: post.slug,</span><br><span class="line">  	title: post.title,</span><br><span class="line">    url: config.url+url_for(post.path)</span><br><span class="line">	&#125;) %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>在 yilia 的配置文件 <code>_config.yml</code> 中 gitment 下面添加以下配置文件：</li>
@@ -416,29 +417,22 @@ var _hmt = _hmt || [];
   
   
       <div id="gitalk-container"></div>
+<div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 
 <script>
-var gitalk = new Gitalk({
-  clientID: '690107f290505440a443',
-  clientSecret: 'a05e41d3ce002564284f3615e37fec2ea2b0cd51',
-  repo: 'ew1z4rd.github.io',<div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div>
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-
 if(true){
-        var gitalk = new Gitalk({
-        clientID: '',
-        clientSecret: '',
-        repo: 'ew1z4rd.github.io',
-        owner: '',
-        admin: [''],
-        id: 'Sat Jul 20 2019 16:23:30 GMT+0800',
-        distractionFreeMode: 'true'
+   var gitalk = new Gitalk({
+   clientID: '',
+   clientSecret: '',
+   repo: 'ew1z4rd.github.io',
+   owner: '',
+   admin: [''],
+   id: md5(window.location.pathname),
+   distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container')
 }

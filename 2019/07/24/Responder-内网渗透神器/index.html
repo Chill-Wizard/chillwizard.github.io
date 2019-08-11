@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-49.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/image35.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/1562835661261.png">
-<meta property="og:updated_time" content="2019-08-11T06:14:09.654Z">
+<meta property="og:updated_time" content="2019-08-11T06:15:47.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Responder 内网渗透神器">
 <meta name="twitter:description" content="Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。 0x00 概述工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机">
@@ -308,8 +308,10 @@ var _hmt = _hmt || [];
 </ul>
 <p>  <strong>攻击流量情况：</strong></p>
 <p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-02-02.png" alt="Kali-Linux-2019-07-09-16-02-02"></p>
-<p>图4：向受害者发送 NBNS 欺骗响应<br><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-12-06.png" alt="Kali-Linux-2019-07-09-16-12-06"></p>
-<p>图5：向受害者发送 LLMNR 欺骗响应 <img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-10-38.png" alt="Kali-Linux-2019-07-09-16-10-38"></p>
+<p>图4：向受害者发送 NBNS 欺骗响应</p>
+<p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-12-06.png" alt="Kali-Linux-2019-07-09-16-12-06"></p>
+<p>图5：向受害者发送 LLMNR 欺骗响应</p>
+<p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-10-38.png" alt="Kali-Linux-2019-07-09-16-10-38"></p>
 <p>图6：重定向身份认证过程中 SMB 传输的用户名和 HASH 值 </p>
 <h3 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h3><h4 id="特征流量检测"><a href="#特征流量检测" class="headerlink" title="特征流量检测"></a>特征流量检测</h4><ul>
 <li><p>特征行为检测</p>

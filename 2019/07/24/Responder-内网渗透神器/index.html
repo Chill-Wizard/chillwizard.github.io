@@ -19,9 +19,14 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/1562575008600.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/1562576050781.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/1562659253546.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-02-02.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-12-06.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-10-38.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-34.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-49.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/image35.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/1562835661261.png">
-<meta property="og:updated_time" content="2019-08-11T05:58:18.074Z">
+<meta property="og:updated_time" content="2019-08-11T06:10:50.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Responder 内网渗透神器">
 <meta name="twitter:description" content="Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。 0x00 概述工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机">
@@ -298,15 +303,15 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>  <strong>攻击流量情况：</strong></p>
-<p>![Kali Linux-2019-07-09-16-02-02](Responder-内网渗透神器/Kali Linux-2019-07-09-16-02-02.png)</p>
-<p>  图4：向受害者发送 NBNS 欺骗响应<br>  ![Kali Linux-2019-07-09-16-12-06](Responder-内网渗透神器/Kali Linux-2019-07-09-16-12-06.png)</p>
-<p>  图5：向受害者发送 LLMNR 欺骗响应<br>  ![Kali Linux-2019-07-09-16-10-38](Responder-内网渗透神器/Kali Linux-2019-07-09-16-10-38.png)</p>
+<p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-02-02.png" alt="Kali-Linux-2019-07-09-16-02-02"></p>
+<p>  图4：向受害者发送 NBNS 欺骗响应<br>  <img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-12-06.png" alt="Kali-Linux-2019-07-09-16-12-06"></p>
+<p>  图5：向受害者发送 LLMNR 欺骗响应<br>  <img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-10-38.png" alt="Kali-Linux-2019-07-09-16-10-38"></p>
 <p>图6：重定向身份认证过程中 SMB 传输的用户名和 HASH 值 </p>
 <h3 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h3><h4 id="特征流量检测"><a href="#特征流量检测" class="headerlink" title="特征流量检测"></a>特征流量检测</h4><ul>
 <li><p>特征行为检测</p>
 <p>程序在启动时会连续发送两个完全相同的 IGMPv3 数据包，请求同时加入 224.0.0.251 和 224.0.0.252 组播组，同样程序在退出时，也会发送两个相同的 IGMPv3 数据包，请求离开上述的组播组，如下图所示：</p>
-<p>![Kali Linux-2019-07-09-16-16-34](Responder-内网渗透神器/Kali Linux-2019-07-09-16-16-34.png)</p>
-<p>图7：Responder 工具 WPAD 攻击启动时行为<br>![Kali Linux-2019-07-09-16-16-49](Responder-内网渗透神器/Kali Linux-2019-07-09-16-16-49.png)</p>
+<p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-34.png" alt="Kali-Linux-2019-07-09-16-16-34"></p>
+<p>图7：Responder 工具 WPAD 攻击启动时行为<br><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-49.png" alt="Kali-Linux-2019-07-09-16-16-49"></p>
 </li>
 </ul>
 <p>图8：Responder 工具 WPAD 攻击退出时行为 </p>

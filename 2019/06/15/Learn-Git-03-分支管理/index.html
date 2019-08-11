@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/06/15/Learn-Git-03-分支管理/a3c67b8067c8d.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/06/15/Learn-Git-03-分支管理/2147642-42195cacced56729.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/06/15/Learn-Git-03-分支管理/2147642-0de010746cb78401.png">
-<meta property="og:updated_time" content="2019-08-10T13:04:08.095Z">
+<meta property="og:updated_time" content="2019-08-11T06:22:54.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Learn Git 03 分支管理">
 <meta name="twitter:description" content="0x06 分支管理分支是什么分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果你既学会了Git又学会了SVN！">
@@ -370,48 +370,41 @@ var _hmt = _hmt || [];
 <p><strong>拉取分支</strong></p>
 <p>多人协作时，大家通常都会往<code>master</code>和<code>dev</code>分支上推送各自的修改。</p>
 <p>因此，多人协作的工作模式通常是这样：</p>
-<ol>
-<li><p>从远程库<code>clone</code>需要完成的项目，默认情况下，<code>clone</code>下来的项目只能看到<code>master</code>分支：</p>
+<p>1.从远程库<code>clone</code>需要完成的项目，默认情况下，<code>clone</code>下来的项目只能看到<code>master</code>分支：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:eW1z4rd/learngit.git</span><br><span class="line">Cloning into &apos;learngit&apos;...</span><br><span class="line">remote: Enumerating objects: 37, done.</span><br><span class="line">remote: Counting objects: 100% (37/37), done.</span><br><span class="line">remote: Compressing objects: 100% (21/21), done.</span><br><span class="line">remote: Total 37 (delta 11), reused 37 (delta 11), pack-reused 0</span><br><span class="line">Receiving objects: 100% (37/37), done.</span><br><span class="line">Resolving deltas: 100% (11/11), done.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在本地创建和远程分支对应的分支，如创建远程<code>origin</code>的<code>dev</code>分支到本地：</p>
+
+<p>2.在本地创建和远程分支对应的分支，如创建远程<code>origin</code>的<code>dev</code>分支到本地：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev origin/dev</span><br><span class="line">Switched to a new branch &apos;dev&apos;</span><br><span class="line">Branch &apos;dev&apos; set up to track remote branch &apos;dev&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>使用<code>git checkout -b &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>命令创建，本地分支和远程分支的名称最好一致。</p>
 </blockquote>
-</li>
-<li><p>在<code>dev</code>分支上继续开发，比如新建<code>env.txt</code>文件：</p>
+<p>3.在<code>dev</code>分支上继续开发，比如新建<code>env.txt</code>文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add env.txt</span><br><span class="line">$ git commit -m &quot;add env&quot;</span><br><span class="line">[dev 9d129b4] add env</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 env.txt</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用<code>git push origin &lt;branch-name&gt;</code>向远程库推送自己的修改：</p>
+
+<p>4.使用<code>git push origin &lt;branch-name&gt;</code>向远程库推送自己的修改：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin dev</span><br><span class="line">Enumerating objects: 4, done.</span><br><span class="line">Counting objects: 100% (4/4), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 345 bytes | 345.00 KiB/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:eW1z4rd/learngit.git</span><br><span class="line">   ff512b5..9d129b4  dev -&gt; dev</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
 <p><strong>冲突处理</strong></p>
 <p>模拟另外一个用户，同样新建一个<code>env.txt</code>文件，写入不同的内容，执行如下操作：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout dev</span><br><span class="line">$ git add env.txt</span><br><span class="line">$ git commit -m &quot;add new env&quot;</span><br><span class="line">[dev 2b399e3] add new env</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 env.txt</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li><p>使用<code>git push origin &lt;branch-name&gt;</code>向远程库推送自己的修改：</p>
+<p>1.使用<code>git push origin &lt;branch-name&gt;</code>向远程库推送自己的修改：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin dev</span><br><span class="line">To https://github.com/eW1z4rd/learngit.git</span><br><span class="line"> ! [rejected]        dev -&gt; dev (fetch first)</span><br><span class="line">error: failed to push some refs to &apos;https://github.com/eW1z4rd/learngit.git&apos;</span><br><span class="line">hint: Updates were rejected because the remote contains work that you do</span><br><span class="line">hint: not have locally. This is usually caused by another repository pushing</span><br><span class="line">hint: to the same ref. You may want to first integrate the remote changes</span><br><span class="line">hint: (e.g., &apos;git pull ...&apos;) before pushing again.</span><br><span class="line">hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>推送失败，因为远程分支有比本地分支更新的提交，可以使用<code>git pull</code>拉取远程的新提交：</p>
+
+<p>2.推送失败，因为远程分支有比本地分支更新的提交，可以使用<code>git pull</code>拉取远程的新提交：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br><span class="line">...</span><br><span class="line">There is no tracking information for the current branch.</span><br><span class="line">Please specify which branch you want to merge with.</span><br><span class="line">See git-pull(1) for details.</span><br><span class="line"></span><br><span class="line">    git pull &lt;remote&gt; &lt;branch&gt;</span><br><span class="line"></span><br><span class="line">If you wish to set tracking information for this branch you can do so with:</span><br><span class="line"></span><br><span class="line">    git branch --set-upstream-to=origin/&lt;branch&gt; dev</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>git pull</code>也失败了，原因是没有指定本地<code>dev</code>分支与远程<code>origin/dev</code>分支的链接（<code>no tracking information</code>），根据提示，设置<code>dev</code>和<code>origin/dev</code>的链接：</p>
+
+<p>3.<code>git pull</code>也失败了，原因是没有指定本地<code>dev</code>分支与远程<code>origin/dev</code>分支的链接（<code>no tracking information</code>），根据提示，设置<code>dev</code>和<code>origin/dev</code>的链接：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git branch --set-upstream-to=origin/dev dev</span><br><span class="line">Branch &apos;dev&apos; set up to track remote branch &apos;dev&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再次<code>pull</code>，执行成功，但是合并有冲突，需要手动解决，解决的方法和“分支管理” - “解决冲突”中完全一样：</p>
+
+<p>4.再次<code>pull</code>，执行成功，但是合并有冲突，需要手动解决，解决的方法和“分支管理” - “解决冲突”中完全一样：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git pull</span><br><span class="line">CONFLICT (add/add): Merge conflict in env.txt</span><br><span class="line">Auto-merging env.txt</span><br><span class="line">Automatic merge failed; fix conflicts and then commit the result.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当没有冲突或者解决掉冲突后，<code>add</code>添加，<code>commit</code>提交，再次<code>push</code>推送：</p>
+
+<p>5.当没有冲突或者解决掉冲突后，<code>add</code>添加，<code>commit</code>提交，再次<code>push</code>推送：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ git add env.txt</span><br><span class="line">$ git commit -m &quot;fix env conflict&quot;</span><br><span class="line">[dev 87384b9] fix env conflict</span><br><span class="line"></span><br><span class="line">$ git push origin dev</span><br><span class="line">Enumerating objects: 7, done.</span><br><span class="line">Counting objects: 100% (7/7), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (3/3), done.</span><br><span class="line">Writing objects: 100% (4/4), 527 bytes | 527.00 KiB/s, done.</span><br><span class="line">Total 4 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/eW1z4rd/learngit.git</span><br><span class="line">   9d129b4..87384b9  dev -&gt; dev</span><br></pre></td></tr></table></figure>
 
 <p>推送成功了。</p>
-</li>
-</ol>
 <h4 id="衍合"><a href="#衍合" class="headerlink" title="衍合"></a>衍合</h4><p><code>rebase</code>衍合在Git中是一个非常有魅力的命令，使用得当会极大提高自己的工作效率；如果乱用，则会给团队带来很多麻烦。它的作用可以简要概括为：对某一段线性提交历史进行编辑、删除、复制、粘贴。因此，合理使用<code>rebase</code>命令可以使我们的提交历史干净、简洁。</p>
 <p><strong>使用</strong></p>
 <p>1.合并多个<code>commit</code>为一个完整<code>commit</code>：</p>

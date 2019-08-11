@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
-  <title>eW1z4rd 树屋</title>
+  <title>Windows 名称解析机制探究及缺陷利用 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="eW1z4rd 树屋">
-<meta property="og:url" content="https://eW1z4rd.github.io/index.html">
+  <meta name="description" content="本文阐述了 Windows 系统中的名称解析机制，同时也提及了几种利用名称解析机制的缺陷进行内网攻击的方式。 0x00 Windows 名称解析简介TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。 Windows 中的名称类型 在 Windows 操作系统中有两种名称，分别为：主机名称 和 NetBIOS 名称。">
+<meta name="keywords" content="内网渗透,Windows,exploit,concept">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows 名称解析机制探究及缺陷利用">
+<meta property="og:url" content="https://eW1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
+<meta property="og:description" content="本文阐述了 Windows 系统中的名称解析机制，同时也提及了几种利用名称解析机制的缺陷进行内网攻击的方式。 0x00 Windows 名称解析简介TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。 Windows 中的名称类型 在 Windows 操作系统中有两种名称，分别为：主机名称 和 NetBIOS 名称。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094123.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094148.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094127.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094158.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_100249.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_100350.png">
+<meta property="og:updated_time" content="2019-08-11T05:42:29.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eW1z4rd 树屋">
+<meta name="twitter:title" content="Windows 名称解析机制探究及缺陷利用">
+<meta name="twitter:description" content="本文阐述了 Windows 系统中的名称解析机制，同时也提及了几种利用名称解析机制的缺陷进行内网攻击的方式。 0x00 Windows 名称解析简介TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。 Windows 中的名称类型 在 Windows 操作系统中有两种名称，分别为：主机名称 和 NetBIOS 名称。">
+<meta name="twitter:image" content="https://ew1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094123.png">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -154,436 +166,27 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-WPAD-协议分析及内网渗透利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Windows-名称解析机制探究及缺陷利用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/WPAD-协议分析及内网渗透利用/">WPAD 协议分析及内网渗透利用</a>
+    <h1 class="article-title" itemprop="name">
+      Windows 名称解析机制探究及缺陷利用
     </h1>
   
 
 		
 		<!--显示阅读次数-->
 		
-
-        
-        <a href="/2019/08/08/WPAD-协议分析及内网渗透利用/" class="archive-article-date">
-  	<time datetime="2019-08-08T13:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将会阐述 WPAD 协议的工作原理、实现方式以及在内网渗透中的应用思路。</p>
-<h3 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h3><p>WPAD 这项技术已经诞生了近十年的时间，其最大的优势就在于在一个或多个局域网中，当需要为内网中的用户设置不同的代理服务器去连接互联网或者企业内网时，利用  WPAD 就能够灵活方便的进行配置。由于配置代理服务器的方式对于用户来说是透明的，因此，攻击者就容易利用 WPAD 进行内网的渗透。</p>
-<p>可能是由于常规的内网渗透，如 Windows 域的渗透中，攻击者只需拿到域控的权限即可控制域中的任何机器，所以攻击者往往只关注如何抓到域管理员的 Hash，而即使在工作组的渗透中，也有着比 WPAD 更有效的攻击方式。因此，虽然利用 WPAD 进行内网渗透的技术已经出现了很多年了，但一直没有变得像 ARP Spoof 等攻击方式那么流行。但是在攻击者“无计可施”的时候，也会采用一些“非主流”的方式进行内网渗透，WPAD 可能造成的安全隐患，不容我们忽视。</p>
-        
-          <a class="article-more-a" href="/2019/08/08/WPAD-协议分析及内网渗透利用/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用-NBNS-协议缺陷进行-WPAD-中间人攻击" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/">利用 NBNS 协议缺陷进行 WPAD 中间人攻击</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/" class="archive-article-date">
-  	<time datetime="2019-08-05T11:50:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。</p>
-<h3 id="0x00-NetBIOS-相关协议"><a href="#0x00-NetBIOS-相关协议" class="headerlink" title="0x00 NetBIOS 相关协议"></a>0x00 NetBIOS 相关协议</h3><p><strong>NetBIOS（Network Basic Input/Output System，网络基本输入输出系统）</strong>，一般指用于局域网通信的一套<strong>API</strong>（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域网内不同电脑能够建立和使用连接服务的功能。</p>
-<p><strong>NetBEUI（NetBIOS Enhanced User Interface，NetBIOS 增强用户接口）</strong>，可以看作是 NetBIOS 协议的<strong>扩展</strong>版本，主要用于小型局域网中的主机通信，目前基本已经淘汰。</p>
-        
-          <a class="article-more-a" href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用-LLMNR-名称解析缺陷劫持内网指定主机会话" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/">利用 LLMNR 名称解析缺陷劫持内网指定主机会话</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/" class="archive-article-date">
-  	<time datetime="2019-08-02T14:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将会对 LLMNR 协议进行分析并用 Python 实现质询和应答，之后重点阐述利用 LLMNR 在名称解析过程中的缺陷进行实战攻击的部分思路。</p>
-<h3 id="0x00-LLMNR-简介"><a href="#0x00-LLMNR-简介" class="headerlink" title="0x00 LLMNR 简介"></a>0x00 LLMNR 简介</h3><p>从 Windows Vista 起，Windows 操作系统开始支持一种新的名称解析协议——LLMNR，主要用于局域网中的名称解析。LLMNR 能够很好的支持 IPv4 和 IPv6，因此在 Windows 名称解析顺序中是一个仅次于  DNS 的名称解析方式，更重要的是在 Linux 操作系统中也实现了 LLMNR。</p>
-        
-          <a class="article-more-a" href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Responder-内网渗透神器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/Responder-内网渗透神器/">Responder 内网渗透神器</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/24/Responder-内网渗透神器/" class="archive-article-date">
-  	<time datetime="2019-07-24T14:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。</p>
-<h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机器。</p>
-        
-          <a class="article-more-a" href="/2019/07/24/Responder-内网渗透神器/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-yilia-主题优化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/20/Hexo-yilia-主题优化方案/">Hexo yilia 主题优化方案</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/20/Hexo-yilia-主题优化方案/" class="archive-article-date">
-  	<time datetime="2019-07-20T08:23:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。</p>
-<h3 id="Hexo-主题优化"><a href="#Hexo-主题优化" class="headerlink" title="Hexo 主题优化"></a>Hexo 主题优化</h3><p><strong>修改 Hexo 配置文件</strong><br>配置根目录下的 <code>_config.yml</code> ：</p>
-        
-          <a class="article-more-a" href="/2019/07/20/Hexo-yilia-主题优化方案/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows-名称解析机制探究及缺陷利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/">Windows 名称解析机制探究及缺陷利用</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:gray;font-size:14px;">
+			阅读数：<span id="busuanzi_value_page_pv"></span>次
+		</span>
+		</a>
 		
 
         
@@ -599,9 +202,133 @@ var _hmt = _hmt || [];
 <h3 id="0x00-Windows-名称解析简介"><a href="#0x00-Windows-名称解析简介" class="headerlink" title="0x00 Windows 名称解析简介"></a>0x00 Windows 名称解析简介</h3><p>TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。</p>
 <p><strong>Windows 中的名称类型</strong></p>
 <p>在 Windows 操作系统中有两种名称，分别为：<strong>主机名称</strong> 和 <strong>NetBIOS 名称</strong>。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/#more">阅读全文 >></a>
-        
+<a id="more"></a>
+
+<p><strong>主机名称</strong></p>
+<p>从狭义上来说，主机名称正如它的字面意思一样就是一台主机的名字；从广义来说，它又不仅仅包含计算机的名字，也包含互联网中的域名。</p>
+<p>由于域名是以树状的形式所表现的，同时也是主机名称的一种，所以主机名称是有层次的，最大长度为 255 个字符，允许的字符有 A～Z，a～z 和字符“－”。在域名系统中有一种标识一台主机的 DNS 名字的域名叫做<strong>全限定域名（FQDN）</strong>，从全限定域名中包含的信息可以准确看出主机在域名树中的位置。</p>
+<blockquote>
+<p>FQDN 全称 Fully Qualified Domain Name，即全限定域名，是一种同时带有主机名和域名的名称（通过符号“.”连接），含义是完整的域名。</p>
+<p>FQDN = Hostname + DomainName</p>
+<p>例如，主机名是 test<br>域名是 example.com<br>则该主机的 FQDN = test.example.com</p>
+<p>ps： 其实 FQDN 最后是以”.”来结尾的，但是大部分的应用和服务器都允许忽略最后这个点。</p>
+</blockquote>
+<p><strong>NetBIOS 名称</strong></p>
+<p>在 Windows 系统中使用的另外一种名称就是 NetBIOS 名称，准确的说 NetBIOS 名称并非是一种名字系统，而是 Windows 操作系统网络的一个编程接口，允许主机之间使用 NetBIOS 名称进行通信，通信过程是建立在 NetBIOS 协议之上的。在安装完 Windows 系统后系统会默认使用计算机的名字做为当前主机的 NetBIOS 名称。它的最大长度为 16 个字符，其中最后一位是不可配置的，用于指定 NetBIOS 的服务类型。如果计算机名称不足 15 位则使用空格补全到 15 位，反之，如果计算机名称超过 15 位则会截取前 15 位。常见的 NetBIOS 后缀有 0x20（文件和打印服务）、0x00（工作站服务）、0x03（报信者服务） 等。</p>
+<blockquote>
+<p> 使用 nbtstat -n 命令查看本机的 NetBIOS 名称</p>
+<p>使用 nbtstat -A ipaddress 命令查看指定 IP 主机的 NetBIOS 名称</p>
+</blockquote>
+<h3 id="0x01-Windows-名称解析相关协议"><a href="#0x01-Windows-名称解析相关协议" class="headerlink" title="0x01 Windows 名称解析相关协议"></a>0x01 Windows 名称解析相关协议</h3><p>在 Windows 系统中有三种与名称解析相关的协议。</p>
+<h4 id="Windows-名称解析之-DNS-协议"><a href="#Windows-名称解析之-DNS-协议" class="headerlink" title="Windows 名称解析之 DNS 协议"></a>Windows 名称解析之 DNS 协议</h4><p>DNS 协议是一种最主要的也是操作系统首选的进行名称解析的协议，几乎每一种操作系统都支持 DNS 协议，同时， DNS 协议支持 IPv4 和 IPv6。DNS 协议在实现名称解析的过程中，在客户机上没有任何本地的数据库文件，完全依赖于 DNS 服务器，所监听的端口是 UDP/53 。</p>
+<blockquote>
+<p>使用 ipconfig /displaydns 命令来查看本机的 DNS 缓存</p>
+<p>使用 ipconfig /flushdns 命令清除本机的 DNS 缓存</p>
+</blockquote>
+<p>DNS 的名称解析过程如下：</p>
+<ul>
+<li>读取本机 DNS 缓存（包含本机 hosts 文件）；</li>
+<li>如果缓存中没有，则会请求网络配置中配置的 DNS 服务器；</li>
+<li>如果 DNS 服务器未作出响应，则请求失败；反之，DNS 服务器会处理用户请求。</li>
+</ul>
+<blockquote>
+<p>hosts 文件位于 C:\Windows\System32\drivers\etc\hosts，用于提供主机名到 IP 地址的解析 。</p>
+</blockquote>
+<h4 id="Windows-名称解析之-NetBIOS-协议"><a href="#Windows-名称解析之-NetBIOS-协议" class="headerlink" title="Windows 名称解析之 NetBIOS 协议"></a>Windows 名称解析之 NetBIOS 协议</h4><p>除了 DNS 之外，在早先版本的 Windows 中也使用 <strong>NetBIOS（Network Basic Input/Output System，网络基本输入输出系统）</strong>进行名称解析。本文介绍的 NetBIOS 协议名称解析是微软后来定义的 <strong>NBT（ NetBIOS over TCP/IP）</strong>的名称解析类型。</p>
+<p>NBT 服务监听的端口为 UDP/137，其进行名称解析的形式为向当前主机所在的子网域发送广播包。所以，当你使用抓包工具在局域网中抓包时总会收到很多 <strong>NBNS 数据包</strong>。</p>
+<blockquote>
+<p>NBNS（NetBIOS Name Service，NetBIOS 域名服务器），类似于 TCP/IP 协议中的 DNS，它负责查找目标机器相应的节点地址（TCP/IP协议中为IP地址），并赋予一个 NetBIOS 名称。</p>
+</blockquote>
+<p>由于 NetBIOS 协议进行名称解析是发送的 <strong>UDP 广播包</strong>，这样做虽然速度快且无需额外的配置，但是广播包不能跨越网域同时也会增加一些网络流量，因此微软在后来推出了 <strong>WINS（Windows Internet Name Service，Windows 网络名称服务）</strong>服务器，当计算机配置为使用 WINS 服务器进行名称解析时，客户机将直接和 WINS 服务器进行<strong>单播</strong>通讯，这样就可以弥补 NetBIOS 协议使用广播进行名称解析的不足。</p>
+<p>综上所述，NetBIOS 协议进行名称解析的过程如下：</p>
+<ul>
+<li>检查本地 NetBIOS 缓存；</li>
+<li>如果缓存中没有请求的名称且已配置了 WINS 服务器，接下来则会向 WINS 服务器发出请求；</li>
+<li>如果没有配置 WINS 服务器或 WINS 服务器无响应则会向当前子网域发送广播；</li>
+<li>如果发送广播后无任何主机响应则会读取本地的 lmhosts 文件。</li>
+</ul>
+<blockquote>
+<p>lmhosts 文件位于 C:\Windows\System32\drivers\etc\lmhosts.sam，用于把 NetBIOS 名字映射到IP地址。</p>
+<p>使用 nbtstat -c 命令查看本机的 NetBIOS 缓存</p>
+<p>使用 nbtstat -R 命令清除本机的 NetBIOS 缓存</p>
+</blockquote>
+<h4 id="Windows-名称解析之-LLMNR-协议"><a href="#Windows-名称解析之-LLMNR-协议" class="headerlink" title="Windows 名称解析之 LLMNR 协议"></a>Windows 名称解析之 LLMNR 协议</h4><p>DNS 协议的名称解析虽然高效但是需要在局域网中单独配置一台服务器作为 DNS 服务器，NetBIOS 协议的名称解析在一些情况下也需要单独配置一台 WINS 服务器，而且 NetBIOS 协议不支持 IPv6。因此，为了弥补这些不足，微软在 Windows Vista 之后推出了基于端到端的名称解析协议，即 <strong>LLMNR（Link-Local Multicast Name Resolution，本地链路多播名称解析）</strong>。</p>
+<p>LLMNR 也称作多播 DNS ，因为其数据包格式类似于 DNS 的数据包。其监听的端口为 UDP/5355，支持 IPv4 和 IPv6 ，IPv4 的组播地址为 224.0.0.252，IPv6 的组播地址为 FF02:0:0:0:0:0:1:3 或 FF02::1:3，并且在 Linux 上也实现了此协议。其解析名称的特点是提供了<strong>点对点</strong>的名称解析服务，可以让同一子网中的 IPv4 和 IPv6 设备不需要  WINS 或 DNS 服务器就可以解析对方的名称。</p>
+<p>LLMNR 主要用于在网络出现故障的情况下（如 DNS 服务器不可用时）提供名称解析，此外在建立临时对等网络（例如，机场候机区域）方面也非常有用。</p>
+<p><img src="/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094123.png" alt="img"></p>
+<p>图1：Windows 名称解析过程</p>
+<p>LLMNR 进行名称解析的过程为：</p>
+<ul>
+<li>检查本地 NetBIOS 缓存；</li>
+<li>如果缓存中没有则会向当前子网域（也就是本地链路）发送 UDP 广播，查询主机名对应的 IP 地址；</li>
+<li>当前子网域的其他主机收到广播包后，将查询的名称和自己的主机名进行比较，如果找到了匹配的主机名，这台计算机会传输一条包含了自己 IP 地址的单播信息给请求该查询的主机，如果没有找到则丢弃这个查询；</li>
+<li>如果发送广播后无任何主机响应则请求失败。</li>
+</ul>
+<h3 id="0x02-Windows-系统名称解析顺序"><a href="#0x02-Windows-系统名称解析顺序" class="headerlink" title="0x02 Windows 系统名称解析顺序"></a>0x02 Windows 系统名称解析顺序</h3><p>影响 Windows 系统名称解析的两个因素，分别是：<strong>操作系统版本</strong>和<strong>网络节点模式</strong>。</p>
+<p><strong>操作系统版本</strong></p>
+<p>从上述一小节中，可以发现并非所有的操作系统版本都支持上述三种协议。</p>
+<p>Windows 2K，XP，2K3 只支持 DNS 和 NetBIOS。 所以此类版本的 Windows 都是先进行 DNS 名称解析，如果 DNS 解析名称失败，才会进行 NetBIOS 名称解析。</p>
+<p>Windows Vista 之后（包括 2K8，Win7，Win8.x，Win10）都支持上述三种协议，在这类 Windows系统中的名称解析顺序为：先进行 DNS 名称解析，如果 DNS 解析名称失败，则会使用 LLMNR 进行名称解析，最后才会使用 NetBIOS 名称解析。</p>
+<p><strong>网络节点模式</strong></p>
+<p>还有一种影响 Windows 系统名称解析的一个因素就是当前主机的网络节点模式。</p>
+<blockquote>
+<p> 使用 ipconfig /all命令查看本机的网络节点模式</p>
+</blockquote>
+<p>网络节点模式主要会<strong>影响 NetBIOS 名称解析过程</strong>，是优先查询 WINS 服务器还是先在子网域中进行广播。具体的节点模式描述如下：</p>
+<ul>
+<li>B-节点（broadcast，广播）</li>
+</ul>
+<p>Windows 使用广播来进行名称注册和名称解析，依据网关的配置，一个 B 节点客户机发送的数据包不能够超出局域网的范围，因此 B 节点并不适合于大型网络。实际上微软修改了标准的 B 节点类型，当 Windows 尝试解析名称时，首先检查 LMHOSTS 名称缓存，如果缓存中没有则会向当前子网发送广播，如果广播依然失败的话，Windows 才会检查实际的 LMHOSTS 文件。</p>
+<ul>
+<li>P-节点（per-to-per，对等）</li>
+</ul>
+<p>这种方法不使用广播，而是在计算机启动时，在网络中的 WINS 服务器上注册它们的名称。当计算机需要解析名称时，它会发送一个解析请求给 WINS 服务器。这种方法只在 WINS 服务器正常运行时有效，如果 WINS 服务器失败，则无法进行名称解析。</p>
+<ul>
+<li>M-节点（mixed，混合）</li>
+</ul>
+<p>Windows 联合使用 B 节点和 P 节点，并且默认使用 B 节点，如果 M 节点不能利用广播进行名称解析，它就使用 P 节点的 WINS 服务器来完成工作。</p>
+<ul>
+<li>H-节点（hybrid，混合）</li>
+</ul>
+<p>同样也是联合使用 B 节点和 P 节点，但工作方式相反，如果使用 WINS 服务器方式不能成功，则使用 B 节点的工作来完成工作。此节点模式也是目前 Windows 系统<strong>默认使用</strong>的节点模式。</p>
+<p>综上所述，一种常用的 Windows 名称解析的过程为：</p>
+<ol>
+<li>检查所解析名称是否是本机；</li>
+<li>尝试通过 DNS 缓存进行名称解析；</li>
+<li>尝试通过 hosts 文件进行名称解析；</li>
+<li><strong>尝试将查询请求发送到指定的 DNS 服务器；</strong></li>
+<li>尝试通过 NetBIOS 名称缓存；</li>
+<li><strong>尝试使用 LLMNR 进行名称解析；</strong></li>
+<li><strong>尝试将 NetBIOS 查询请求发送到指定的 WINS 服务器；</strong></li>
+<li><strong>尝试通过广播进行 NetBIOS 名称解析；</strong></li>
+<li>尝试通过 lmhosts 文件进行名称解析。</li>
+</ol>
+<p>值得重点关注的是 4、6、7、8 条，这四种解析行为会尝试发起网络请求，容易受到攻击。</p>
+<h3 id="0x03-利用-Windows-名称解析机制的缺陷进行内网攻击"><a href="#0x03-利用-Windows-名称解析机制的缺陷进行内网攻击" class="headerlink" title="0x03 利用 Windows 名称解析机制的缺陷进行内网攻击"></a>0x03 利用 Windows 名称解析机制的缺陷进行内网攻击</h3><p>常见的利用 Windows 名称解析机制的缺陷进行攻击的技术有 DNS Spoof、NBNS Poison、LLMNR Poison 和 ICMP Redirection。</p>
+<blockquote>
+<p>可以使用 SpiderLabs 的 Responder，或者 ZARP 工具包进行上述攻击。</p>
+</blockquote>
+<p>LLMNR Poison 攻击环境如下：</p>
+<ul>
+<li>攻击者主机（Linux）IP：192.168.253.131</li>
+<li>受害者主机（Windows 8.1） IP：192.168.253.130</li>
+<li>两台主机处于同一个局域网中</li>
+</ul>
+<p>攻击者在启动 Responder 后，当受害者去访问一个在当前局域网中不存在的主机时就会触发 LLMNR Poison 攻击，如下图所示：</p>
+<p><img src="/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094148.png" alt="2019-08-06_094148"></p>
+<p>图2：受害者使用 net 指令访问一台局域网中并不存在的主机</p>
+<p><img src="/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094127.png" alt="2019-08-06_094127"></p>
+<p>图3：Responder 会响应 LLMNR 的广播包并进行了 Poison 攻击</p>
+<p><img src="/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_094158.png" alt="2019-08-06_094158"></p>
+<p>图4：在受害者主机的 NetBIOS 缓存中已经加入了被 Poison 攻击的主机IP记录</p>
+<p>上述攻击演示中，已经证实了 LLMNR Poison 攻击的效果，可以利用让受害者访问不存在的主机的共享，进行 LLMNR Poison 攻击。这样可以获得受害者主机的 HASH ，拿到 HASH 就可以进行暴力破解了，如果是弱口令的话，就可以爆破出密码。同样也可以利用让受害者访问不存在的 HTTP 服务器进行 401 认证拿到客户端的 HASH，如下图所示：</p>
+<p><img src="/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_100249.png" alt="2019-08-06_100249"></p>
+<p>图5：受害者访问一个不存在的主机的共享</p>
+<p><img src="/2019/07/16/Windows-名称解析机制探究及缺陷利用/2019-08-06_100350.png" alt="2019-08-06_100350"></p>
+<p>图6：LLMNR Poison 攻击同样拿到了 SMB 验证过程中的 HASH</p>
+<p>获取 HASH 后，可以使用 John 对 HASH 进行暴力破解，获取用户的管理员口令。</p>
+<p><strong>参考文章：</strong><a href="https://xz.aliyun.com/t/1740/" target="_blank" rel="noopener">https://xz.aliyun.com/t/1740/</a></p>
+
       
 
       
@@ -637,10 +364,82 @@ var _hmt = _hmt || [];
       
 
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://eW1z4rd.github.io/2019/07/16/Windows-名称解析机制探究及缺陷利用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/07/20/Hexo-yilia-主题优化方案/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hexo yilia 主题优化方案
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/16/Learn-Git-04-其他特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Learn Git 04 其他特性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -655,344 +454,33 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-04-其他特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/Learn-Git-04-其他特性/">Learn Git 04 其他特性</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/16/Learn-Git-04-其他特性/" class="archive-article-date">
-  	<time datetime="2019-06-16T02:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x07-标签管理"><a href="#0x07-标签管理" class="headerlink" title="0x07 标签管理"></a>0x07 标签管理</h3><p>标签<code>tag</code>就是一个让人容易记住的有意义的名字，它可以跟某个<code>commit</code>绑定在一起。</p>
-<p>发布一个版本时，我们通常先在版本库中打一个标签，将来无论什么时候要取出某个版本，都可以根据标签找到需要的历史版本。所以，标签也是版本库的一个快照。</p>
-<blockquote>
-<p>Git的标签虽然是版本库的快照，但其实它是指向某个<code>commit</code>的指针。这和分支很像，但是分支可以移动，而标签不能移动。所以，创建和删除标签在Git中都是瞬间完成的。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2019/06/16/Learn-Git-04-其他特性/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-Windows-名称解析简介"><span class="toc-number">1.</span> <span class="toc-text">0x00 Windows 名称解析简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-Windows-名称解析相关协议"><span class="toc-number">2.</span> <span class="toc-text">0x01 Windows 名称解析相关协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-名称解析之-DNS-协议"><span class="toc-number">2.1.</span> <span class="toc-text">Windows 名称解析之 DNS 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-名称解析之-NetBIOS-协议"><span class="toc-number">2.2.</span> <span class="toc-text">Windows 名称解析之 NetBIOS 协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows-名称解析之-LLMNR-协议"><span class="toc-number">2.3.</span> <span class="toc-text">Windows 名称解析之 LLMNR 协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-Windows-系统名称解析顺序"><span class="toc-number">3.</span> <span class="toc-text">0x02 Windows 系统名称解析顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-利用-Windows-名称解析机制的缺陷进行内网攻击"><span class="toc-number">4.</span> <span class="toc-text">0x03 利用 Windows 名称解析机制的缺陷进行内网攻击</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-Learn-Git-03-分支管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/Learn-Git-03-分支管理/">Learn Git 03 分支管理</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/15/Learn-Git-03-分支管理/" class="archive-article-date">
-  	<time datetime="2019-06-15T06:23:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x06-分支管理"><a href="#0x06-分支管理" class="headerlink" title="0x06 分支管理"></a>0x06 分支管理</h3><h4 id="分支是什么"><a href="#分支是什么" class="headerlink" title="分支是什么"></a>分支是什么</h4><p>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果你既学会了Git又学会了SVN！</p>
-<p><img src="/2019/06/15/Learn-Git-03-分支管理/8361248578c67b8067c8c.png" alt="learn-branches"></p>
-        
-          <a class="article-more-a" href="/2019/06/15/Learn-Git-03-分支管理/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-02-版本控制和远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/">Learn Git 02 版本控制和远程仓库</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/" class="archive-article-date">
-  	<time datetime="2019-06-13T12:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x04-版本控制"><a href="#0x04-版本控制" class="headerlink" title="0x04 版本控制"></a>0x04 版本控制</h3><h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>我们已经成功地添加并提交了一个<code>readme.txt</code>文件，现在，是时候继续工作了，于是，我们继续修改<code>readme.txt</code>文件，改成如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>现在，运行<code>git status</code>命令查看结果：</p>
-        
-          <a class="article-more-a" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-01-初识Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/Learn-Git-01-初识Git/">Learn Git 01 初识Git</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/10/Learn-Git-01-初识Git/" class="archive-article-date">
-  	<time datetime="2019-06-10T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x01-Git简介"><a href="#0x01-Git简介" class="headerlink" title="0x01 Git简介"></a>0x01 Git简介</h3><h4 id="Git是什么"><a href="#Git是什么" class="headerlink" title="Git是什么"></a>Git是什么</h4><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
-<p>那什么是版本控制系统？</p>
-<p>如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：</p>
-<p>想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为”一个新的Word文件，再接着改，改到一定程度，再“另存为”一个新文件，这样一直改下去，最后你会有很多个Word副本。</p>
-<p>过了一周，你想找回被删除的文字，但是已经记不清删除前保存在哪个文件里了，只好一个一个文件去找，真麻烦。</p>
-        
-          <a class="article-more-a" href="/2019/06/10/Learn-Git-01-初识Git/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
+  
   
   
 
@@ -1023,8 +511,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

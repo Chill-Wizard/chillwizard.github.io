@@ -6,15 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
-  <title>eW1z4rd 树屋</title>
+  <title>WPAD 协议分析及内网渗透利用 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="eW1z4rd 树屋">
-<meta property="og:url" content="https://eW1z4rd.github.io/index.html">
+  <meta name="description" content="本文将会阐述 WPAD 协议的工作原理、实现方式以及在内网渗透中的应用思路。 0x00 前言WPAD 这项技术已经诞生了近十年的时间，其最大的优势就在于在一个或多个局域网中，当需要为内网中的用户设置不同的代理服务器去连接互联网或者企业内网时，利用  WPAD 就能够灵活方便的进行配置。由于配置代理服务器的方式对于用户来说是透明的，因此，攻击者就容易利用 WPAD 进行内网的渗透。 可能是由于常规的">
+<meta name="keywords" content="内网渗透,exploit,concept">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WPAD 协议分析及内网渗透利用">
+<meta property="og:url" content="https://eW1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
+<meta property="og:description" content="本文将会阐述 WPAD 协议的工作原理、实现方式以及在内网渗透中的应用思路。 0x00 前言WPAD 这项技术已经诞生了近十年的时间，其最大的优势就在于在一个或多个局域网中，当需要为内网中的用户设置不同的代理服务器去连接互联网或者企业内网时，利用  WPAD 就能够灵活方便的进行配置。由于配置代理服务器的方式对于用户来说是透明的，因此，攻击者就容易利用 WPAD 进行内网的渗透。 可能是由于常规的">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/20171207135000-76d44886-db12-1.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/1562741625870.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/1562809252340.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/20171207135039-8e14982a-db12-1.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_161644.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155506.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155507.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155508.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155552.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155627.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155646.png">
+<meta property="og:updated_time" content="2019-08-10T13:17:53.379Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eW1z4rd 树屋">
+<meta name="twitter:title" content="WPAD 协议分析及内网渗透利用">
+<meta name="twitter:description" content="本文将会阐述 WPAD 协议的工作原理、实现方式以及在内网渗透中的应用思路。 0x00 前言WPAD 这项技术已经诞生了近十年的时间，其最大的优势就在于在一个或多个局域网中，当需要为内网中的用户设置不同的代理服务器去连接互联网或者企业内网时，利用  WPAD 就能够灵活方便的进行配置。由于配置代理服务器的方式对于用户来说是透明的，因此，攻击者就容易利用 WPAD 进行内网的渗透。 可能是由于常规的">
+<meta name="twitter:image" content="https://ew1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/20171207135000-76d44886-db12-1.png">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -154,21 +171,27 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-WPAD-协议分析及内网渗透利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-WPAD-协议分析及内网渗透利用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/08/WPAD-协议分析及内网渗透利用/">WPAD 协议分析及内网渗透利用</a>
+    <h1 class="article-title" itemprop="name">
+      WPAD 协议分析及内网渗透利用
     </h1>
   
 
 		
 		<!--显示阅读次数-->
+		
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:gray;font-size:14px;">
+			阅读数：<span id="busuanzi_value_page_pv"></span>次
+		</span>
+		</a>
 		
 
         
@@ -183,517 +206,160 @@ var _hmt = _hmt || [];
         <p>本文将会阐述 WPAD 协议的工作原理、实现方式以及在内网渗透中的应用思路。</p>
 <h3 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h3><p>WPAD 这项技术已经诞生了近十年的时间，其最大的优势就在于在一个或多个局域网中，当需要为内网中的用户设置不同的代理服务器去连接互联网或者企业内网时，利用  WPAD 就能够灵活方便的进行配置。由于配置代理服务器的方式对于用户来说是透明的，因此，攻击者就容易利用 WPAD 进行内网的渗透。</p>
 <p>可能是由于常规的内网渗透，如 Windows 域的渗透中，攻击者只需拿到域控的权限即可控制域中的任何机器，所以攻击者往往只关注如何抓到域管理员的 Hash，而即使在工作组的渗透中，也有着比 WPAD 更有效的攻击方式。因此，虽然利用 WPAD 进行内网渗透的技术已经出现了很多年了，但一直没有变得像 ARP Spoof 等攻击方式那么流行。但是在攻击者“无计可施”的时候，也会采用一些“非主流”的方式进行内网渗透，WPAD 可能造成的安全隐患，不容我们忽视。</p>
-        
-          <a class="article-more-a" href="/2019/08/08/WPAD-协议分析及内网渗透利用/#more">阅读全文 >></a>
-        
-      
+<a id="more"></a>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用-NBNS-协议缺陷进行-WPAD-中间人攻击" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/">利用 NBNS 协议缺陷进行 WPAD 中间人攻击</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/" class="archive-article-date">
-  	<time datetime="2019-08-05T11:50:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。</p>
-<h3 id="0x00-NetBIOS-相关协议"><a href="#0x00-NetBIOS-相关协议" class="headerlink" title="0x00 NetBIOS 相关协议"></a>0x00 NetBIOS 相关协议</h3><p><strong>NetBIOS（Network Basic Input/Output System，网络基本输入输出系统）</strong>，一般指用于局域网通信的一套<strong>API</strong>（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域网内不同电脑能够建立和使用连接服务的功能。</p>
-<p><strong>NetBEUI（NetBIOS Enhanced User Interface，NetBIOS 增强用户接口）</strong>，可以看作是 NetBIOS 协议的<strong>扩展</strong>版本，主要用于小型局域网中的主机通信，目前基本已经淘汰。</p>
-        
-          <a class="article-more-a" href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-利用-LLMNR-名称解析缺陷劫持内网指定主机会话" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/">利用 LLMNR 名称解析缺陷劫持内网指定主机会话</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/" class="archive-article-date">
-  	<time datetime="2019-08-02T14:30:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文将会对 LLMNR 协议进行分析并用 Python 实现质询和应答，之后重点阐述利用 LLMNR 在名称解析过程中的缺陷进行实战攻击的部分思路。</p>
-<h3 id="0x00-LLMNR-简介"><a href="#0x00-LLMNR-简介" class="headerlink" title="0x00 LLMNR 简介"></a>0x00 LLMNR 简介</h3><p>从 Windows Vista 起，Windows 操作系统开始支持一种新的名称解析协议——LLMNR，主要用于局域网中的名称解析。LLMNR 能够很好的支持 IPv4 和 IPv6，因此在 Windows 名称解析顺序中是一个仅次于  DNS 的名称解析方式，更重要的是在 Linux 操作系统中也实现了 LLMNR。</p>
-        
-          <a class="article-more-a" href="/2019/08/02/利用-LLMNR-名称解析缺陷劫持内网指定主机会话/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Responder-内网渗透神器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/Responder-内网渗透神器/">Responder 内网渗透神器</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/24/Responder-内网渗透神器/" class="archive-article-date">
-  	<time datetime="2019-07-24T14:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。</p>
-<h2 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h2><p>工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机器。</p>
-        
-          <a class="article-more-a" href="/2019/07/24/Responder-内网渗透神器/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-yilia-主题优化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/20/Hexo-yilia-主题优化方案/">Hexo yilia 主题优化方案</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/20/Hexo-yilia-主题优化方案/" class="archive-article-date">
-  	<time datetime="2019-07-20T08:23:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。</p>
-<h3 id="Hexo-主题优化"><a href="#Hexo-主题优化" class="headerlink" title="Hexo 主题优化"></a>Hexo 主题优化</h3><p><strong>修改 Hexo 配置文件</strong><br>配置根目录下的 <code>_config.yml</code> ：</p>
-        
-          <a class="article-more-a" href="/2019/07/20/Hexo-yilia-主题优化方案/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows-名称解析机制探究及缺陷利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/">Windows 名称解析机制探究及缺陷利用</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/" class="archive-article-date">
-  	<time datetime="2019-07-16T11:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文阐述了 Windows 系统中的名称解析机制，同时也提及了几种利用名称解析机制的缺陷进行内网攻击的方式。</p>
-<h3 id="0x00-Windows-名称解析简介"><a href="#0x00-Windows-名称解析简介" class="headerlink" title="0x00 Windows 名称解析简介"></a>0x00 Windows 名称解析简介</h3><p>TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。</p>
-<p><strong>Windows 中的名称类型</strong></p>
-<p>在 Windows 操作系统中有两种名称，分别为：<strong>主机名称</strong> 和 <strong>NetBIOS 名称</strong>。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-04-其他特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/Learn-Git-04-其他特性/">Learn Git 04 其他特性</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/16/Learn-Git-04-其他特性/" class="archive-article-date">
-  	<time datetime="2019-06-16T02:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x07-标签管理"><a href="#0x07-标签管理" class="headerlink" title="0x07 标签管理"></a>0x07 标签管理</h3><p>标签<code>tag</code>就是一个让人容易记住的有意义的名字，它可以跟某个<code>commit</code>绑定在一起。</p>
-<p>发布一个版本时，我们通常先在版本库中打一个标签，将来无论什么时候要取出某个版本，都可以根据标签找到需要的历史版本。所以，标签也是版本库的一个快照。</p>
+<h3 id="0x01-WPAD-简介"><a href="#0x01-WPAD-简介" class="headerlink" title="0x01 WPAD 简介"></a>0x01 WPAD 简介</h3><p><strong>WPAD（Web Proxy Auto-Discovery Protocol，网络代理自动发现协议）</strong>，可以使局域网中用户的浏览器自动发现内网中的代理服务器，并使用已发现的代理服务器连接互联网或者企业内网。WPAD 支持所有主流的浏览器，从 IE 5.0 开始就已经支持了代理服务器自动发现/切换的功能，而苹果公司考虑到 WPAD 的安全风险，在包括 OSX 10.10 及之后版本的操作系统中的 Safari 浏览器将不再支持 PAC 文件的解析。</p>
 <blockquote>
-<p>Git的标签虽然是版本库的快照，但其实它是指向某个<code>commit</code>的指针。这和分支很像，但是分支可以移动，而标签不能移动。所以，创建和删除标签在Git中都是瞬间完成的。</p>
+<p>注：默认情况下，在所有 Windows 操作系统和 IE 浏览器上都启用了 WPAD，而 Mac OS X 和 Linux 操作系统，以及 Safari、Chrome 和 Firefox 等浏览器，虽然支持 WPAD，但默认情况下不会启用。</p>
 </blockquote>
-        
-          <a class="article-more-a" href="/2019/06/16/Learn-Git-04-其他特性/#more">阅读全文 >></a>
-        
+<h4 id="WPAD-工作原理"><a href="#WPAD-工作原理" class="headerlink" title="WPAD 工作原理"></a>WPAD 工作原理</h4><p>当系统开启了代理自动发现功能后，用户使用浏览器上网时，浏览器就会在当前局域网中自动查找可以加载 PAC 文件的服务器，之后下载 PAC 配置文件（通过 80 端口），并执行特定的 JavaScript 脚本将相应的代理服务器设置到用户的浏览器中。</p>
+<p><strong>WPAD 查询步骤如下：</strong></p>
+<ul>
+<li>如果 DHCP 服务器配置了 wpad，那么直接从 DHCP 服务器获取 wpad.dat 文件，如果成功则下载 wpad.dat 文件并配置，否则执行下一步；</li>
+<li>向 DNS 服务器发送请求查找 wpad.test.local，然后获取代理配置文件，如果成功下载 wpad.dat 文件并配置，否则执行下一步；</li>
+<li>发送 LLMNR 查询 wpad.test.local，如果成功则下载 wpad.dat 文件并配置，否则代理设置失败。</li>
+</ul>
+<h4 id="PAC-文件"><a href="#PAC-文件" class="headerlink" title="PAC 文件"></a>PAC 文件</h4><p><strong>PAC（Proxy Auto-Config，代理自动配置文件）</strong>，定义了浏览器和其他用户代理在访问一个 URL 时所应该使用的代理服务器（完成自动选择），使用 <strong>Javascript</strong> 进行 URL 和代理服务器的描述。通常使用 <strong>proxy.pac</strong> 作为文件名，WPAD 标准则要求使用 <strong>wpad.dat</strong> 作为 PAC 文件的文件名。</p>
+<blockquote>
+<p>要使用 PAC，则应当在网页服务器上发布一个 PAC 文件，并且通过浏览器的代理链接设置页面输入这个 PAC 文件的 URL 或者使用 WPAD 协议告知用户代理去使用这个文件。</p>
+</blockquote>
+<p>一个 PAC 文件至少定义了一个名为 <strong>FindProxyForURL(url, host)</strong> 的 JavaScript 函数，该函数的返回值是一个字符串，指定了 URL 的访问方式，两个参数分别代表了要指定设置的 URL 和 该 URL 所对应的主机名。</p>
+<p>PAC 文件内容示例如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FindProxyForURL</span>(<span class="params">url, host</span>) </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (url== <span class="string">'http://example.org/'</span>) <span class="keyword">return</span> <span class="string">'DIRECT'</span>;</span><br><span class="line">   <span class="keyword">if</span> (shExpMatch(host, <span class="string">"*.wooyun.org"</span>)) <span class="keyword">return</span> <span class="string">"DIRECT"</span>;</span><br><span class="line">   <span class="keyword">if</span> (host== <span class="string">'wooyun.com'</span>) <span class="keyword">return</span> <span class="string">'SOCKS 127.1.1.1:8080'</span>;</span><br><span class="line">   <span class="keyword">if</span> (dnsResolve(host) == <span class="string">'10.0.0.100'</span>) <span class="keyword">return</span> <span class="string">'PROXY 127.2.2.2:8080;DIRECT'</span>;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">'DIRECT'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该文件定义了当用户访问 <a href="http://example.org" target="_blank" rel="noopener">http://example.org</a> 时，将不使用任何代理服务器直接（DIRECT）访问 URL。也可以使用 <strong>shExpMatch</strong> 函数对 host 或者 url 进行匹配设置，<strong>SOCKS 127.1.1.1:8080</strong> 指定了使用 127.1.1.1:8080 的 SOCKS 代理进行 URL 的访问，<strong>PROXY 127.2.2.2:8080;DIRECT</strong> 指定了使用 127.2.2.2:8080 的 HTTP 代理进行 URL 的访问，如果连接 127.2.2.2:8080 的 HTTP 代理服务器失败，则直接（DIRECT）访问 URL。</p>
+<blockquote>
+<p>注：FF 和 IE 只支持系统默认的编码类型的 PAC 文件，并且不支持 Unicode 编码，如 UTF-8。</p>
+</blockquote>
+<h3 id="0x02-Windows-中的-WPAD"><a href="#0x02-Windows-中的-WPAD" class="headerlink" title="0x02 Windows 中的 WPAD"></a>0x02 Windows 中的 WPAD</h3><h4 id="IE-浏览器中默认开启-WPAD"><a href="#IE-浏览器中默认开启-WPAD" class="headerlink" title="IE 浏览器中默认开启 WPAD"></a>IE 浏览器中默认开启 WPAD</h4><p>在 Windows 系统中，从 IE 5.0 开始就支持了 WPAD，并且是默认开启 WPAD 功能的，如下图所示：</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/20171207135000-76d44886-db12-1.png" alt="img"></p>
+<p>图1：Windows 中 IE 浏览器的 WPAD 设置</p>
+<p>另外，Windows 系统从 IE 5.5 开始支持“自动代理结果缓存”功能，并默认设置为开启。因为每次客户端浏览器成功连接 HTTP 代理服务器时都会更新 ARP 缓存，开启此功能后，当客户端浏览器再次连接代理服务器，即再次调用 FindProxyForURL() 函数时，会先检查 ARP 缓存列表中是否存在要连接的 HTTP 代理服务器地址，再选择是否需要代理，以缩减系统获取分配对象的开销。</p>
+<h4 id="WinHTTP-的-WPAD-支持"><a href="#WinHTTP-的-WPAD-支持" class="headerlink" title="WinHTTP 的 WPAD 支持"></a>WinHTTP 的 WPAD 支持</h4><p>在 Windows 系统中，有一个服务名为 <strong>WinHTTP Web Proxy Auto-Discovery Service</strong>，其描述信息为  “WinHTTP 实现了客户端 HTTP 堆栈并向开发人员提供 Win32 API 和 COM 自动化组件以供发送 HTTP 请求和接收响应。此外，通过执行 Web 代理自动发现（WPAD）协议，WinHTTP 还提供对自动发现代理服务器配置的支持。”，如图所示：</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/1562741625870.png" alt="1562741625870"></p>
+<p>图2：Windows 中的 WinHttpAutoProxySvc 服务</p>
+<p><strong>出于安全性考虑，建议禁用。</strong></p>
+<blockquote>
+<p>注：WPAD 并不是 IE 浏览器的功能，而是属于WinHTTP 库中的功能，有一个单独的 WinHttpAutoProxySvc 服务。WinHTTP 是Windows系统下提供 autoproxy 服务的独立的网络库，专门为提供 HTTP/HTTPS 服务的。<br>网上很多文章说，防止 WPAD 攻击就是禁用浏览器的 WPAD，这个方法只能说治标不治本。单单禁用浏览器的 WPAD 功能只能保证浏览器的访问数据没法通过 WPAD 劫持了，但是这种禁用方式不会影响 WinHTTP 的功能。在 WIN 系统下，处理 HTTP 的请求基本都用 WinHTTP 的库，如果其他程序使用 WinHTTP，WPAD 照样还是可以攻击。</p>
+</blockquote>
+<h3 id="0x03-WPAD-实现方式"><a href="#0x03-WPAD-实现方式" class="headerlink" title="0x03 WPAD 实现方式"></a>0x03 WPAD 实现方式</h3><p>WPAD 通过让浏览器自动发现代理服务器，使代理服务器对用户来说是透明的，进而轻松访问互联网。WPAD 可以借助 DHCP 服务器、DNS 服务器和 WINS 服务器，来查询代理自动配置（PAC）文件的位置，如图所示：</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/1562809252340.png" alt="1562809252340"></p>
+<p>图3：WPAD 查询 PAC 文件的方式</p>
+<h4 id="使用-DHCP-配置-WPAD"><a href="#使用-DHCP-配置-WPAD" class="headerlink" title="使用 DHCP 配置 WPAD"></a>使用 DHCP 配置 WPAD</h4><p><strong>DHCP（Dynamic Host Configuration Protocol，动态主机配置协议）</strong>，是一个用于局域网的网络管理协议，可以为进入网络的任何新节点进行动态分配，主要功能是分配 IP 地址，此外还包含一些其他信息，如子网掩码、 WPAD 等，这些额外的信息都是通过 DHCP 协议中的 <strong>Options</strong> 字段传输的。</p>
+<p>DHCP 的工作流程有 4 个步骤：</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/20171207135039-8e14982a-db12-1.png" alt="img"></p>
+<p>图4：DHCP 工作流程</p>
+<p>上图即为客户端与 DHCP 服务器进行交互的过程。其中前两个流程主要是客户端发送广播包，DHCP  服务器进行响应并客户端进行单播通讯，后面的两个流程即为客户端从 DHCP 服务器获取 IP 地址的过程。</p>
+<p>当使用 DHCP 服务器配置 WPAD 时，DHCP 协议将会有所改变，增加了 <strong>DHCPINFORM</strong> 消息（具体的改变可以在 <a href="https://tools.ietf.org/html/rfc2131" target="_blank" rel="noopener">RFC 2131</a> 中看到），用于客户端请求本地配置参数。所以客户端在请求 WPAD 主机时就会发送 DHCPINFORM 请求消息，查询 PAC 文件位置；之后 DHCP 服务器会应答 DHCPINFORM 请求，返回 DHCPACK 确认消息，此消息中的 DHCP Options 字段里包含的 DHCP <strong>252</strong> 选项即为 WPAD 代理服务器的 PAC 文件地址。</p>
+<blockquote>
+<p>注：在目前的大多数内网中已经不再使用 DHCP 服务器进行客户端 WPAD 的配置了，而是采用较为简单的 DNS 服务器进行配置，关于 DHCP Options  的其他定义可以查看 DHCP 的 <a href="https://tools.ietf.org/html/rfc1531" target="_blank" rel="noopener">RFC 1531</a>。</p>
+</blockquote>
+<h4 id="利用-DNS-配置-WPAD"><a href="#利用-DNS-配置-WPAD" class="headerlink" title="利用 DNS 配置 WPAD"></a>利用 DNS 配置 WPAD</h4><p>利用 DNS 配置 WPAD 的方式本质上还是利用了 Windows 系统的名称解析机制，其过程如下：</p>
+<ul>
+<li><p>如果客户端主机是处于域环境下时，客户端主机向 DNS 服务器发起的 WPAD+X 的查询请求为 <strong>“WPAD.当前域的域名”</strong>，DNS 服务器对 WPAD 主机的名称进行解析返回 WPAD 主机的 IP 地址，客户端 Web 浏览器通过 WPAD 主机的 IP 的 80 端口下载并解析 PAC 文件；</p>
+</li>
+<li><p>如果客户端主机是在工作组环境中，客户端主机向 DNS 服务器发起的 WPAD+X 的查询时，则会遵循 Windows 系统的名称解析顺序，查询请求的名称均为 <strong>“WPAD”</strong>，OS 版本为 Vista 之后的（包括 Vista）顺序为：DNS =&gt; LLMNR =&gt; NBNS，反之则为 DNS =&gt; NBNS。</p>
+</li>
+</ul>
+<h4 id="通过-NBNS-配置-WPAD"><a href="#通过-NBNS-配置-WPAD" class="headerlink" title="通过 NBNS 配置 WPAD"></a>通过 NBNS 配置 WPAD</h4><p>如果 <strong>DHCP 服务器和 DNS 服务器均没有响应</strong>，同时当前缓存没有所请求的主机名，就会发起如下名称解析：</p>
+<ul>
+<li><p>如果当前系统支持 LLMNR，先发起 LLMNR 广播查询；</p>
+</li>
+<li><p>如果没有响应，再发起 NBNS 广播查询；</p>
+</li>
+<li><p>如果有主机回应 PAC 文件位置，Web 浏览器通过该 IP 的 80 端口下载 wpad.dat文件。</p>
+</li>
+</ul>
+<blockquote>
+<p>注：Windows 2K，XP，2K3 只支持 DNS 和 NetBIOS<br>Windows Vista 之后（包括 2K8，Win7，Win8.x，Win 10）支持DNS、NetBIOS、LLMNR</p>
+</blockquote>
+<h3 id="0x04-使用-MSF-进行-WPAD-内网渗透"><a href="#0x04-使用-MSF-进行-WPAD-内网渗透" class="headerlink" title="0x04 使用 MSF 进行 WPAD 内网渗透"></a>0x04 使用 MSF 进行 WPAD 内网渗透</h3><p>对照 WPAD 的原理，不难发现其中存在漏洞，可以利用 Windows 系统名称解析机制的缺陷，进行 WPAD 的“恶意”配置，从而进行内网的渗透。一种常见的利用方式是在被攻击用户发起 NBNS 查询时伪造 NBNS 响应，那么就可以控制其通过伪造的代理服务器上网，达到会话劫持的目的，如下图所示：</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_161644.png" alt="1562810465897"></p>
+<p>图5：利用 WPAD 进行内网渗透</p>
+<p><strong>使用 MSF 对以上过程进行测试，进行 WPAD 内网渗透：</strong></p>
+<ul>
+<li><p><strong>测试环境：</strong></p>
+<ul>
+<li><p>被攻击用户：</p>
+<p>Windows 7、192.168.16.191</p>
+</li>
+<li><p>攻击用户：</p>
+<p>Kali Linux、192.168.16.245</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>1. 监听 NBNS 查询请求</strong></p>
+<blockquote>
+<p>use auxiliary/spoof/nbns/nbns_response<br>set regex WPAD<br>set spoofip 192.168.16.245<br>run</p>
+</blockquote>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155506.png" alt="img"></p>
+<p>图6：监听 NBNS 查询请求</p>
+<p><strong>2. 伪造 WPAD 服务器</strong></p>
+<blockquote>
+<p>use auxiliary/server/wpad<br>set proxy 192.168.16.245<br>run</p>
+</blockquote>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155507.png" alt="img"></p>
+<p>图7：伪造 WPAD 服务器</p>
+<p><strong>3. 伪造被攻击用户发起查询</strong></p>
+<p>构造广播 NBNS 查询，前提是需要使当前 DHCP 和 DNS 服务器均无法提供的 PAC 文件位置。</p>
+<blockquote>
+<p>注：关闭上述服务器后浏览器访问任意网页即可。</p>
+</blockquote>
+<p><strong>4. 响应被攻击用户的广播 NBNS 查询</strong></p>
+<p>攻击主机响应广播 NBNS 查询并指定 PAC 文件位置，被攻击主机访问指定的 PAC 位置请求下载。<img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155508.png" alt="2019-08-06_155508"></p>
+<p>图8：攻击者发起恶意响应</p>
+<p><strong>5. 使用 Burp 配置代理服务器</strong></p>
+<p>配置 Burp 代理 IP 为 192.168.253.131:8080，使受害者通过攻击者的代理服务器访问互联网。</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155552.png" alt="2019-08-06_155552"></p>
+<p>图9：配置 Burp 代理服务器</p>
+<p><strong>6. 被攻击用户使用伪造的代理配置上网</strong></p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155627.png" alt="2019-08-06_155627"></p>
+<p>图10：受害者通过代理访问网页</p>
+<p><img src="/2019/08/08/WPAD-协议分析及内网渗透利用/2019-08-06_155646.png" alt="2019-08-06_155646"></p>
+<p>图11：查看受害者主机 NetBIOS缓存</p>
+<h3 id="0x05-WPAD-内网渗透深入研究"><a href="#0x05-WPAD-内网渗透深入研究" class="headerlink" title="0x05 WPAD 内网渗透深入研究"></a>0x05 WPAD 内网渗透深入研究</h3><ul>
+<li><p>利用 NetBIOS 名称解析进行基于 WPAD 的中间人攻击</p>
+<p>见 [利用 NBNS 协议缺陷进行 WPAD 中间人攻击](./利用 NBNS 协议缺陷进行 WPAD 中间人攻击.md)</p>
+</li>
+<li><p>利用 LLLMNR 名称解析缺陷进行基于 WPAD 的中间人攻击</p>
+<p>见 [利用 LLMNR 名称解析缺陷劫持内网指定主机会话](./利用 LLMNR 名称解析缺陷劫持内网指定主机会话)</p>
+</li>
+<li><p>利用 DHCP 本地网络进行基于 WPAD 的中间人攻击</p>
+<p>在本地网络中，攻击者可以通过 ARP 欺骗等方式伪装成 DHCP 服务器，然后在 DHCP 响应包的 DHCP 252 选项中提供一个恶意 PAC 文件所在的 URL。</p>
+</li>
+<li><p>通过特权地位（privileged position）和 DNS 进行远程攻击</p>
+<p>除了本地网络攻击外，WPAD 攻击也可能通过外部 DNS 查询发生。由于许多用户将他们的计算机配置了公共的 DNS 服务器（如 8.8.8.8、8.8.4.4、208.67.222.222 和 208.67.220.220）来执行 DNS 域名解析，在这种情况下，用户机器会发送 DNS 查询（如 wpad.local）到本地网络之外的服务器，处于网络特权位置的攻击者（例如网关或任何其他上游主机）可以监视 DNS 查询并伪造应答，从而指示客户端下载并执行恶意的 PAC 文件。</p>
+</li>
+<li><p>通过恶意的 wpad.tld 远程访问 Internet</p>
+<p>WPAD 的特殊之处在于会递归地遍历本地机器名称以查找要查询的域，如果一台机器被称为“laptop01.us.division.company.com”，则按照以下方式查询以下域名：</p>
+<blockquote>
+<ol>
+<li>wpad.us.division.company.com</li>
+<li>wpad.division.company.com</li>
+<li>wpad.company.com</li>
+<li>wpad.com</li>
+</ol>
+</blockquote>
+<p>利用这个漏洞，攻击者可以通过恶意的 wpad.tld 域名，将用户的浏览器指向自己的代理，拦截并修改所有的 HTTP 流量。</p>
+</li>
+</ul>
+<h3 id="0x06-威胁实例-——-Flame-病毒"><a href="#0x06-威胁实例-——-Flame-病毒" class="headerlink" title="0x06 威胁实例 —— Flame 病毒"></a>0x06 威胁实例 —— Flame 病毒</h3><p><strong>超级火焰（Flame）病毒利用 WPAD 进行中间人攻击</strong>，其工作模式如下：</p>
+<ul>
+<li><p><strong>SNACK：NetBIOS 名称服务器欺骗（NBNS spoofing）</strong></p>
+<p>SNACK 模块会为所有网络接口或预设网络接口创建一个 RAW 网络套接字，并监听当前网络接收所有的网络数据包，如果收到了 NBNS 查询会将其写入加密的日志文件中（“%windir%\temp~DEB93D.tmp”），当 NBNS 查询请求中包含<strong>“WPAD”</strong>或<strong>“MSHOME-F3BE293C”</strong> 字符，立即伪造 NBNS 响应，返回自己的 IP 地址。</p>
+</li>
+<li><p><strong>MUNCH：代理检测欺骗和 Windows 更新请求欺骗（Spoofing proxy detection and Windows Update request）</strong></p>
+<p>“MUNCH”是 FlameHTTP 服务器模块的名称，用于提供 WPAD 服务，它会收到来自受感染计算机中的 SNACK 提供的 IP 地址，并通过由 MUNCH 提供的 “wpad.dat” 文件将受感染计算机用作代理服务器。当其成功作为被攻击主机的代理后，会劫持特定的 Windows 更新请求到 MUNCH 服务器，并提供带有后门的 Windows 更新文件给受害者下载。</p>
+</li>
+</ul>
+<h3 id="0x07-总结"><a href="#0x07-总结" class="headerlink" title="0x07 总结"></a>0x07 总结</h3><p>在利用 WPAD 进行攻击时，实际的效果很可能没有想象的那么好，不过一旦奏效，就可以拿到受害者主机权限。在很多内网中，管理员不会对这些攻击方式做防御措施，除了部分桌面安全产品，如防火墙可能会做严格的过滤拦截，大部分情况下，此类攻击方式还是很有效的。尤其是可以在做名称解析响应时，可以筛选受害者主机，对  HTTP 数据包进行更改插入恶意代码，进行针对性的定点打击。</p>
+<h4 id="预防和修复"><a href="#预防和修复" class="headerlink" title="预防和修复"></a>预防和修复</h4><p>对于 WPAD 攻击，<strong>唯一</strong>能够阻止这类漏洞的方法就是完全禁用 WinHttpAutoProxySvc 服务。有时由于其他服务依赖 WPAD，所以在“服务”设置中无法禁用它（选项变灰），但可以通过修改相应的注册表项来完成：</p>
+<blockquote>
+<p>在注册表“HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinHttpAutoProxySvc”位置下，将“Start”的值从3（手动）更改为4（禁用）。</p>
+</blockquote>
+<p><strong>参考文章：</strong><br><a href="https://xz.aliyun.com/t/1739" target="_blank" rel="noopener">https://xz.aliyun.com/t/1739</a><br><a href="https://www.cnblogs.com/studyskill/p/8532566.html" target="_blank" rel="noopener">https://www.cnblogs.com/studyskill/p/8532566.html</a><br><a href="https://blog.csdn.net/zy_strive_2012/article/details/53196482" target="_blank" rel="noopener">https://blog.csdn.net/zy_strive_2012/article/details/53196482</a></p>
+
       
 
       
@@ -706,11 +372,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
         		</li>
       		
 		</ul>
@@ -721,10 +391,73 @@ var _hmt = _hmt || [];
       
 
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://eW1z4rd.github.io/2019/08/08/WPAD-协议分析及内网渗透利用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">利用 NBNS 协议缺陷进行 WPAD 中间人攻击</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -739,260 +472,33 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-03-分支管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/Learn-Git-03-分支管理/">Learn Git 03 分支管理</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/15/Learn-Git-03-分支管理/" class="archive-article-date">
-  	<time datetime="2019-06-15T06:23:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x06-分支管理"><a href="#0x06-分支管理" class="headerlink" title="0x06 分支管理"></a>0x06 分支管理</h3><h4 id="分支是什么"><a href="#分支是什么" class="headerlink" title="分支是什么"></a>分支是什么</h4><p>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果你既学会了Git又学会了SVN！</p>
-<p><img src="/2019/06/15/Learn-Git-03-分支管理/8361248578c67b8067c8c.png" alt="learn-branches"></p>
-        
-          <a class="article-more-a" href="/2019/06/15/Learn-Git-03-分支管理/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-WPAD-简介"><span class="toc-number">2.</span> <span class="toc-text">0x01 WPAD 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#WPAD-工作原理"><span class="toc-number">2.1.</span> <span class="toc-text">WPAD 工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PAC-文件"><span class="toc-number">2.2.</span> <span class="toc-text">PAC 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-Windows-中的-WPAD"><span class="toc-number">3.</span> <span class="toc-text">0x02 Windows 中的 WPAD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IE-浏览器中默认开启-WPAD"><span class="toc-number">3.1.</span> <span class="toc-text">IE 浏览器中默认开启 WPAD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WinHTTP-的-WPAD-支持"><span class="toc-number">3.2.</span> <span class="toc-text">WinHTTP 的 WPAD 支持</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-WPAD-实现方式"><span class="toc-number">4.</span> <span class="toc-text">0x03 WPAD 实现方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-DHCP-配置-WPAD"><span class="toc-number">4.1.</span> <span class="toc-text">使用 DHCP 配置 WPAD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#利用-DNS-配置-WPAD"><span class="toc-number">4.2.</span> <span class="toc-text">利用 DNS 配置 WPAD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-NBNS-配置-WPAD"><span class="toc-number">4.3.</span> <span class="toc-text">通过 NBNS 配置 WPAD</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-使用-MSF-进行-WPAD-内网渗透"><span class="toc-number">5.</span> <span class="toc-text">0x04 使用 MSF 进行 WPAD 内网渗透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-WPAD-内网渗透深入研究"><span class="toc-number">6.</span> <span class="toc-text">0x05 WPAD 内网渗透深入研究</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x06-威胁实例-——-Flame-病毒"><span class="toc-number">7.</span> <span class="toc-text">0x06 威胁实例 —— Flame 病毒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x07-总结"><span class="toc-number">8.</span> <span class="toc-text">0x07 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#预防和修复"><span class="toc-number">8.1.</span> <span class="toc-text">预防和修复</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-Learn-Git-02-版本控制和远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/">Learn Git 02 版本控制和远程仓库</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/" class="archive-article-date">
-  	<time datetime="2019-06-13T12:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x04-版本控制"><a href="#0x04-版本控制" class="headerlink" title="0x04 版本控制"></a>0x04 版本控制</h3><h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>我们已经成功地添加并提交了一个<code>readme.txt</code>文件，现在，是时候继续工作了，于是，我们继续修改<code>readme.txt</code>文件，改成如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>现在，运行<code>git status</code>命令查看结果：</p>
-        
-          <a class="article-more-a" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-01-初识Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/Learn-Git-01-初识Git/">Learn Git 01 初识Git</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
+  
 
-        
-        <a href="/2019/06/10/Learn-Git-01-初识Git/" class="archive-article-date">
-  	<time datetime="2019-06-10T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x01-Git简介"><a href="#0x01-Git简介" class="headerlink" title="0x01 Git简介"></a>0x01 Git简介</h3><h4 id="Git是什么"><a href="#Git是什么" class="headerlink" title="Git是什么"></a>Git是什么</h4><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
-<p>那什么是版本控制系统？</p>
-<p>如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：</p>
-<p>想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为”一个新的Word文件，再接着改，改到一定程度，再“另存为”一个新文件，这样一直改下去，最后你会有很多个Word副本。</p>
-<p>过了一周，你想找回被删除的文字，但是已经记不清删除前保存在哪个文件里了，只好一个一个文件去找，真麻烦。</p>
-        
-          <a class="article-more-a" href="/2019/06/10/Learn-Git-01-初识Git/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
+  
   
   
 
@@ -1023,8 +529,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

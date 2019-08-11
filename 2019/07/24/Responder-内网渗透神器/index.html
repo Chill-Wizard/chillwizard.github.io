@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-49.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/image35.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/07/24/Responder-内网渗透神器/1562835661261.png">
-<meta property="og:updated_time" content="2019-08-11T06:10:50.049Z">
+<meta property="og:updated_time" content="2019-08-11T06:14:09.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Responder 内网渗透神器">
 <meta name="twitter:description" content="Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。 0x00 概述工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机">
@@ -206,7 +206,11 @@ var _hmt = _hmt || [];
 <h3 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h3><p>工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机器。</p>
 <a id="more"></a>
 
-<p><strong>下载地址：</strong><br>1.<a href="https://github.com/SpiderLabs/Responder" target="_blank" rel="noopener">LLMNR/NBT-NS/mDNS Poisoner</a>（master）<br>2.<a href="https://github.com/lgandx/Responder" target="_blank" rel="noopener">LLMNR/NBT-NS/mDNS Poisoner and NTLMv1/2 Relay</a></p>
+<p><strong>下载地址：</strong></p>
+<ol>
+<li><a href="https://github.com/SpiderLabs/Responder" target="_blank" rel="noopener">LLMNR/NBT-NS/mDNS Poisoner</a>（master）</li>
+<li><a href="https://github.com/lgandx/Responder" target="_blank" rel="noopener">LLMNR/NBT-NS/mDNS Poisoner and NTLMv1/2 Relay</a></li>
+</ol>
 <h3 id="0x01-功能特性"><a href="#0x01-功能特性" class="headerlink" title="0x01 功能特性"></a>0x01 功能特性</h3><ul>
 <li><p>内置 SMB 认证服务器</p>
 <p>默认支持带 NTLMSSP 安全扩展的 NTLMv1, NTLMv2 散列，已在 Windows 95 到 Windows Server 2012 RC, Samba 和 Mac OSX Lion 上成功测试。Windows NT4 支持明文密码，对于 Windows XP/2003 以及更早的版本，当设置 <code>--lm</code> 选项时，启用强制 LM 哈希降级。当工具启动时默认开启此功能，可以截获 Hash 进行 SMB 重放攻击（SMB Relay）。</p>
@@ -304,18 +308,17 @@ var _hmt = _hmt || [];
 </ul>
 <p>  <strong>攻击流量情况：</strong></p>
 <p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-02-02.png" alt="Kali-Linux-2019-07-09-16-02-02"></p>
-<p>  图4：向受害者发送 NBNS 欺骗响应<br>  <img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-12-06.png" alt="Kali-Linux-2019-07-09-16-12-06"></p>
-<p>  图5：向受害者发送 LLMNR 欺骗响应<br>  <img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-10-38.png" alt="Kali-Linux-2019-07-09-16-10-38"></p>
+<p>图4：向受害者发送 NBNS 欺骗响应<br><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-12-06.png" alt="Kali-Linux-2019-07-09-16-12-06"></p>
+<p>图5：向受害者发送 LLMNR 欺骗响应 <img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-10-38.png" alt="Kali-Linux-2019-07-09-16-10-38"></p>
 <p>图6：重定向身份认证过程中 SMB 传输的用户名和 HASH 值 </p>
 <h3 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h3><h4 id="特征流量检测"><a href="#特征流量检测" class="headerlink" title="特征流量检测"></a>特征流量检测</h4><ul>
 <li><p>特征行为检测</p>
 <p>程序在启动时会连续发送两个完全相同的 IGMPv3 数据包，请求同时加入 224.0.0.251 和 224.0.0.252 组播组，同样程序在退出时，也会发送两个相同的 IGMPv3 数据包，请求离开上述的组播组，如下图所示：</p>
 <p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-34.png" alt="Kali-Linux-2019-07-09-16-16-34"></p>
-<p>图7：Responder 工具 WPAD 攻击启动时行为<br><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-49.png" alt="Kali-Linux-2019-07-09-16-16-49"></p>
-</li>
-</ul>
+<p>图7：Responder 工具 WPAD 攻击启动时行为</p>
+<p><img src="/2019/07/24/Responder-内网渗透神器/Kali-Linux-2019-07-09-16-16-49.png" alt="Kali-Linux-2019-07-09-16-16-49"></p>
 <p>图8：Responder 工具 WPAD 攻击退出时行为 </p>
-<ul>
+</li>
 <li><p>特殊协议捕获</p>
 <p>对整个过程中使用的特殊协议进行捕获（主要为 SMB、LLMNR、NBNS、MDNS、IGMPv3、BROWSER），如果多个上述协议中的数据流量同时指向一个主机，则怀疑有可能受到攻击。</p>
 </li>

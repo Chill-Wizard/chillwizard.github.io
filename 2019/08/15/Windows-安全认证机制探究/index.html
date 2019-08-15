@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/08/15/Windows-安全认证机制探究/48820-114b90a7b8f7eb32.jpg">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/08/15/Windows-安全认证机制探究/2012082315252912.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/08/15/Windows-安全认证机制探究/kerberos.png">
-<meta property="og:updated_time" content="2019-08-15T03:50:34.918Z">
+<meta property="og:updated_time" content="2019-08-15T03:58:33.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows 安全认证机制探究">
 <meta name="twitter:description" content="0x00 简介Windows 身份认证有 NTLM 和 Kerberos 两种协议，前者主要应用于 Windows NT 和 Windows 2000 Server 及之后的工作组环境，而后者则主要应用于 Windows 2000 Server 及之后的域环境。NTLM 是 Windows 早期版本的标准安全协议，认证过程相对简单；而 Kerberos 较之 NTLM 更高效、更安全，同时认证过程">
@@ -200,6 +200,8 @@ var _hmt = _hmt || [];
       
         <h3 id="0x00-简介"><a href="#0x00-简介" class="headerlink" title="0x00 简介"></a>0x00 简介</h3><p>Windows 身份认证有 NTLM 和 Kerberos 两种协议，前者主要应用于 Windows NT 和 Windows 2000 Server 及之后的工作组环境，而后者则主要应用于 Windows 2000 Server 及之后的域环境。NTLM 是 Windows 早期版本的标准安全协议，认证过程相对简单；而 Kerberos 较之 NTLM 更高效、更安全，同时认证过程也相对复杂。本文将围绕这两种协议，对 Windows 安全认证机制中涉及到的内容进行初步探究。</p>
 <h3 id="0x01-Windows-Hash-类型"><a href="#0x01-Windows-Hash-类型" class="headerlink" title="0x01 Windows Hash 类型"></a>0x01 Windows Hash 类型</h3><p>Windows 系统使用两种方法对用户的密码进行哈希处理，它们分别是 LAN Manager 哈希（LM Hash）和 NT LAN  Manager 哈希（NTLM Hash）。</p>
+<a id="more"></a>
+
 <h4 id="LM-型哈希"><a href="#LM-型哈希" class="headerlink" title="LM 型哈希"></a>LM 型哈希</h4><p>LM Hash 是 Windows 系统所用的第一种密码哈希算法，它只有一个版本且一直用到了 NTLM 哈希的出现，在 Windows Vista 和 Windows Server 2008 以前的系统中使用。</p>
 <p>LM 型哈希对一个密码的处理过程如下：</p>
 <ol>

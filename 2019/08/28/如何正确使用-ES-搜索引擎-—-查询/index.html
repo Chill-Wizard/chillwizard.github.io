@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
   <title>如何正确使用 ES 搜索引擎 — 查询 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如何正确使用 ES 搜索引擎 — 查询Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 Apache Lucene™ 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。 下面来具体介绍 ES 中常用的查询表达式">
+  <meta name="description" content="Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 Apache Lucene™ 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。 下面来具体介绍 ES 中常用的查询表达式： 查询表达式（query）查询表达式">
 <meta name="keywords" content="tools,Elasticsearch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何正确使用 ES 搜索引擎 — 查询">
 <meta property="og:url" content="https://eW1z4rd.github.io/2019/08/28/如何正确使用-ES-搜索引擎-—-查询/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
-<meta property="og:description" content="如何正确使用 ES 搜索引擎 — 查询Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 Apache Lucene™ 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。 下面来具体介绍 ES 中常用的查询表达式">
+<meta property="og:description" content="Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 Apache Lucene™ 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。 下面来具体介绍 ES 中常用的查询表达式： 查询表达式（query）查询表达式">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-27T23:18:56.793Z">
+<meta property="og:updated_time" content="2019-08-28T14:19:42.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何正确使用 ES 搜索引擎 — 查询">
-<meta name="twitter:description" content="如何正确使用 ES 搜索引擎 — 查询Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 Apache Lucene™ 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。 下面来具体介绍 ES 中常用的查询表达式">
+<meta name="twitter:description" content="Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 Apache Lucene™ 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。 下面来具体介绍 ES 中常用的查询表达式： 查询表达式（query）查询表达式">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -191,13 +191,11 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="如何正确使用-ES-搜索引擎-—-查询"><a href="#如何正确使用-ES-搜索引擎-—-查询" class="headerlink" title="如何正确使用 ES 搜索引擎 — 查询"></a>如何正确使用 ES 搜索引擎 — 查询</h3><p>Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 <a href="https://lucene.apache.org/core/" target="_blank" rel="noopener">Apache Lucene™</a> 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。</p>
+        <p>Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 <a href="https://lucene.apache.org/core/" target="_blank" rel="noopener">Apache Lucene™</a> 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。</p>
 <p>下面来具体介绍 ES 中常用的查询表达式：</p>
+<h4 id="查询表达式（query）"><a href="#查询表达式（query）" class="headerlink" title="查询表达式（query）"></a>查询表达式（query）</h4><p>查询表达式（Query DSL）是一种非常灵活的查询语言，Es 使用它以简单的 json 接口来展现 Lucene 的绝大部分功能，要使用这种查询表达式，只需将查询语句传递给 <code>query</code> 参数：</p>
 <a id="more"></a>
 
-
-
-<h4 id="查询表达式（query）"><a href="#查询表达式（query）" class="headerlink" title="查询表达式（query）"></a>查询表达式（query）</h4><p>查询表达式（Query DSL）是一种非常灵活的查询语言，Es 使用它以简单的 json 接口来展现 Lucene 的绝大部分功能，要使用这种查询表达式，只需将查询语句传递给 <code>query</code> 参数：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"query"</span>: YOUR_QUERY_HERE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>query DSL</strong></p>
@@ -475,7 +473,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何正确使用-ES-搜索引擎-—-查询"><span class="toc-number">1.</span> <span class="toc-text">如何正确使用 ES 搜索引擎 — 查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询表达式（query）"><span class="toc-number">1.1.</span> <span class="toc-text">查询表达式（query）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询请求结果"><span class="toc-number">1.2.</span> <span class="toc-text">查询请求结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多索引，多类型"><span class="toc-number">1.3.</span> <span class="toc-text">多索引，多类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分页（from、size）"><span class="toc-number">1.4.</span> <span class="toc-text">分页（from、size）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#精确值查找（term，terms）"><span class="toc-number">1.5.</span> <span class="toc-text">精确值查找（term，terms）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#范围（range）"><span class="toc-number">1.6.</span> <span class="toc-text">范围（range）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组合过滤器（bool）"><span class="toc-number">1.7.</span> <span class="toc-text">组合过滤器（bool）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全文匹配（match、match-all、multi-match）"><span class="toc-number">1.8.</span> <span class="toc-text">全文匹配（match、match_all、multi_match）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#短语匹配（match-phrase）"><span class="toc-number">1.9.</span> <span class="toc-text">短语匹配（match_phrase）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#近似匹配（prefix、wildcards、regexp）"><span class="toc-number">1.10.</span> <span class="toc-text">近似匹配（prefix、wildcards、regexp）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理-Null-值（exists、missing）"><span class="toc-number">1.11.</span> <span class="toc-text">处理 Null 值（exists、missing）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#聚合和过滤（aggs、filter）"><span class="toc-number">1.12.</span> <span class="toc-text">聚合和过滤（aggs、filter）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序（sort）"><span class="toc-number">1.13.</span> <span class="toc-text">排序（sort）</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询表达式（query）"><span class="toc-number">1.</span> <span class="toc-text">查询表达式（query）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#查询请求结果"><span class="toc-number">2.</span> <span class="toc-text">查询请求结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多索引，多类型"><span class="toc-number">3.</span> <span class="toc-text">多索引，多类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分页（from、size）"><span class="toc-number">4.</span> <span class="toc-text">分页（from、size）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#精确值查找（term，terms）"><span class="toc-number">5.</span> <span class="toc-text">精确值查找（term，terms）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#范围（range）"><span class="toc-number">6.</span> <span class="toc-text">范围（range）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#组合过滤器（bool）"><span class="toc-number">7.</span> <span class="toc-text">组合过滤器（bool）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全文匹配（match、match-all、multi-match）"><span class="toc-number">8.</span> <span class="toc-text">全文匹配（match、match_all、multi_match）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#短语匹配（match-phrase）"><span class="toc-number">9.</span> <span class="toc-text">短语匹配（match_phrase）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#近似匹配（prefix、wildcards、regexp）"><span class="toc-number">10.</span> <span class="toc-text">近似匹配（prefix、wildcards、regexp）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#处理-Null-值（exists、missing）"><span class="toc-number">11.</span> <span class="toc-text">处理 Null 值（exists、missing）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#聚合和过滤（aggs、filter）"><span class="toc-number">12.</span> <span class="toc-text">聚合和过滤（aggs、filter）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#排序（sort）"><span class="toc-number">13.</span> <span class="toc-text">排序（sort）</span></a></li></ol>
                     </div>
                 </span>
             </div>

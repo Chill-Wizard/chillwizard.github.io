@@ -180,8 +180,9 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="如何正确使用-ES-搜索引擎-—-查询"><a href="#如何正确使用-ES-搜索引擎-—-查询" class="headerlink" title="如何正确使用 ES 搜索引擎 — 查询"></a>如何正确使用 ES 搜索引擎 — 查询</h3><p>Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 <a href="https://lucene.apache.org/core/" target="_blank" rel="noopener">Apache Lucene™</a> 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。</p>
+        <p>Elasticsearch 是一个使用 Java 编写的开源搜索引擎，建立在全文搜索引擎库 <a href="https://lucene.apache.org/core/" target="_blank" rel="noopener">Apache Lucene™</a> 基础之上，它的内部使用 Lucene 做索引与搜索，但隐藏了 Lucene 的复杂性，取而代之的是将所有功能打包成一个单独的服务，可以通过程序与它提供的一套简单的 RESTful API 进行通信。</p>
 <p>下面来具体介绍 ES 中常用的查询表达式：</p>
+<h4 id="查询表达式（query）"><a href="#查询表达式（query）" class="headerlink" title="查询表达式（query）"></a>查询表达式（query）</h4><p>查询表达式（Query DSL）是一种非常灵活的查询语言，Es 使用它以简单的 json 接口来展现 Lucene 的绝大部分功能，要使用这种查询表达式，只需将查询语句传递给 <code>query</code> 参数：</p>
         
           <a class="article-more-a" href="/2019/08/28/如何正确使用-ES-搜索引擎-—-查询/#more">阅读全文 >></a>
         

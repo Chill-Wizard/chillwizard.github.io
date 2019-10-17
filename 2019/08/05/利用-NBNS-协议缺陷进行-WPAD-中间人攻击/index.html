@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/1562905742768.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/20171207135158-bd391ebe-db12-1.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/08/05/利用-NBNS-协议缺陷进行-WPAD-中间人攻击/20171207135331-f46fc93c-db12-1.png">
-<meta property="og:updated_time" content="2019-08-11T05:50:57.138Z">
+<meta property="og:updated_time" content="2019-09-21T01:52:49.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用 NBNS 协议缺陷进行 WPAD 中间人攻击">
 <meta name="twitter:description" content="本文阐述了 NetBIOS 框架下的相关协议的区别， 重点对 NBNS 协议进行了分析，同时提出了针对 NBNS 协议缺陷进行 WPAD 中间人攻击的思路。 0x00 NetBIOS 相关协议NetBIOS（Network Basic Input/Output System，网络基本输入输出系统），一般指用于局域网通信的一套API（严格的说 NetBIOS 并不是一个网络协议），提供了一种允许局域">
@@ -225,7 +225,7 @@ var _hmt = _hmt || [];
 <p>Microsoft 的 NBNS 实现称为 WINS（Windows Internet Name Service，Windows网络名称服务）</p>
 </blockquote>
 </li>
-<li><p><strong>NDNS（NetBIOS Datagram Service，NetBIOS 数据报服务器）</strong>，使用 UDP/138 端口，主要用于提供 NetBIOS 环境下的计算机名浏览功能，很少使用。</p>
+<li><p><strong>NBDS（NetBIOS Datagram Service，NetBIOS 数据报服务器）</strong>，使用 UDP/138 端口，主要用于提供 NetBIOS 环境下的计算机名浏览功能，很少使用。</p>
 <blockquote>
 <p>如果非法入侵者可以与目标主机的 138 端口建立连接请求，就能轻易获得目标主机所处的局域网网络名称以及目标主机的计算机名称。</p>
 </blockquote>

@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f52756a686e4b572e706e67.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f367a74326758672e706e67.png">
 <meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f346353394e4a422e706e67.png">
-<meta property="og:updated_time" content="2019-11-17T14:57:44.612Z">
+<meta property="og:updated_time" content="2019-11-17T15:09:50.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maltrail 恶意流量检测工具调研">
 <meta name="twitter:description" content="概述Maltrail - Malicious traffic detection system，一款轻量级的恶意流量检测系统。 特性 使用多个开源黑名单 (alientvault, autoshun, badips, sblam etc.) 有大量静态特征可供识别 (domain names, URLs, IP addresses or User-Agent values) 可检测未知威胁的启发式">
@@ -264,29 +264,29 @@ var _hmt = _hmt || [];
 <li>html 目录：生成 Client Web 页面</li>
 </ul>
 <h4 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h4><h5 id="1-大规模扫描（Mass-Scan）"><a href="#1-大规模扫描（Mass-Scan）" class="headerlink" title="1.大规模扫描（Mass Scan）"></a>1.大规模扫描（Mass Scan）</h5><p>类似 Shodan 和 ZoomEye 这样的组织会扫描整个网络，并通过他们的搜索引擎（给其他潜在的攻击者）免费提供所有结果（Maltrail 也可以利用这些信息，去溯源攻击者）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4c5136567530302e706e67.png" alt="Shodan 1"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4c5136567530302e706e67.png" alt="Shodan-1"></p>
 <h5 id="2-匿名-Tor-攻击（Anonymous-attackers）"><a href="#2-匿名-Tor-攻击（Anonymous-attackers）" class="headerlink" title="2.匿名 Tor 攻击（Anonymous attackers）"></a>2.匿名 Tor 攻击（Anonymous attackers）</h5><p>Maltrail 利用 Tor 出口节点的公共列表来发现隐藏在 Tor 匿名网络背后的潜在攻击者。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6458463872324b2e706e67.png" alt="Tor attacker"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6458463872324b2e706e67.png" alt="Tor-attacker"></p>
 <h5 id="3-服务攻击（Service-attackers）"><a href="#3-服务攻击（Service-attackers）" class="headerlink" title="3.服务攻击（Service attackers）"></a>3.服务攻击（Service attackers）</h5><p>检测黑域名、黑 IP对组织范围内特定服务的访问情况。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4f6f32616443662e706e67.png" alt="RDP brute force"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4f6f32616443662e706e67.png" alt="RDP-brute-force"></p>
 <h5 id="4-恶意软件（Malware）"><a href="#4-恶意软件（Malware）" class="headerlink" title="4.恶意软件（Malware）"></a>4.恶意软件（Malware）</h5><p>如果组织内部受感染的计算机试图连接已知的 C&amp;C 服务器，可以检出威胁并对识别出恶意软件家族（威胁信息）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f47424c5749536f2e706e67.png" alt="beebone malware"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f47424c5749536f2e706e67.png" alt="beebone-malware"></p>
 <h5 id="5-可疑域名（Suspicious-domain-lookups）"><a href="#5-可疑域名（Suspicious-domain-lookups）" class="headerlink" title="5.可疑域名（Suspicious domain lookups）"></a>5.可疑域名（Suspicious domain lookups）</h5><p>Maltrail 包含有已知经常参与可疑活动的 TLD 域的静态列表（特征匹配），和由恶意软件生成的 DGA 域名、Tor 域名（启发式检测机制）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4a544764744a302e706e67.png" alt="cm DGA"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4a544764744a302e706e67.png" alt="cm-DGA"></p>
 <h5 id="6-可疑-IPinfo（Suspicious-ipinfo-requests）"><a href="#6-可疑-IPinfo（Suspicious-ipinfo-requests）" class="headerlink" title="6.可疑 IPinfo（Suspicious ipinfo requests）"></a>6.可疑 IPinfo（Suspicious ipinfo requests）</h5><p>由于许多恶意软件使用某种 ipinfo 服务（例如 <a href="http://ipinfo.io" target="_blank" rel="noopener">ipinfo.io</a>）来查找受害者的互联网 IP 地址，因此，应该对这类请求进行密切监视。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f36534d4e3061742e706e67.png" alt="ipinfo filter"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f36534d4e3061742e706e67.png" alt="ipinfo-filter"></p>
 <h5 id="7-可疑文件下载（Suspicious-direct-file-downloads）"><a href="#7-可疑文件下载（Suspicious-direct-file-downloads）" class="headerlink" title="7.可疑文件下载（Suspicious direct file downloads）"></a>7.可疑文件下载（Suspicious direct file downloads）</h5><p>跟踪所有可疑的文件下载（例如<code>.apk</code>, <code>.chm</code>, <code>.egg</code>, <code>.exe</code>, <code>.hta</code>, <code>.hwp</code>, <code>.ps1</code>, <code>.scr</code>, <code>.sct</code> 文件扩展名），这可能会引发大量误报，但最终可能有助于重建感染链（由于合法的服务提供商，通常使用加密的HTTPS执行此类下载）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6a7235425331682e706e67.png" alt="Direct .exe download"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6a7235425331682e706e67.png" alt="Direct.exe-download"></p>
 <h5 id="8-可疑-HTTP-请求（Suspicious-HTTP-requests）"><a href="#8-可疑-HTTP-请求（Suspicious-HTTP-requests）" class="headerlink" title="8.可疑 HTTP 请求（Suspicious HTTP requests）"></a>8.可疑 HTTP 请求（Suspicious HTTP requests）</h5><p>可以检出来自外部 Web 应用程序安全扫描程序的可疑请求（如 SQL、XSS、LFI 等）和内部用户对未知 Web 站点的恶意请求（启发式检测机制）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f517a63614573472e706e67.png" alt="Vulnerability scan"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f517a63614573472e706e67.png" alt="Vulnerability-scan"></p>
 <h5 id="9-端口扫描（Port-scanning）"><a href="#9-端口扫描（Port-scanning）" class="headerlink" title="9.端口扫描（Port scanning）"></a>9.端口扫描（Port scanning）</h5><p>如果多次的尝试连接大量的不同的 TCP 端口，Maltrail 将警告存在潜在的端口扫描行为（启发式检测机制），能够识别 nmap 等流行的扫描工具。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f5653374c3241332e706e67.png" alt="nmap scan"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f5653374c3241332e706e67.png" alt="nmap-scan"></p>
 <h5 id="10-DNS-耗竭攻击（DNS-resource-exhaustion）"><a href="#10-DNS-耗竭攻击（DNS-resource-exhaustion）" class="headerlink" title="10.DNS 耗竭攻击（DNS resource exhaustion）"></a>10.DNS 耗竭攻击（DNS resource exhaustion）</h5><p>如果有大量的 DNS 递归查询（随机子域名），Maltrail 将警告存在潜在的DDoS攻击行为（启发式检测机制）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f52756a686e4b572e706e67.png" alt="DNS resource exhaustion"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f52756a686e4b572e706e67.png" alt="DNS-resource-exhaustion"></p>
 <h5 id="11-敏感信息泄露（Data-leakage）"><a href="#11-敏感信息泄露（Data-leakage）" class="headerlink" title="11.敏感信息泄露（Data leakage）"></a>11.敏感信息泄露（Data leakage）</h5><p>有些程序会表现出类似于恶意软件的行为，它们会将潜在的敏感数据发送到远程机器（尤其是基于移动设备的），Maltrail 会试图捕获这样的行为（启发式检测机制）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f367a74326758672e706e67.png" alt="Data leakage"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f367a74326758672e706e67.png" alt="Data-leakage"></p>
 <h5 id="12-误报处理（False-positives）"><a href="#12-误报处理（False-positives）" class="headerlink" title="12.误报处理（False positives）"></a>12.误报处理（False positives）</h5><p>与所有其他安全解决方案一样，Maltrail 容易出现”误报“，这时需要管理员投入一些额外的时间，并（以其他方式）检查“可疑 trail”是否确实存在恶意（通过实时关联其他开源情报）。</p>
-<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f346353394e4a422e706e67.png" alt="Google false positive 2"></p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f346353394e4a422e706e67.png" alt="Google-false-positive"></p>
 <h4 id="关注点"><a href="#关注点" class="headerlink" title="关注点"></a>关注点</h4><ul>
 <li><p>IOC 数据采集模块的提取和利用</p>
 <ul>

@@ -6,15 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
-  <title>eW1z4rd 树屋</title>
+  <title>Maltrail 恶意流量检测工具调研 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="eW1z4rd 树屋">
-<meta property="og:url" content="https://eW1z4rd.github.io/page/2/index.html">
+  <meta name="description" content="概述Maltrail - Malicious traffic detection system，一款轻量级的恶意流量检测系统。 特性 使用多个开源黑名单 (alientvault, autoshun, badips, sblam etc.) 有大量静态特征可供识别 (domain names, URLs, IP addresses or User-Agent values) 可检测未知威胁的启发式">
+<meta name="keywords" content="development,tools">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maltrail 恶意流量检测工具调研">
+<meta property="og:url" content="https://eW1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
+<meta property="og:description" content="概述Maltrail - Malicious traffic detection system，一款轻量级的恶意流量检测系统。 特性 使用多个开源黑名单 (alientvault, autoshun, badips, sblam etc.) 有大量静态特征可供识别 (domain names, URLs, IP addresses or User-Agent values) 可检测未知威胁的启发式">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4c5136567530302e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6458463872324b2e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4f6f32616443662e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f47424c5749536f2e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4a544764744a302e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f36534d4e3061742e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6a7235425331682e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f517a63614573472e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f5653374c3241332e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f52756a686e4b572e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f367a74326758672e706e67.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f346353394e4a422e706e67.png">
+<meta property="og:updated_time" content="2019-11-17T14:32:30.561Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="eW1z4rd 树屋">
+<meta name="twitter:title" content="Maltrail 恶意流量检测工具调研">
+<meta name="twitter:description" content="概述Maltrail - Malicious traffic detection system，一款轻量级的恶意流量检测系统。 特性 使用多个开源黑名单 (alientvault, autoshun, badips, sblam etc.) 有大量静态特征可供识别 (domain names, URLs, IP addresses or User-Agent values) 可检测未知威胁的启发式">
+<meta name="twitter:image" content="https://ew1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4c5136567530302e706e67.png">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -154,289 +172,210 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Responder-内网渗透神器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Maltrail-恶意流量检测工具调研" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/24/Responder-内网渗透神器/">Responder 内网渗透神器</a>
+    <h1 class="article-title" itemprop="name">
+      Maltrail 恶意流量检测工具调研
     </h1>
   
 
 		
 		<!--显示阅读次数-->
 		
+		<br>
+		<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+		<span class="icon-sort"></span>
+		<span id="busuanzi_container_page_pv" style="color:gray;font-size:14px;">
+			阅读数：<span id="busuanzi_value_page_pv"></span>次
+		</span>
+		</a>
+		
 
         
-        <a href="/2019/07/24/Responder-内网渗透神器/" class="archive-article-date">
-  	<time datetime="2019-07-24T14:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+        <a href="/2019/11/17/Maltrail-恶意流量检测工具调研/" class="archive-article-date">
+  	<time datetime="2019-11-17T14:29:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Responder 工具是一款强大并且简单易用的内网渗透神器，可以劫持 LLMNR 和 NBT-NS 请求。</p>
-<h3 id="0x00-概述"><a href="#0x00-概述" class="headerlink" title="0x00 概述"></a>0x00 概述</h3><p>工作原理是，在域名解析过程中，如果客户端/目标无法通过 DNS 进行域名解析，则会回退到 LLMNR 和 NBT-NS 协议下进行解析，在 Responder 运行的情况下，会对所有能收到的 LLMNR 和 NBT-NS 请求进行欺骗性响应，然后将所有的数据流导向到攻击者的机器。</p>
-        
-          <a class="article-more-a" href="/2019/07/24/Responder-内网渗透神器/#more">阅读全文 >></a>
-        
-      
+        <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>Maltrail - Malicious traffic detection system，一款轻量级的恶意流量检测系统。</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>使用多个开源黑名单 (alientvault, autoshun, badips, sblam etc.)</li>
+<li>有大量静态特征可供识别 (domain names, URLs, IP addresses or User-Agent values)</li>
+<li>可检测未知威胁的启发式机制</li>
+<li>系统采用 流量 –&gt; 传感器 &lt;–&gt; 服务器 &lt;–&gt; 客户端 的架构方式：<ul>
+<li>传感器（Sensor）：负责采集网络流量，更新恶意样本，并进行特征匹配。</li>
+<li>服务端（Server）：提供 Web 界面以及收集网络中的恶意样本流量。</li>
+<li>客户端（Client）：访问和检索恶意流量信息。</li>
+</ul>
+</li>
+<li>Web 报告页面</li>
+</ul>
+<a id="more"></a>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Hexo-yilia-主题优化方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/20/Hexo-yilia-主题优化方案/">Hexo yilia 主题优化方案</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/20/Hexo-yilia-主题优化方案/" class="archive-article-date">
-  	<time datetime="2019-07-20T08:23:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Hexo 虽然好用，但配置主题时遇到的坑确实是挺多的，网上大部分的回答都是复制粘贴、良莠不齐，所以把自己优化 yilia 主题的过程整理了一下，希望后来的人可以少走弯路🙂。</p>
-<h3 id="Hexo-主题优化"><a href="#Hexo-主题优化" class="headerlink" title="Hexo 主题优化"></a>Hexo 主题优化</h3><p><strong>修改 Hexo 配置文件</strong><br>配置根目录下的 <code>_config.yml</code> ：</p>
-        
-          <a class="article-more-a" href="/2019/07/20/Hexo-yilia-主题优化方案/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Windows-名称解析机制探究及缺陷利用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/">Windows 名称解析机制探究及缺陷利用</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/" class="archive-article-date">
-  	<time datetime="2019-07-16T11:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本文阐述了 Windows 系统中的名称解析机制，同时也提及了几种利用名称解析机制的缺陷进行内网攻击的方式。</p>
-<h3 id="0x00-Windows-名称解析简介"><a href="#0x00-Windows-名称解析简介" class="headerlink" title="0x00 Windows 名称解析简介"></a>0x00 Windows 名称解析简介</h3><p>TCP 协议的通信是基于 IP 地址的，“名称解析”就是把需要访问的计算机的名字解析为 IP 地址的过程。</p>
-<p><strong>Windows 中的名称类型</strong></p>
-<p>在 Windows 操作系统中有两种名称，分别为：<strong>主机名称</strong> 和 <strong>NetBIOS 名称</strong>。</p>
-        
-          <a class="article-more-a" href="/2019/07/16/Windows-名称解析机制探究及缺陷利用/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Windows</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-04-其他特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/16/Learn-Git-04-其他特性/">Learn Git 04 其他特性</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/16/Learn-Git-04-其他特性/" class="archive-article-date">
-  	<time datetime="2019-06-16T02:49:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x07-标签管理"><a href="#0x07-标签管理" class="headerlink" title="0x07 标签管理"></a>0x07 标签管理</h3><p>标签<code>tag</code>就是一个让人容易记住的有意义的名字，它可以跟某个<code>commit</code>绑定在一起。</p>
-<p>发布一个版本时，我们通常先在版本库中打一个标签，将来无论什么时候要取出某个版本，都可以根据标签找到需要的历史版本。所以，标签也是版本库的一个快照。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>OS：Kali Linux；</p>
+<p>使用最小化安装，即 Sensor 和 Server 在同一台机器上；</p>
+<p>1.安装依赖库，下载源码包</p>
 <blockquote>
-<p>Git的标签虽然是版本库的快照，但其实它是指向某个<code>commit</code>的指针。这和分支很像，但是分支可以移动，而标签不能移动。所以，创建和删除标签在Git中都是瞬间完成的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> sudo apt-get install git python-pcapy</span><br><span class="line"><span class="meta">&gt;</span> git clone https://github.com/stamparm/maltrail.git</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
-        
-          <a class="article-more-a" href="/2019/06/16/Learn-Git-04-其他特性/#more">阅读全文 >></a>
-        
+<p>2.启动 Sensor</p>
+<p>第一次启动 Sensor 会自动下载各个 IOC 库；</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> cd maltrail</span><br><span class="line"><span class="meta">&gt;</span> sudo python sensor.py</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>3.启动 Server</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> python server.py</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>4.测试</p>
+<blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> ping -c 1 136.161.101.53</span><br><span class="line"><span class="meta">&gt;</span> cat /var/log/maltrail/$(date +"%Y-%m-%d").log</span><br><span class="line"><span class="meta">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>5.网页打开 <a href="http://127.0.0.1:8338，用户名：admin，密码：changeme" target="_blank" rel="noopener">http://127.0.0.1:8338，用户名：admin，密码：changeme</a>!</p>
+<h4 id="检测方式"><a href="#检测方式" class="headerlink" title="检测方式"></a>检测方式</h4><ol>
+<li>网络流量实时嗅探分析（默认行为，指定网卡进行数据包捕获）</li>
+<li>离线 pcap 文件分析（指定 “-i” 参数，调用 pcapy 解析 pcap 文件）</li>
+</ol>
+<h4 id="特征源"><a href="#特征源" class="headerlink" title="特征源"></a>特征源</h4><pre><code> 1. IOC 列表（恶意/可疑）
+ 1. 静态列表：从各种恶意软件报告、论文以及个人研究文档中获取的恶意样本（maltrail/trails/static/malware、maltrail/trails/static/suspicious）
+ 2. 实时订阅源：从各种开源黑样本网站上下载的恶意样本，定期更新（update.py、maltrail/trails/feeds）
+ 3. 用户自定义列表：可以按照指定格式扩展订阅源（maltrail/trails/custom）
+2. 高级启发式机制，可以帮助发现未知的威胁。</code></pre><h4 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h4><ul>
+<li>update.py：更新 trails 中的所有订阅源，并将结果保存到 /root/.maltrail/trails.csv，主要使用 <code>update_trails</code> 方法</li>
+<li>httpd.py：HTTP 入侵检测模块</li>
+<li>settings.py：控制 Sensor 的嗅探及检测行为</li>
+<li>sensor.py：传感器主程序</li>
+<li>server.py：服务端主程序</li>
+<li>log.py：日志记录模块</li>
+<li>trails 目录：存放所有与 IOC 有关的信息</li>
+<li>html 目录：生成 Client Web 页面</li>
+</ul>
+<h4 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h4><h5 id="1-大规模扫描（Mass-Scan）"><a href="#1-大规模扫描（Mass-Scan）" class="headerlink" title="1.大规模扫描（Mass Scan）"></a>1.大规模扫描（Mass Scan）</h5><p>类似 Shodan 和 ZoomEye 这样的组织会扫描整个网络，并通过他们的搜索引擎（给其他潜在的攻击者）免费提供所有结果（Maltrail 也可以利用这些信息，去溯源攻击者）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4c5136567530302e706e67.png" alt="Shodan 1"></p>
+<h5 id="2-匿名-Tor-攻击（Anonymous-attackers）"><a href="#2-匿名-Tor-攻击（Anonymous-attackers）" class="headerlink" title="2.匿名 Tor 攻击（Anonymous attackers）"></a>2.匿名 Tor 攻击（Anonymous attackers）</h5><p>Maltrail 利用 Tor 出口节点的公共列表来发现隐藏在 Tor 匿名网络背后的潜在攻击者。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6458463872324b2e706e67.png" alt="Tor attacker"></p>
+<h5 id="3-服务攻击（Service-attackers）"><a href="#3-服务攻击（Service-attackers）" class="headerlink" title="3.服务攻击（Service attackers）"></a>3.服务攻击（Service attackers）</h5><p>检测黑域名、黑 IP对组织范围内特定服务的访问情况。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4f6f32616443662e706e67.png" alt="RDP brute force"></p>
+<h5 id="4-恶意软件（Malware）"><a href="#4-恶意软件（Malware）" class="headerlink" title="4.恶意软件（Malware）"></a>4.恶意软件（Malware）</h5><p>如果组织内部受感染的计算机试图连接已知的 C&amp;C 服务器，可以检出威胁并对识别出恶意软件家族（威胁信息）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f47424c5749536f2e706e67.png" alt="beebone malware"></p>
+<h5 id="5-可疑域名（Suspicious-domain-lookups）"><a href="#5-可疑域名（Suspicious-domain-lookups）" class="headerlink" title="5.可疑域名（Suspicious domain lookups）"></a>5.可疑域名（Suspicious domain lookups）</h5><p>Maltrail 包含有已知经常参与可疑活动的 TLD 域的静态列表（特征匹配），和由恶意软件生成的 DGA 域名、Tor 域名（启发式检测机制）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f4a544764744a302e706e67.png" alt="cm DGA"></p>
+<h5 id="6-可疑-IPinfo（Suspicious-ipinfo-requests）"><a href="#6-可疑-IPinfo（Suspicious-ipinfo-requests）" class="headerlink" title="6.可疑 IPinfo（Suspicious ipinfo requests）"></a>6.可疑 IPinfo（Suspicious ipinfo requests）</h5><p>由于许多恶意软件使用某种 ipinfo 服务（例如 <a href="http://ipinfo.io" target="_blank" rel="noopener">ipinfo.io</a>）来查找受害者的互联网 IP 地址，因此，应该对这类请求进行密切监视。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f36534d4e3061742e706e67.png" alt="ipinfo filter"></p>
+<h5 id="7-可疑文件下载（Suspicious-direct-file-downloads）"><a href="#7-可疑文件下载（Suspicious-direct-file-downloads）" class="headerlink" title="7.可疑文件下载（Suspicious direct file downloads）"></a>7.可疑文件下载（Suspicious direct file downloads）</h5><p>跟踪所有可疑的文件下载（例如<code>.apk</code>, <code>.chm</code>, <code>.egg</code>, <code>.exe</code>, <code>.hta</code>, <code>.hwp</code>, <code>.ps1</code>, <code>.scr</code>, <code>.sct</code> 文件扩展名），这可能会引发大量误报，但最终可能有助于重建感染链（由于合法的服务提供商，通常使用加密的HTTPS执行此类下载）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f6a7235425331682e706e67.png" alt="Direct .exe download"></p>
+<h5 id="8-可疑-HTTP-请求（Suspicious-HTTP-requests）"><a href="#8-可疑-HTTP-请求（Suspicious-HTTP-requests）" class="headerlink" title="8.可疑 HTTP 请求（Suspicious HTTP requests）"></a>8.可疑 HTTP 请求（Suspicious HTTP requests）</h5><p>可以检出来自外部 Web 应用程序安全扫描程序的可疑请求（如 SQL、XSS、LFI 等）和内部用户对未知 Web 站点的恶意请求（启发式检测机制）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f517a63614573472e706e67.png" alt="Vulnerability scan"></p>
+<h5 id="9-端口扫描（Port-scanning）"><a href="#9-端口扫描（Port-scanning）" class="headerlink" title="9.端口扫描（Port scanning）"></a>9.端口扫描（Port scanning）</h5><p>如果多次的尝试连接大量的不同的 TCP 端口，Maltrail 将警告存在潜在的端口扫描行为（启发式检测机制），能够识别 nmap 等流行的扫描工具。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f5653374c3241332e706e67.png" alt="nmap scan"></p>
+<h5 id="10-DNS-耗竭攻击（DNS-resource-exhaustion）"><a href="#10-DNS-耗竭攻击（DNS-resource-exhaustion）" class="headerlink" title="10.DNS 耗竭攻击（DNS resource exhaustion）"></a>10.DNS 耗竭攻击（DNS resource exhaustion）</h5><p>如果有大量的 DNS 递归查询（随机子域名），Maltrail 将警告存在潜在的DDoS攻击行为（启发式检测机制）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f52756a686e4b572e706e67.png" alt="DNS resource exhaustion"></p>
+<h5 id="11-敏感信息泄露（Data-leakage）"><a href="#11-敏感信息泄露（Data-leakage）" class="headerlink" title="11.敏感信息泄露（Data leakage）"></a>11.敏感信息泄露（Data leakage）</h5><p>有些程序会表现出类似于恶意软件的行为，它们会将潜在的敏感数据发送到远程机器（尤其是基于移动设备的），Maltrail 会试图捕获这样的行为（启发式检测机制）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f367a74326758672e706e67.png" alt="Data leakage"></p>
+<h5 id="12-误报处理（False-positives）"><a href="#12-误报处理（False-positives）" class="headerlink" title="12.误报处理（False positives）"></a>12.误报处理（False positives）</h5><p>与所有其他安全解决方案一样，Maltrail 容易出现”误报“，这时需要管理员投入一些额外的时间，并（以其他方式）检查“可疑 trail”是否确实存在恶意（通过实时关联其他开源情报）。</p>
+<p><img src="/2019/11/17/Maltrail-恶意流量检测工具调研/68747470733a2f2f692e696d6775722e636f6d2f346353394e4a422e706e67.png" alt="Google false positive 2"></p>
+<h4 id="关注点"><a href="#关注点" class="headerlink" title="关注点"></a>关注点</h4><ol>
+<li>IOC 数据采集模块的提取和利用<ol>
+<li>重点是对 IOC 的收集利用，要建立一套成熟的 OpenIOC 机制；</li>
+<li>对搜集到的 IOC 要同时记录其关联的攻击类型、组织信息（而不是仅仅像 <a href="https://github.com/stamparm/ipsum" target="_blank" rel="noopener">IPsum</a> 那样）。</li>
+</ol>
+</li>
+<li>在 Web 平台显示恶意 IP 相关的 whois 信息及威胁信息<ol start="2">
+<li>可以手动添加/修改 whois 信息及威胁信息；</li>
+<li>使用 <a href="https://www.shodan.io/" target="_blank" rel="noopener">Shodan</a>、<a href="http://www.zoomeye.org" target="_blank" rel="noopener">ZoomEye</a>、<a href="https://duckduckgo.com/" target="_blank" rel="noopener">DuckDuckGo</a>、<a href="http://www.ripe.net/" target="_blank" rel="noopener">RIPE</a> 等网站提供的信息。</li>
+</ol>
+</li>
+</ol>
+<h4 id="附：Maltrail-heuristic-判定"><a href="#附：Maltrail-heuristic-判定" class="headerlink" title="附：Maltrail heuristic 判定"></a>附：Maltrail heuristic 判定</h4><ol>
+<li>域名有效长度超长（24个字符）- long domain (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">if</span> len(parts[<span class="number">0</span>]) &gt; SUSPICIOUS_DOMAIN_LENGTH_THRESHOLD <span class="keyword">and</span> <span class="string">'-'</span> <span class="keyword">not</span> <span class="keyword">in</span> parts[<span class="number">0</span>]:</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="2">
+<li>SIP 每秒连接 DIP 次数过多（10次） - potential port scanning</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">if</span> sec &gt; connect_sec:                                                                     <span class="keyword">for</span> key <span class="keyword">in</span> _connect_src_dst:                                                             <span class="keyword">if</span> len(_connect_src_dst[key]) &gt; PORT_SCANNING_THRESHOLD:                                 _src_ip, _dst_ip = key.split(<span class="string">'~'</span>)                                                     <span class="keyword">if</span> <span class="keyword">not</span> check_whitelisted(_src_ip):                                                       <span class="keyword">for</span> _ <span class="keyword">in</span> _connect_src_details[key]:                                                       log_event((sec, usec, _src_ip, _[<span class="number">2</span>], _dst_ip, _[<span class="number">3</span>], PROTO.TCP, TRAIL.IP, _src_ip, <span class="string">"potential port scanning"</span>, <span class="string">"(heuristic)"</span>), packet)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="3">
+<li>TCP 流量命中以下规则 - sinkhole response (malware)、seized domain (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">if</span> tcp_data.startswith(<span class="string">"HTTP/"</span>):                                                     </span><br><span class="line">&gt;     <span class="keyword">if</span> any(_ <span class="keyword">in</span> tcp_data[:tcp_data.find(<span class="string">"\r\n\r\n"</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> (<span class="string">"X-Sinkhole:"</span>, <span class="string">"X-Malware-Sinkhole:"</span>, <span class="string">"Server: You got served"</span>, <span class="string">"Server: Apache 1.0/SinkSoft"</span>, <span class="string">"sinkdns.org"</span>)) <span class="keyword">or</span> <span class="string">"\r\n\r\nsinkhole"</span> <span class="keyword">in</span> tcp_data:</span><br><span class="line">&gt;         log_event((sec, usec, src_ip, src_port, dst_ip, dst_port, PROTO.TCP, TRAIL.IP, src_ip, <span class="string">"sinkhole response (malware)"</span>, <span class="string">"(heuristic)"</span>), packet)                 <span class="keyword">else</span>:                                                                                     index = tcp_data.find(<span class="string">"&lt;title&gt;"</span>)                                             </span><br><span class="line">&gt;         <span class="keyword">if</span> index &gt;= <span class="number">0</span>: </span><br><span class="line">&gt;             title = tcp_data[index + len(<span class="string">"&lt;title&gt;"</span>):tcp_data.find(<span class="string">"&lt;/title&gt;"</span>, index)]              <span class="keyword">if</span> all(_ <span class="keyword">in</span> title.lower() <span class="keyword">for</span> _ <span class="keyword">in</span> (<span class="string">"this domain"</span>, <span class="string">"has been seized"</span>)):                  log_event((sec, usec, src_ip, src_port, dst_ip, dst_port, PROTO.TCP, TRAIL.IP, title, <span class="string">"seized domain (suspicious)"</span>, <span class="string">"(heuristic)"</span>), packet)     </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="4">
+<li>TCP “Content-Type” 中存在以下特征 - content type (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; SUSPICIOUS_CONTENT_TYPES = (<span class="string">"application/vnd.ms-htmlhelp"</span>, <span class="string">"application/x-bsh"</span>, <span class="string">"application/x-chm"</span>, <span class="string">"application/x-sh"</span>, <span class="string">"application/x-shellscript"</span>, <span class="string">"application/hta"</span>, <span class="string">"text/x-scriptlet"</span>, <span class="string">"text/x-sh"</span>, <span class="string">"text/x-shellscript"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="5">
+<li>HTTP 流量中存在以下特征 - potential proxy probe (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">if</span> config.USE_HEURISTICS <span class="keyword">and</span> dst_port == <span class="number">80</span> <span class="keyword">and</span> path.startswith(<span class="string">"http://"</span>) <span class="keyword">and</span> any(_ <span class="keyword">in</span> path <span class="keyword">for</span> _ <span class="keyword">in</span> SUSPICIOUS_PROXY_PROBE_PRE_CONDITION) <span class="keyword">and</span> <span class="keyword">not</span> _check_domain_whitelisted(path.split(<span class="string">'/'</span>)[<span class="number">2</span>]):</span><br><span class="line">&gt;     trail = re.sub(<span class="string">r"(http://[^/]+/)(.+)"</span>, <span class="string">r"\g&lt;1&gt;(\g&lt;2&gt;)"</span>, path)  </span><br><span class="line">&gt;     trail = re.sub(<span class="string">r"(http://)([^/(]+)"</span>, <span class="keyword">lambda</span> match: <span class="string">"%s%s"</span> % (match.group(<span class="number">1</span>), match.group(<span class="number">2</span>).split(<span class="string">':'</span>)[<span class="number">0</span>].rstrip(<span class="string">'.'</span>)), trail)</span><br><span class="line">&gt; SUSPICIOUS_PROXY_PROBE_PRE_CONDITION = (<span class="string">"probe"</span>, <span class="string">"proxy"</span>, <span class="string">"echo"</span>, <span class="string">"check"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="6">
+<li>HTTP 流量中存在 UA 字段且不在下列白名单中 - user agent (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; WHITELIST_UA_KEYWORDS = (<span class="string">"AntiVir-NGUpd"</span>, <span class="string">"TMSPS"</span>, <span class="string">"AVGSETUP"</span>, <span class="string">"SDDS"</span>, <span class="string">"Sophos"</span>, <span class="string">"Symantec"</span>, <span class="string">"internal dummy connection"</span>, <span class="string">"Microsoft-CryptoAPI"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="7">
+<li>如果 HTTP 请求不在下列白名单且包含可疑预处理参数 - (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; WHITELIST_HTTP_REQUEST_PATHS = (<span class="string">"fql"</span>, <span class="string">"yql"</span>, <span class="string">"ads"</span>, <span class="string">"../images/"</span>, <span class="string">"../themes/"</span>, <span class="string">"../design/"</span>, <span class="string">"../scripts/"</span>, <span class="string">"../assets/"</span>, <span class="string">"../core/"</span>, <span class="string">"../js/"</span>, <span class="string">"/gwx/"</span>)</span><br><span class="line">&gt; SUSPICIOUS_HTTP_REQUEST_PRE_CONDITION = (<span class="string">"?"</span>, <span class="string">".."</span>, <span class="string">".ht"</span>, <span class="string">"="</span>, <span class="string">" "</span>, <span class="string">"'"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="8">
+<li>如果文件后缀名在可疑列表中且下载路径不在白名单之中并且请求中不包含“=”且文件名长度小于10个字符 - direct %s download (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; SUSPICIOUS_DIRECT_DOWNLOAD_EXTENSIONS = set((<span class="string">".apk"</span>, <span class="string">".chm"</span>, <span class="string">".egg"</span>, <span class="string">".exe"</span>, <span class="string">".hta"</span>, <span class="string">".hwp"</span>, <span class="string">".pac"</span>, <span class="string">".ps1"</span>, <span class="string">".scr"</span>, <span class="string">".sct"</span>))</span><br><span class="line">&gt; WHITELIST_DIRECT_DOWNLOAD_KEYWORDS = (<span class="string">"cgi"</span>, <span class="string">"/scripts/"</span>, <span class="string">"/_vti_bin/"</span>, <span class="string">"/bin/"</span>, <span class="string">"/pub/softpaq/"</span>, <span class="string">"/bios/"</span>, <span class="string">"/pc-axis/"</span>)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="9">
+<li>如果文件名在 webshell 列表中 - potential web shell (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; WEB_SHELLS 是一个set()，在程序运行时动态添加</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="10">
+<li>如果文件名符合以下正则表达式 - (suspicious)</li>
+</ol>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; SUSPICIOUS_HTTP_PATH_REGEXES = (</span><br><span class="line">&gt;     (<span class="string">"non-existent page"</span>, <span class="string">r"defaultwebpage\.cgi"</span>),</span><br><span class="line">&gt;     (<span class="string">"potential web scan"</span>, <span class="string">r"inexistent_file_name\.inexistent|test-for-some-inexistent-file|long_inexistent_path|some-inexistent-website\.acu"</span>)</span><br><span class="line">&gt; )</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>下面的内容全部为 DNS 协议启发式检测，源码注释表示引用自以下文章，但目前已经无法访问：</p>
+<p><a href="http://www.ccs.neu.edu/home/amislove/teaching/cs4700/fall09/handouts/project1-primer.pdf" target="_blank" rel="noopener">http://www.ccs.neu.edu/home/amislove/teaching/cs4700/fall09/handouts/project1-primer.pdf</a></p>
+<ol>
+<li>potential dns exhaustion (suspicious)</li>
+</ol>
+<blockquote>
+<p>此条逻辑较为复杂，难以描述清楚，可以在 sensor.py 中查找关键字 “potential dns exhaustion”，自行查看。</p>
+</blockquote>
+<ol start="2">
+<li>sinkholed by %s (malware)</li>
+</ol>
+<blockquote>
+<p>同上一条，需要解析 DNS 协议</p>
+</blockquote>
+<ol start="3">
+<li>parked site (suspicious)</li>
+<li>excessive no such domain (suspicious)</li>
+<li>consonant threshold no such domain (suspicious)</li>
+<li>entropy threshold no such domain (suspicious)</li>
+</ol>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://github.com/stamparm/maltrail#real-life-cases" target="_blank" rel="noopener">https://github.com/stamparm/maltrail#real-life-cases</a></p>
+
       
 
       
@@ -464,10 +403,73 @@ var _hmt = _hmt || [];
       
 
       
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://eW1z4rd.github.io/2019/11/17/Maltrail-恶意流量检测工具调研/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/03/WinRAR-目录穿越漏洞（CVE-2018-2025[0-3]）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WinRAR 目录穿越漏洞（CVE-2018-2025[0-3]）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -482,264 +484,34 @@ var _hmt = _hmt || [];
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-03-分支管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/15/Learn-Git-03-分支管理/">Learn Git 03 分支管理</a>
-    </h1>
-  
-
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/15/Learn-Git-03-分支管理/" class="archive-article-date">
-  	<time datetime="2019-06-15T06:23:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x06-分支管理"><a href="#0x06-分支管理" class="headerlink" title="0x06 分支管理"></a>0x06 分支管理</h3><h4 id="分支是什么"><a href="#分支是什么" class="headerlink" title="分支是什么"></a>分支是什么</h4><p>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果你既学会了Git又学会了SVN！</p>
-<p><img src="/2019/06/15/Learn-Git-03-分支管理/8361248578c67b8067c8c.png" alt="learn-branches"></p>
-        
-          <a class="article-more-a" href="/2019/06/15/Learn-Git-03-分支管理/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#特性"><span class="toc-number">1.1.</span> <span class="toc-text">特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#检测方式"><span class="toc-number">1.3.</span> <span class="toc-text">检测方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特征源"><span class="toc-number">1.4.</span> <span class="toc-text">特征源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#核心模块"><span class="toc-number">1.5.</span> <span class="toc-text">核心模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实际应用"><span class="toc-number">1.6.</span> <span class="toc-text">实际应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-大规模扫描（Mass-Scan）"><span class="toc-number">1.6.1.</span> <span class="toc-text">1.大规模扫描（Mass Scan）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-匿名-Tor-攻击（Anonymous-attackers）"><span class="toc-number">1.6.2.</span> <span class="toc-text">2.匿名 Tor 攻击（Anonymous attackers）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-服务攻击（Service-attackers）"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.服务攻击（Service attackers）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-恶意软件（Malware）"><span class="toc-number">1.6.4.</span> <span class="toc-text">4.恶意软件（Malware）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-可疑域名（Suspicious-domain-lookups）"><span class="toc-number">1.6.5.</span> <span class="toc-text">5.可疑域名（Suspicious domain lookups）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-可疑-IPinfo（Suspicious-ipinfo-requests）"><span class="toc-number">1.6.6.</span> <span class="toc-text">6.可疑 IPinfo（Suspicious ipinfo requests）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-可疑文件下载（Suspicious-direct-file-downloads）"><span class="toc-number">1.6.7.</span> <span class="toc-text">7.可疑文件下载（Suspicious direct file downloads）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-可疑-HTTP-请求（Suspicious-HTTP-requests）"><span class="toc-number">1.6.8.</span> <span class="toc-text">8.可疑 HTTP 请求（Suspicious HTTP requests）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-端口扫描（Port-scanning）"><span class="toc-number">1.6.9.</span> <span class="toc-text">9.端口扫描（Port scanning）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-DNS-耗竭攻击（DNS-resource-exhaustion）"><span class="toc-number">1.6.10.</span> <span class="toc-text">10.DNS 耗竭攻击（DNS resource exhaustion）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-敏感信息泄露（Data-leakage）"><span class="toc-number">1.6.11.</span> <span class="toc-text">11.敏感信息泄露（Data leakage）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#12-误报处理（False-positives）"><span class="toc-number">1.6.12.</span> <span class="toc-text">12.误报处理（False positives）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关注点"><span class="toc-number">1.7.</span> <span class="toc-text">关注点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附：Maltrail-heuristic-判定"><span class="toc-number">1.8.</span> <span class="toc-text">附：Maltrail heuristic 判定</span></a></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-Learn-Git-02-版本控制和远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/">Learn Git 02 版本控制和远程仓库</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/" class="archive-article-date">
-  	<time datetime="2019-06-13T12:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x04-版本控制"><a href="#0x04-版本控制" class="headerlink" title="0x04 版本控制"></a>0x04 版本控制</h3><h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>我们已经成功地添加并提交了一个<code>readme.txt</code>文件，现在，是时候继续工作了，于是，我们继续修改<code>readme.txt</code>文件，改成如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>现在，运行<code>git status</code>命令查看结果：</p>
-        
-          <a class="article-more-a" href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Learn-Git-01-初识Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/10/Learn-Git-01-初识Git/">Learn Git 01 初识Git</a>
-    </h1>
   
 
-		
-		<!--显示阅读次数-->
-		
-
-        
-        <a href="/2019/06/10/Learn-Git-01-初识Git/" class="archive-article-date">
-  	<time datetime="2019-06-10T11:40:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="0x01-Git简介"><a href="#0x01-Git简介" class="headerlink" title="0x01 Git简介"></a>0x01 Git简介</h3><h4 id="Git是什么"><a href="#Git是什么" class="headerlink" title="Git是什么"></a>Git是什么</h4><p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。</p>
-<p>那什么是版本控制系统？如果你用Microsoft Word写过长篇大论，那你一定有这样的经历：</p>
-<p>想删除一个段落，又怕将来想恢复找不回来怎么办？有办法，先把当前文件“另存为”一个新的Word文件，再接着改，改到一定程度，再“另存为”一个新文件，这样一直改下去，最后你会有很多个Word副本。</p>
-<p>过了一周，你想找回被删除的文字，但是已经记不清删除前保存在哪个文件里了，只好一个一个文件去找，真麻烦。</p>
-        
-          <a class="article-more-a" href="/2019/06/10/Learn-Git-01-初识Git/#more">阅读全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -769,8 +541,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

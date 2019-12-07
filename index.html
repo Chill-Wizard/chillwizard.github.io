@@ -159,12 +159,28 @@ var _hmt = _hmt || [];
     <article id="post-Double-Loaded-ZIP-File-绕过手法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/07/Double-Loaded-ZIP-File-绕过手法/">Double Loaded ZIP File 绕过手法</a>
+    </h1>
+  
+
+		
+		<!--显示阅读次数-->
+		
+
+        
+        <a href="/2019/12/07/Double-Loaded-ZIP-File-绕过手法/" class="archive-article-date">
+  	<time datetime="2019-12-07T07:02:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-07</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>title: Double Loaded ZIP File 绕过手法<br>date: 2019-12-07 15:02:29<br>tags: [exploit, zip]</p>
-</blockquote>
-<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>大多数通过邮件传播的恶意软件都是打包为 ZIP、RAR、7z 等方式进行传播的。近日，研究人员发现了一个新型的恶意文件压缩方式，即 Double Loaded Zip File 双加载 ZIP 文件。</p>
+        <h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>大多数通过邮件传播的恶意软件都是打包为 ZIP、RAR、7z 等方式进行传播的。近日，研究人员发现了一个新型的恶意文件压缩方式，即 Double Loaded Zip File 双加载 ZIP 文件。</p>
 <p>就本例而言，他包含有两个 ZIP 文件结构（2 个 EOCD）。第一个 ZIP 结构中包含有一个无恶意的 PNG 格式的图像文件 order.jpg（不是扩展名显示的 jpeg 格式），order.jpg 实际上一个诱饵文件，用来隐藏另一个 ZIP 结构的内容。第二个 ZIP 结构中包含 SHIPPING_MX00034900_PL_INV_pdf.exe，其实是一个远程木马 NanoCore RAT。</p>
 <p>很明显，攻击者想尝试使用这种 dual archive 的方式来绕过安全扫描。</p>
         
@@ -177,6 +193,21 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">exploit</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">zip</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -1181,6 +1212,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">zip</a>
               </li>
             
             <div class="clearfix"></div>

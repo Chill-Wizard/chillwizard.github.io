@@ -6,25 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://eW1z4rd.github.io">
-  <title>Learn Git 02 版本控制和远程仓库 | eW1z4rd 树屋</title>
+  <title>Python 字符编码 | eW1z4rd 树屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0x04 版本控制提交修改我们已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了，于是，我们继续修改readme.txt文件，改成如下内容： 12Git is a distributed version control system.Git is free software.  现在，运行git status命令查看结果：">
-<meta name="keywords" content="development,tools,git">
+  <meta name="description" content="Python3 的系统默认编码是 UTF-8，其中：  文本字符全部用 str 表示（包括 Unicode 字符集中所有字符） 二进制字节数据用 bytes 表示（可以是 ASCII 范围内的字符和其它十六进制形式的字符）   在字符引号前加 ‘b’，明确表示这是一个 bytes类型的对象。   python2 与 python3 字节与字符的对应关系：      python2 python3">
+<meta name="keywords" content="Python,concept,development">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learn Git 02 版本控制和远程仓库">
-<meta property="og:url" content="https://eW1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/index.html">
+<meta property="og:title" content="Python 字符编码">
+<meta property="og:url" content="https://eW1z4rd.github.io/2019/09/11/Python-字符编码/index.html">
 <meta property="og:site_name" content="eW1z4rd 树屋">
-<meta property="og:description" content="0x04 版本控制提交修改我们已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了，于是，我们继续修改readme.txt文件，改成如下内容： 12Git is a distributed version control system.Git is free software.  现在，运行git status命令查看结果：">
+<meta property="og:description" content="Python3 的系统默认编码是 UTF-8，其中：  文本字符全部用 str 表示（包括 Unicode 字符集中所有字符） 二进制字节数据用 bytes 表示（可以是 ASCII 范围内的字符和其它十六进制形式的字符）   在字符引号前加 ‘b’，明确表示这是一个 bytes类型的对象。   python2 与 python3 字节与字符的对应关系：      python2 python3">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://ew1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/7702917346729e9afbf412.jpg">
-<meta property="og:image" content="https://ew1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/61248578c67b8067c8c.jpg">
-<meta property="og:image" content="https://ew1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/7b8067c8c01.jpg">
-<meta property="og:image" content="https://ew1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/aszxjqb141511.png">
-<meta property="og:updated_time" content="2019-12-07T04:02:36.416Z">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/09/11/Python-字符编码/4c330c8aa381b0be38553b3a5031bb82.jpg">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/09/11/Python-字符编码/689802-464e92357be25120.png">
+<meta property="og:image" content="https://ew1z4rd.github.io/2019/09/11/Python-字符编码/689802-0c26f194d6dbc917.png">
+<meta property="og:updated_time" content="2020-01-01T01:57:53.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Learn Git 02 版本控制和远程仓库">
-<meta name="twitter:description" content="0x04 版本控制提交修改我们已经成功地添加并提交了一个readme.txt文件，现在，是时候继续工作了，于是，我们继续修改readme.txt文件，改成如下内容： 12Git is a distributed version control system.Git is free software.  现在，运行git status命令查看结果：">
-<meta name="twitter:image" content="https://ew1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/7702917346729e9afbf412.jpg">
+<meta name="twitter:title" content="Python 字符编码">
+<meta name="twitter:description" content="Python3 的系统默认编码是 UTF-8，其中：  文本字符全部用 str 表示（包括 Unicode 字符集中所有字符） 二进制字节数据用 bytes 表示（可以是 ASCII 范围内的字符和其它十六进制形式的字符）   在字符引号前加 ‘b’，明确表示这是一个 bytes类型的对象。   python2 与 python3 字节与字符的对应关系：      python2 python3">
+<meta name="twitter:image" content="https://ew1z4rd.github.io/2019/09/11/Python-字符编码/4c330c8aa381b0be38553b3a5031bb82.jpg">
   
     <link rel="alternative" href="/atom.xml" title="eW1z4rd 树屋" type="application/atom+xml">
   
@@ -164,14 +163,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Learn-Git-02-版本控制和远程仓库" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Python-字符编码" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Learn Git 02 版本控制和远程仓库
+      Python 字符编码
     </h1>
   
 
@@ -188,296 +187,82 @@ var _hmt = _hmt || [];
 		
 
         
-        <a href="/2019/06/13/Learn-Git-02-版本控制和远程仓库/" class="archive-article-date">
-  	<time datetime="2019-06-13T12:32:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
+        <a href="/2019/09/11/Python-字符编码/" class="archive-article-date">
+  	<time datetime="2019-09-11T05:53:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="0x04-版本控制"><a href="#0x04-版本控制" class="headerlink" title="0x04 版本控制"></a>0x04 版本控制</h3><h4 id="提交修改"><a href="#提交修改" class="headerlink" title="提交修改"></a>提交修改</h4><p>我们已经成功地添加并提交了一个<code>readme.txt</code>文件，现在，是时候继续工作了，于是，我们继续修改<code>readme.txt</code>文件，改成如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>现在，运行<code>git status</code>命令查看结果：</p>
+        <ul>
+<li><p>Python3 的系统默认编码是 UTF-8，其中：</p>
+<ul>
+<li>文本字符全部用 str 表示（包括 Unicode 字符集中所有字符）</li>
+<li>二进制字节数据用 bytes 表示（可以是 ASCII 范围内的字符和其它十六进制形式的字符）</li>
+</ul>
+<blockquote>
+<p>在字符引号前加 ‘b’，明确表示这是一个 bytes类型的对象。</p>
+</blockquote>
+</li>
+<li><p>python2 与 python3 字节与字符的对应关系：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>python2</strong></th>
+<th align="center"><strong>python3</strong></th>
+<th align="center"><strong>表现</strong></th>
+<th align="center"><strong>转换</strong></th>
+<th align="center"><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">str</td>
+<td align="center">bytes</td>
+<td align="center">字节</td>
+<td align="center">encode</td>
+<td align="center">存储、网络传输</td>
+</tr>
+<tr>
+<td align="center">unicode</td>
+<td align="center">str</td>
+<td align="center">字符</td>
+<td align="center">decode</td>
+<td align="center">显示</td>
+</tr>
+</tbody></table>
 <a id="more"></a>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>git status</code>命令可以查看工作区当前的状态，告诉我们有哪些文件被修改过。</p>
-</blockquote>
-<p>上面的命令输出告诉我们，<code>readme.txt</code>被修改过了，但还没有准备提交的修改。</p>
-<p>虽然Git告诉我们<code>readme.txt</code>被修改了，但不能查看具体修改了什么内容。比如你休假两周从国外回来，第一天上班时，已经记不清上次怎么修改的<code>readme.txt</code>，这时可以用<code>git diff</code>这个命令查看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git diff</span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index d8036c1..013b5bc 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,2 +1,2 @@</span><br><span class="line">-Git is a version control system.</span><br><span class="line">+Git is a distributed version control system.</span><br><span class="line"> Git is free software.</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>git diff</code>命令可以查看修改的内容，即比较工作区该文件与版本库中<strong>当前分支</strong>上该文件之间的差异，显示的格式正是Unix通用的diff格式。”-“是修改前的行，”+“是修改后的行，无符号代表没有修改。</p>
-</blockquote>
-<p>知道了对<code>readme.txt</code>作了什么修改后，再把它提交到仓库就放心多了，提交修改和提交新文件是一样的两步，第一步是<code>git add</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>同样没有任何输出，在执行第二步<code>git commit</code>之前，我们再运行<code>git status</code>看看当前仓库的状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br></pre></td></tr></table></figure>
-
-<p><code>git status</code>告诉我们，将要被提交的修改包括<code>readme.txt</code>，接下来就可以放心地提交了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;add distributed&quot;</span><br><span class="line">[master 0c8605e] add distributed</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
-
-<p>提交后，我们再用<code>git status</code>命令看看仓库的当前状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-
-<p>Git告诉我们当前没有需要提交的修改，而且，工作目录是干净的（working tree clean）。</p>
-<h4 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h4><p>现在，你已经学会了修改文件，然后把修改提交到Git版本库，让我们再练习一次，修改readme.txt文件如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
-
-<p>尝试提交：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br><span class="line">$ git commit -m &quot;append GPL&quot;</span><br><span class="line">[master b7b7026] append GPL</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
-
-<p>像这样，你不断对文件进行修改，然后不断提交修改到版本库里，就好像玩RPG游戏，每通过一关就会自动把游戏状态存盘，如果某一关没过去，你还可以选择读取前一关的状态。有些时候，在打Boss之前，你会手动存盘，以便万一打Boss失败了，可以从最近的地方重新开始。Git也是一样，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为<code>commit</code>。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个<code>commit</code>恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
-<p>让我们回顾一下<code>readme.txt</code>文件一共有几个版本被提交到Git仓库里了：</p>
-<p>版本1：wrote a readme file</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>版本2：add distributed</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>版本3：append GPL</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
-
-<p>当然了，在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit b7b7026afbf8e47bb0d586d038410452f15923dc (HEAD -&gt; master)</span><br><span class="line">Author: eW1z4rd &lt;chill_wizard@foxmail.com&gt;</span><br><span class="line">Date:   Mon Apr 29 11:05:41 2019 +0800</span><br><span class="line"></span><br><span class="line">    append GPL</span><br><span class="line"></span><br><span class="line">commit 0c8605eb1b38a191657acafc4b3b58cecd6cca05</span><br><span class="line">Author: eW1z4rd &lt;chill_wizard@foxmail.com&gt;</span><br><span class="line">Date:   Mon Apr 29 10:52:17 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 793c58851d9a37472a94c57a9ff3897ba4d42167</span><br><span class="line">Author: eW1z4rd &lt;chill_wizard@foxmail.com&gt;</span><br><span class="line">Date:   Mon Apr 29 10:42:10 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><code>git log</code>命令显示<strong>从近到远</strong>的所有提交日志。</p>
-</blockquote>
-<p>我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。</p>
-<p>如果觉得输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b7b7026afbf8e47bb0d586d038410452f15923dc (HEAD -&gt; master) append GPL</span><br><span class="line">0c8605eb1b38a191657acafc4b3b58cecd6cca05 add distributed</span><br><span class="line">793c58851d9a37472a94c57a9ff3897ba4d42167 wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<p>每行的开头是由SHA1计算出来的一个非常大的数字，代表的是Git的<code>commit id</code>（版本号），和SVN使用1,2,3…递增的数字不同，这是为了在分布式的版本控制系统中避免冲突。</p>
-<blockquote>
-<p>注意：每提交一个新版本，Git就会把它们自动串成一条时间线，在Git GUI中查看History，可以更清楚地看到时间线上提交的历史记录。</p>
-</blockquote>
-<p><strong>现在我们准备把<code>readme.txt</code>回退到上一个版本：</strong></p>
-<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交<code>b7b702...</code>，上一个版本就是<code>HEAD^</code>，上上一个版本就是<code>HEAD^^</code>，当然往上100个版本写100个<code>^</code>不太好数，所以写成<code>HEAD~100</code>。</p>
-<p>现在我们使用<code>git reset</code>命令，把当前版本<code>append GPL</code>回退到上一个版本<code>add distributed</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD^</span><br><span class="line">HEAD is now at 0c8605e add distributed</span><br></pre></td></tr></table></figure>
-
-<p>看看<code>readme.txt</code>的内容是不是版本<code>add distributed</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software.</span><br></pre></td></tr></table></figure>
-
-<p>果然被还原了。还可以继续回退到上一个版本<code>wrote a readme file</code>，不过且慢，然我们用<code>git log</code>再看看现在版本库的状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ git log</span><br><span class="line">commit 0c8605eb1b38a191657acafc4b3b58cecd6cca05 (HEAD -&gt; master)</span><br><span class="line">Author: eW1z4rd &lt;chill_wizard@foxmail.com&gt;</span><br><span class="line">Date:   Mon Apr 29 10:52:17 2019 +0800</span><br><span class="line"></span><br><span class="line">    add distributed</span><br><span class="line"></span><br><span class="line">commit 793c58851d9a37472a94c57a9ff3897ba4d42167</span><br><span class="line">Author: eW1z4rd &lt;chill_wizard@foxmail.com&gt;</span><br><span class="line">Date:   Mon Apr 29 10:42:10 2019 +0800</span><br><span class="line"></span><br><span class="line">    wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<p>最新的那个版本<code>append GPL</code>已经看不到了，如果想要再次回到未来的版本，只需要找到那个<code>append GPL</code>的<code>commit id</code>，即<code>b7b7026a...</code>（不用输全），使用<code>git reset</code>命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard b7b70</span><br><span class="line">HEAD is now at b7b7026 append GPL</span><br><span class="line"></span><br><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br></pre></td></tr></table></figure>
-
-<p>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把HEAD从指向<code>append GPL</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">┌────┐</span><br><span class="line">│HEAD│</span><br><span class="line">└────┘</span><br><span class="line">   │</span><br><span class="line">   └──&gt; ○ append GPL</span><br><span class="line">        │</span><br><span class="line">        ○ add distributed</span><br><span class="line">        │</span><br><span class="line">        ○ wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<p>改为指向<code>add distributed</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">┌────┐</span><br><span class="line">│HEAD│</span><br><span class="line">└────┘</span><br><span class="line">   │</span><br><span class="line">   │    ○ append GPL</span><br><span class="line">   │    │</span><br><span class="line">   └──&gt; ○ add distributed</span><br><span class="line">        │</span><br><span class="line">        ○ wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<p><code>HEAD</code>指向哪个版本号，当前版本就定位在哪，并且会更新工作区的文件。</p>
-<p>现在，你回退到了某个版本，关掉了电脑，第二天早上就后悔了，想恢复到新版本怎么办？Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令，可以找到每一次提交后的<code>commit id</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">b7b7026 (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to b7b70</span><br><span class="line">0c8605e HEAD@&#123;1&#125;: reset: moving to HEAD^</span><br><span class="line">b7b7026 (HEAD -&gt; master) HEAD@&#123;2&#125;: commit: append GPL</span><br><span class="line">0c8605e HEAD@&#123;3&#125;: commit: add distributed</span><br><span class="line">793c588 HEAD@&#123;4&#125;: commit (initial): wrote a readme file</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>回退前，用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</p>
-<p>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
-</blockquote>
-<h4 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h4><p>Git和其他版本控制系统的一个不同之处就是有暂存区的概念。</p>
-<p>先来看名词解释：</p>
 <ul>
-<li><p>工作区（Working Directory）：就是你在电脑里能看到的目录，比如<code>learngit</code>文件夹。</p>
+<li><p>str 与 bytes 之间的转换可以用 encode 和 decode 方法：</p>
+<p><img src="/2019/09/11/Python-字符编码/4c330c8aa381b0be38553b3a5031bb82.jpg" alt="4c330c8aa381b0be38553b3a5031bb82"></p>
+<p>encode 负责字符到字节的编码转换，默认转换为 UTF-8 编码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"Python之禅"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode()</span><br><span class="line"><span class="string">b'Python\xe4\xb9\x8b\xe7\xa6\x85'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode(<span class="string">'gbk'</span>)</span><br><span class="line"><span class="string">b'Python\xd6\xae\xec\xf8'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode(<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="string">b'Python\xe4\xb9\x8b\xe7\xa6\x85'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">"Python"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s.encode(<span class="string">'ascii'</span>)</span><br><span class="line"><span class="string">b'Python'</span></span><br></pre></td></tr></table></figure>
+
+<p>decode 负责字节到字符的解码转换，默认使用 UTF-8 编码格式进行转换：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'Python\xe4\xb9\x8b\xe7\xa6\x85'</span>.decode()</span><br><span class="line"><span class="string">'Python之禅'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'Python\xd6\xae\xec\xf8'</span>.decode(<span class="string">'gbk'</span>)</span><br><span class="line"><span class="string">'Python之禅'</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>版本库（Repository）：工作区有一个隐藏目录<code>.git</code>，比如<code>learngit/.git</code>文件夹，这个不算工作区，而是Git的版本库。</p>
+<li><p>ASCII、Unicode、UTF-8 区别：</p>
+<ul>
+<li><p>ASCII 编码使用 1 个字节，将最高位置为 0，后七位从 0 到 127 分别对每一个符号编码，能表示的字符十分有限；</p>
+</li>
+<li><p>由于很多符号 ASCII 没办法表示，各国又在 ASCII 的基础上创建了适合自己语言的符号编码表，比如欧洲的 ISO，中国 GBK ……一时间天下大乱；</p>
+</li>
+<li><p>为了解决编码混乱的问题，Unicode 编码收纳了全世界大部分的字符，从 0 一直编到了 100 多万，每一个区间都对应着一种语言的编码。所有的字符都有了唯一的编号，也就解决了编解码的冲突；</p>
+</li>
+<li><p>但是 Unicode 没有为编码的二进制编解码做出规定，因此就出现了 UTF-8，UTF-16，UTF-32 这些编码方案。其中 UTF-16 使用 2 个字节来编码所有的字符，UTF-32 则选择用 4 个字节来编码，而使用最多的就是 UTF-8 编码方案；</p>
+</li>
+<li><p>UTF-8 为了节省资源，采用变长编码，把一个 Unicode 字符根据不同字符内容编码成 1-6 个字节，可以显示中文（3 字节），同时兼容 ASCII 编码：</p>
+<p><img src="/2019/09/11/Python-字符编码/689802-464e92357be25120.png" alt="img"></p>
 </li>
 </ul>
-<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针叫<code>HEAD</code>。</p>
-<p><img src="/2019/06/13/Learn-Git-02-版本控制和远程仓库/7702917346729e9afbf412.jpg" alt="git-repo"></p>
-<p>前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
-<ul>
-<li><p>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
 </li>
-<li><p>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支（<code>master</code>分支）。</p>
+<li><p>用一张图来总结一下上述的区别和联系：</p>
+<p><img src="/2019/09/11/Python-字符编码/689802-0c26f194d6dbc917.png" alt="img"></p>
 </li>
 </ul>
-<p>你可以简单理解为，需要提交的文件修改全部都放到了暂存区，然后一次性提交暂存区的所有修改。</p>
-<blockquote>
-<p>暂存区就像购物车，没到付款的时候你不确定购物车里的东西是否全部都要购买，如果每拿一件商品就付一次款，那就麻烦大了。</p>
-</blockquote>
-<p>让我们再练习一遍，先对<code>readme.txt</code>做个修改，比如加上一行内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br></pre></td></tr></table></figure>
-
-<p>然后在工作区新增一个<code>LICENSE</code>文本文件（内容随便写），用<code>git status</code>查看一下状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span><br><span class="line"></span><br><span class="line">        LICENSE</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>Git非常清楚地告诉我们，<code>readme.txt</code>被修改了，而<code>LICENSE</code>还从来没有被添加过，所以它的状态是<code>Untracked</code>。</p>
-<p>使用命令<code>git add</code>把<code>readme.txt</code>和<code>LICENSE</code>都添加后，再用<code>git status</code>查看一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt LICENSE</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        new file:   LICENSE</span><br><span class="line">        modified:   readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>此时暂存区的状态：</p>
-<p><img src="/2019/06/13/Learn-Git-02-版本控制和远程仓库/61248578c67b8067c8c.jpg" alt="git-stage"></p>
-<p>所以<code>git add</code>命令实际上就是把要提交的所有修改放到暂存区（Stage），然后执行<code>git commit</code>就可以一次性把暂存区的所有修改提交到分支。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;understand how stage works&quot;</span><br><span class="line">[master 5c08317] understand how stage works</span><br><span class="line"> 2 files changed, 3 insertions(+), 1 deletion(-)</span><br><span class="line"> create mode 100644 LICENSE</span><br></pre></td></tr></table></figure>
-
-<p>一旦提交后，如果你没有对工作区做任何修改，那么工作区就是“干净”的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-
-<p>现在版本库变成了这样，暂存区没有任何内容：</p>
-<p><img src="/2019/06/13/Learn-Git-02-版本控制和远程仓库/7b8067c8c01.jpg" alt="git-stage-after-commit"></p>
-<h4 id="管理修改"><a href="#管理修改" class="headerlink" title="管理修改"></a>管理修改</h4><p>现在，假定你已经完全掌握了暂存区的概念。下面我们要讨论的就是，为什么Git比其他版本控制系统设计得优秀，<strong>因为Git跟踪并管理的是修改，而非文件。</strong></p>
-<p>为了验证这一点，我们对<code>readme.txt</code>做一个修改，比如添加一行内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes.</span><br></pre></td></tr></table></figure>
-
-<p>然后使用<code>git add</code>添加，查看状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>然后再修改<code>readme.txt</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes of files.</span><br></pre></td></tr></table></figure>
-
-<p>使用<code>git commit</code>提交：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m &quot;git tracks changes&quot;</span><br><span class="line">[master 7a2ec88] git tracks changes</span><br><span class="line"> 1 file changed, 2 insertions(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
-
-<p>提交后，查看状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>可以看到第二次的修改并没有被提交，这是为什么呢？</p>
-<blockquote>
-<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git commit</code></p>
-</blockquote>
-<p>因为Git管理的是修改，当你用<code>git add</code>命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以<code>git commit</code>只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
-<p>提交后，可以用<code>git diff HEAD -- readme.txt</code>命令查看工作区和版本库里面最新版本的区别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git diff HEAD -- readme.txt</span><br><span class="line">diff --git a/readme.txt b/readme.txt</span><br><span class="line">index db28b2c..9a8b341 100644</span><br><span class="line">--- a/readme.txt</span><br><span class="line">+++ b/readme.txt</span><br><span class="line">@@ -1,4 +1,4 @@</span><br><span class="line"> Git is a distributed version control system.</span><br><span class="line"> Git is free software distributed under the GPL.</span><br><span class="line"> Git has a mutable index called stage.</span><br><span class="line">-Git tracks changes.</span><br><span class="line">+Git tracks changes of files.</span><br></pre></td></tr></table></figure>
-
-<p>可见，第二次修改确实没有被提交。</p>
-<p>那怎么提交第二次修改呢？你可以继续<code>git add</code>再<code>git commit</code>，也可以别着急提交第一次修改，先<code>git add</code>第二次修改，再<code>git commit</code>，就相当于把两次修改合并后一块提交了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add readme.txt</span><br><span class="line">$ git commit -m &quot;git tracks changes of files&quot;</span><br><span class="line">[master 88d60c6] git tracks changes of files</span><br><span class="line"> 1 file changed, 1 insertion(+), 1 deletion(-)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
-</blockquote>
-<h4 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h4><p>现在是凌晨两点，你正在赶一份工作报告，你在<code>readme.txt</code>中添加了一行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes of files.</span><br><span class="line">My stupid boss still prefers SVN.</span><br></pre></td></tr></table></figure>
-
-<p>在你准备提交前，一杯咖啡起了作用，你猛然发现了<code>stupid boss</code>可能会让你丢掉这个月的奖金！</p>
-<p>既然错误发现得很及时，就可以很容易地纠正它。你可以删掉最后一行，手动把文件恢复到上一个版本的状态，用<code>git status</code>查看一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>你可以发现，Git会告诉你，使用<code>git checkout -- file</code>可以丢弃工作区的修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>命令<code>git checkout -- readme.txt</code>意思就是，把<code>readme.txt</code>文件在工作区的修改全部撤销，这里有两种情况：</p>
-<ul>
-<li><p>一种是<code>readme.txt</code>修改后还没有被放到暂存区，现在撤销修改就回到和版本库一模一样的状态；</p>
-</li>
-<li><p>一种是<code>readme.txt</code>已经添加到暂存区后，又作了修改，现在撤销修改就回到添加到暂存区后的状态。</p>
-</li>
-</ul>
-<p>总之，就是让这个文件回到最近一次<code>git commit</code>或<code>git add</code>时的状态。</p>
-<p>现在，看看<code>readme.txt</code>的文件内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes of files.</span><br></pre></td></tr></table></figure>
-
-<p>文件内容果然复原了。</p>
-<blockquote>
-<p><code>git checkout -- file</code>命令中的<code>--</code>很重要，没有<code>--</code>，就变成了“切换到另一个分支”的命令。</p>
-</blockquote>
-<p>现在假定是凌晨3点，你不但写了一些胡话，还<code>git add</code>到暂存区了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat readme.txt</span><br><span class="line">Git is a distributed version control system.</span><br><span class="line">Git is free software distributed under the GPL.</span><br><span class="line">Git has a mutable index called stage.</span><br><span class="line">Git tracks changes of files.</span><br><span class="line">My stupid boss still prefers SVN.</span><br><span class="line"></span><br><span class="line">$ git add readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>庆幸的是，在<code>commit</code>之前，你发现了这个问题。用<code>git status</code>查看一下，修改只是添加到了暂存区，还没有提交：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br></pre></td></tr></table></figure>
-
-<p>Git同样告诉我们，用命令<code>git reset HEAD &lt;file&gt;</code>可以把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git reset HEAD readme.txt</span><br><span class="line">Unstaged changes after reset:</span><br><span class="line">M       readme.txt</span><br></pre></td></tr></table></figure>
-
-<p><code>git reset</code>命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用<code>HEAD</code>时，表示最新的版本。再用<code>git status</code>查看一下，现在暂存区是干净的，工作区有修改：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        modified:   readme.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>还记得如何丢弃工作区的修改吗？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- readme.txt</span><br><span class="line"></span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure>
-
-<p>整个世界终于清静了！</p>
-<p>现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得<strong>版本回退</strong>吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程版本库。还记得Git是分布式版本控制系统吗？我们后面会讲到远程版本库，一旦你把<code>stupid boss</code>提交推送到远程版本库，你就真的惨了……</p>
-<p>总结：</p>
-<ol>
-<li>当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- &lt;file&gt;</code>。</li>
-<li>当你不但改乱了工作区某个文件的内容，还添加到了暂存区，想丢弃修改时，分两步，先使用命令<code>git reset HEAD &lt;file&gt;</code>，再使用命令<code>git checkout -- &lt;file&gt;</code>。</li>
-<li>已经提交了不合适的修改到版本库，想要撤销本次提交时，使用版本回退，不过前提是没有推送到远程版本库。</li>
-</ol>
-<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><p>在Git中，删除也是一个修改操作，我们添加一个新文件<code>test.txt</code>到Git并且提交：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git add test.txt</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;add test.txt&quot;</span><br><span class="line">[master 4681fa6] add test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> create mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>一般情况下，你通常直接在文件管理器中，或者用<code>rm</code>命令删除了没用的文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm test.txt</span><br></pre></td></tr></table></figure>
-
-<p>这个时候工作区和版本库的文件就不一致了，使用<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span><br><span class="line">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span><br><span class="line"></span><br><span class="line">        deleted:    test.txt</span><br><span class="line"></span><br><span class="line">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line">rm &apos;test.txt&apos;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line">[master 5485041] remove test.txt</span><br><span class="line"> 1 file changed, 0 insertions(+), 0 deletions(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-
-<p>现在，文件就从版本库中被删除了。</p>
-<p>另一种情况是删错了，但是可以很轻松地从版本库中把误删的文件恢复到最新版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -- test.txt</span><br></pre></td></tr></table></figure>
-
-<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
-<h3 id="0x05-远程仓库"><a href="#0x05-远程仓库" class="headerlink" title="0x05 远程仓库"></a>0x05 远程仓库</h3><h4 id="GitHub仓库"><a href="#GitHub仓库" class="headerlink" title="GitHub仓库"></a>GitHub仓库</h4><p>Git是分布式版本控制系统，同一个Git仓库可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，每台机器的版本库其实都是一样的，并没有主次之分。</p>
-<p>在一台电脑上也是可以克隆多个版本库的，只要不在同一个目录下，不过这样基本上完全没有意义。实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也可以从服务器仓库中拉取别人的提交。</p>
-<p>完全可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。好在这个世界上有个叫GitHub的神奇的网站，从名字就可以看出，这个网站就是提供Git仓库托管服务的，所以只要注册一个GitHub账号，就可以免费获得Git远程仓库。</p>
-<p>由于本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以需要一点设置：</p>
-<p>创建SSH Key。在用户主目录下，查看是否存在<code>.ssh</code>目录，如果有，再看看这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果没有，打开Shell（Windows下打开Git Bash）创建SSH Key：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;user@example.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>然后一路回车，使用默认值即可。创建成功后，可以在用户主目录里找到<code>.ssh</code>目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对，其中<code>id_rsa</code>是私钥，<code>id_rsa.pub</code>是公钥。</p>
-<p>登陆GitHub，打开“Account Settings” - “SSH Keys”页面，几点“New SSH Key”，填上任意Title，粘贴id_rsa.pub文件中的内容到文本框里，提交即可。</p>
-<p>然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容：</p>
-<p>为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以GitHub只要知道了你的公钥，就可以确认推送者的身份（数字签名）。</p>
-<p>当然，GitHub允许你添加多个Key。假定你在家里和公司有多台电脑，只要把每台电脑的Key都添加到GitHub，就可以在这些机器上往GitHub推送提交了。</p>
-<blockquote>
-<p>注意：在GitHub上免费托管的Git仓库，任何人都可以看到（但只有你自己才能改），所以不要把敏感信息提交到GitHub。</p>
-</blockquote>
-<p>如果你不想让别人看到Git库，有两个办法，一个是交点保护费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器，因为是你自己的Git服务器，所以别人也是看不见的。</p>
-<h4 id="添加远程库"><a href="#添加远程库" class="headerlink" title="添加远程库"></a>添加远程库</h4><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得：</p>
-<p>首先，在GitHub中创建一个新的仓库<code>learngit</code>。</p>
-<p>目前，在GitHub上的这个<code>learngit</code>仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后把本地仓库的内容推送到GitHub仓库：</p>
-<p><img src="/2019/06/13/Learn-Git-02-版本控制和远程仓库/aszxjqb141511.png" alt="github-init"></p>
-<p>我们根据GitHub的提示，在本地的<code>learngit</code>仓库下运行命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin https://github.com/eW1z4rd/learngit.git</span><br></pre></td></tr></table></figure>
-
-<p>添加后，远程库的名字就是<code>origin</code>，这是Git默认的叫法，也可以改成其他的名字。</p>
-<p>接下来，就可以把本地库的所有内容推送到远程库上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br><span class="line">Enumerating objects: 22, done.</span><br><span class="line">Counting objects: 100% (22/22), done.</span><br><span class="line">Delta compression using up to 8 threads</span><br><span class="line">Compressing objects: 100% (17/17), done.</span><br><span class="line">Writing objects: 100% (22/22), 1.81 KiB | 115.00 KiB/s, done.</span><br><span class="line">Total 22 (delta 5), reused 0 (delta 0)</span><br><span class="line">remote: Resolving deltas: 100% (5/5), done.</span><br><span class="line">To https://github.com/eW1z4rd/learngit.git</span><br><span class="line"> * [new branch]      master -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;origin&apos;.</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>使用<code>git push</code>命令把本地库的内容推送到远程库，实际上是把当前<code>master</code>分支推送到远程库。</p>
-</blockquote>
-<p>由于远程库是空的，我们第一次推送<code>master</code>分支时，加上了<code>-u</code>参数，Git不但会把本地<code>master</code>分支的内容推送到远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，在以后的推送或者拉取时就可以简化命令。</p>
-<p>推送成功后，可以立刻在GitHub仓库中看到远程库的内容已经和本地一模一样。</p>
-<p>从现在起，只要本地作了提交，就可以通过命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
-
-<p>把本地<code>master</code>分支的最新修改推送至GitHub，现在你就拥有了真正的分布式版本库！</p>
-<p>分布式版本系统的最大好处之一就是在本地工作完全不需要考虑远程库的存在，也就是不论有没有联网都可以正常工作。</p>
-<h4 id="SSH警告"><a href="#SSH警告" class="headerlink" title="SSH警告"></a>SSH警告</h4><p>当你第一次使用Git的<code>clone</code>或者<code>push</code>命令连接GitHub时，会得到一个警告：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &apos;github.com (xx.xx.xx.xx)&apos; can&apos;t be established.</span><br><span class="line">RSA key fingerprint is xx.xx.xx.xx.xx.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
-
-<p>这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入<code>yes</code>回车即可。</p>
-<p>Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;github.com&apos; (RSA) to the list of known hosts.</span><br></pre></td></tr></table></figure>
-
-<p>这个警告只会出现一次，后面的操作就不会有任何警告了。</p>
-<p>如果你实在担心有人冒充GitHub服务器，输入<code>yes</code>前可以对照GitHub的RSA Key的指纹信息是否与SSH连接所给出的一致。</p>
-<h4 id="从远程库克隆"><a href="#从远程库克隆" class="headerlink" title="从远程库克隆"></a>从远程库克隆</h4><p>上次我们讲了先有本地库，后有远程库的时候，如何关联远程库。</p>
-<p>现在假设我们从零开发，那么最好的方式是先创建远程库，然后从远程库克隆。</p>
-<p>我们可以在GitHub上创建一个新的仓库，使用命令<code>git clone</code>克隆一个本地库：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git@github.com:eW1z4rd/learngit.git</span><br></pre></td></tr></table></figure>
-
-<p>或者使用<code>https</code>协议：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https://github.com/eW1z4rd/learngit.git</span><br></pre></td></tr></table></figure>
-
-<p>实际上，Git支持多种协议，默认的<code>git://</code>使用<code>ssh</code>，但也可以使用<code>https</code>等其他协议。但使用<code>https</code>除了速度慢以外，还有个最大的麻烦就是每次推送都必须输入口令，不过在某些只开放http端口的公司内部就无法使用<code>ssh</code>协议而只能用<code>https</code>。</p>
 
       
 
@@ -491,15 +276,15 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">concept</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">development</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">tools</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -555,7 +340,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://eW1z4rd.github.io/2019/06/13/Learn-Git-02-版本控制和远程仓库/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://eW1z4rd.github.io/2019/09/11/Python-字符编码/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -569,18 +354,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/06/15/Learn-Git-03-分支管理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/09/16/如何正确使用-ES-搜索引擎-—-查询/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Learn Git 03 分支管理
+          如何正确使用 ES 搜索引擎 — 查询
         
       </div>
     </a>
   
   
-    <a href="/2019/06/10/Learn-Git-01-初识Git/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Learn Git 01 初识Git</div>
+    <a href="/2019/09/01/OWASP-学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OWASP 学习笔记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -607,7 +392,7 @@ var _hmt = _hmt || [];
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-版本控制"><span class="toc-number">1.</span> <span class="toc-text">0x04 版本控制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#提交修改"><span class="toc-number">1.1.</span> <span class="toc-text">提交修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#版本回退"><span class="toc-number">1.2.</span> <span class="toc-text">版本回退</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">1.3.</span> <span class="toc-text">工作区和暂存区</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#管理修改"><span class="toc-number">1.4.</span> <span class="toc-text">管理修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#撤销修改"><span class="toc-number">1.5.</span> <span class="toc-text">撤销修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除文件"><span class="toc-number">1.6.</span> <span class="toc-text">删除文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x05-远程仓库"><span class="toc-number">2.</span> <span class="toc-text">0x05 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GitHub仓库"><span class="toc-number">2.1.</span> <span class="toc-text">GitHub仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加远程库"><span class="toc-number">2.2.</span> <span class="toc-text">添加远程库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SSH警告"><span class="toc-number">2.3.</span> <span class="toc-text">SSH警告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从远程库克隆"><span class="toc-number">2.4.</span> <span class="toc-text">从远程库克隆</span></a></li></ol></li></ol>
+                    暂无目录…
                     </div>
                 </span>
             </div>
